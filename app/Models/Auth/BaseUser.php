@@ -1,0 +1,114 @@
+<?php
+
+namespace App\Models\Auth;
+
+use App\Models\Traits\Uuid;
+use OwenIt\Auditing\Auditable;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Auth\Traits\SendUserPasswordReset;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
+
+/**
+ * Class User.
+ */
+class BaseUser extends Authenticatable implements AuditableInterface
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'name_bn',
+        'email',
+        'mobile',
+        'avatar_type',
+        'avatar_location',
+        'membership_id',
+        'membership_type',
+        'membership_activation_date',
+        'membership_end_date',
+        'date_of_birth',
+        'educational_qualification',
+        'occupation',
+        'job_position',
+        'office_id',
+        'blood_group',
+        'telephone_number',
+        'present_address',
+        'permanent_address',
+        'backup_number',
+        'nid',
+        'dob',
+        'passport',
+        'password',
+        'password_changed_at',
+        'active',
+        'confirmation_code',
+        'confirmed',
+        'timezone',
+        'last_login_at',
+        'last_login_ip',
+        'to_be_logged_out',
+    ];
+
+    use Auditable,
+        HasRoles,
+        Notifiable,
+        SendUserPasswordReset,
+        SoftDeletes,
+        Uuid;
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'id',
+        'password',
+        'remember_token',
+        'confirmation_code',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'active' => 'boolean',
+        'confirmed' => 'boolean',
+        'to_be_logged_out' => 'boolean',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'last_login_at',
+        'password_changed_at',
+    ];
+
+    /**
+     * The dynamic attributes from mutators that should be returned with the user object.
+     * @var array
+     */
+    protected $appends = [
+        'full_name',
+    ];
+}

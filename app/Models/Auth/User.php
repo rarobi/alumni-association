@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models\Auth;
+
+use App\Models\Auth\Traits\Scope\UserScope;
+use App\Models\Auth\Traits\Method\UserMethod;
+use App\Models\Auth\Traits\Attribute\UserAttribute;
+use App\Models\Auth\Traits\Relationship\UserRelationship;
+use App\Modules\Account\Models\Expense;
+use App\Modules\Account\Models\Income;
+use App\Modules\Library\Models\Book;
+
+/**
+ * Class User.
+ */
+class User extends BaseUser
+{
+    use UserAttribute,
+        UserMethod,
+        UserRelationship,
+        UserScope;
+
+    public function expense(){
+        return $this->hasMany(Expense::class,'user_id','id');
+    }
+
+    public function income(){
+        return $this->hasMany(Income::class,'user_id','id');
+    }
+
+    public function book(){
+        return $this->hasMany(Book::class,'user_id','id');
+    }
+
+}
