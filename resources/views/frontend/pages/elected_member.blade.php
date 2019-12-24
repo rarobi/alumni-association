@@ -19,111 +19,59 @@
     <section class="single_blog_area p-t-70">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
-                       data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
-                       data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
+                <div class="accordion elected-members">
+                    <div class="heading">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="head-img">
+                                    <img src="frontend/img/blog-img/blog-4.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="head-cont">
+                                    <h3>MOHAMMAD BABUL MIAH</h3>
+                                    <p>Company Secretary & Founder Shareholder</p>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
-                       data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Test1"
-                       data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
+                <div class="accordion elected-members">
+                    <div class="heading">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="head-img">
+                                    <img src="frontend/img/blog-img/blog-4.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="head-cont">
+                                    <h3>MOHAMMAD BABUL MIAH</h3>
+                                    <p>Company Secretary & Founder Shareholder</p>
+                                </div>
+                            </div>
+                        </div>
 
-
-
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
+                <div class="accordion elected-members">
+                    <div class="heading">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="head-img">
+                                    <img src="frontend/img/blog-img/blog-4.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="head-cont">
+                                    <h3>MOHAMMAD BABUL MIAH</h3>
+                                    <p>Company Secretary & Founder Shareholder</p>
+                                </div>
+                            </div>
+                        </div>
 
-
-
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
-                       data-image="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                       data-target="#image-gallery">
-                        <img class="img-thumbnail"
-                             src="https://images.pexels.com/photos/158971/pexels-photo-158971.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                             alt="Another alt text">
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>

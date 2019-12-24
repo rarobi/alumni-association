@@ -1201,6 +1201,21 @@ li {
     color: #fff;
 }
 
+/*Elected members*/
+.accordion.elected-members {
+    width: 100%;
+    min-height: 160px;
+    padding: 15px;
+    margin-bottom: 18px !important;
+    box-sizing: border-box;
+    border: 1px solid rgb(190, 205, 220);
+    border-left: 8px solid #17a2b8;
+    border-radius: 5px;
+    background-image: -moz-linear-gradient( 90deg, rgb(218,222,223) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(218,222,223) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(218,222,223) 0%, rgb(255,255,255) 100%);
+    box-shadow: 0px 0px 5.8px 4.2px rgba(0, 0, 0, 0.1);
+}
 /*navbar css*/
 
 .menu-area{background: #d61a5e}
