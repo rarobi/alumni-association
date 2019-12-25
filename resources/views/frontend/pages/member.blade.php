@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 m-b-15">
-                    <div class="center">
+                    <div class="center member-box">
                         <a href="{{ url('/member-list') }}">
                             <div class="img-thumbnail image" >
                                 <h4 class="text-center">Batch: 06 (2010-11) </h4>
@@ -29,20 +29,20 @@
                     </div>
                 </div>
                 <div class="col-sm-4 m-b-15">
-                    <div class="center">
+                    <div class="center  member-box">
                         <a href="https://nstu.edu.bd/visit-us/2nd-convocation">
                             <div class="img-thumbnail image" >
-                                <h4 class="text-center">Batch: 07 (2010-11) </h4>
+                                <h4 class="text-center">Batch: 07 (2011-12) </h4>
                                 <img class="album-img" width="100%" src="{{asset('frontend/img/bg-img/convocation.jpg')}}" alt="">
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="col-sm-4 m-b-15">
-                    <div class="center">
+                    <div class="center  member-box">
                         <a href="https://nstu.edu.bd/visit-us/2nd-convocation">
                             <div class="img-thumbnail image" >
-                                <h4 class="text-center">Batch: 08 (2010-11) </h4>
+                                <h4 class="text-center">Batch: 08 (2012-13) </h4>
                                 <img class="album-img" width="100%" src="{{asset('frontend/img/bg-img/convocation.jpg')}}" alt="">
                             </div>
                         </a>

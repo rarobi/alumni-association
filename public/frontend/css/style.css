@@ -1201,6 +1201,13 @@ li {
     color: #fff;
 }
 
+.center.member-box {
+    box-shadow: -5px 8px 4px -1px rgba(0,0,0,0.75);
+}
+/*alumni login*/
+.box_form.bg-info.p-10 {
+    border-radius: 8px;
+}
 /*Elected members*/
 .accordion.elected-members {
     width: 100%;

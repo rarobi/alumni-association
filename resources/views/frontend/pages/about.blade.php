@@ -15,7 +15,7 @@
     </div>
     <!-- ***** Banner Area End ***** -->
 
-    <section class="bg-gray m-t-20">
+    <section class="bg-gray p-t-70">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-12">

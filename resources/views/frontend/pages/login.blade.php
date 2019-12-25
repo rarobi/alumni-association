@@ -38,6 +38,7 @@
                                             <div class="form-group text-center add_top_30">
                                                 <input class="btn btn-dark" type="submit" value="Login">
                                             </div>
+
                                             <div class="checkbox-holder text-left">
                                                 <div class="checkbox_2">
                                                     <p class="text-center text-dark">Do not have an account yet? <a href="{{ url('/alumni-register') }}"><strong class="text-white">Register now!</strong></a></p>

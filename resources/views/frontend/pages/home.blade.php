@@ -11,7 +11,7 @@
                         <!-- Video Overview -->
                         <h2>A family of 5000+ alumni</h2>
                         <a href="{!! url('/about') !!}" class="btn fancy-btn fancy-active">About Us</a>
-                        <a href="#" class="btn fancy-btn">Get a quote</a>
+                        <a href="{{ url('/contact') }}" class="btn fancy-btn">Get a quote</a>
                     </div>
                 </div>
             </div>
