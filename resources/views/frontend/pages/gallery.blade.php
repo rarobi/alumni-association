@@ -34,13 +34,11 @@
                     </a>
                 </div>
                 <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
-                    <a href="frontend/img/blog-img/blog-4.jpg" class="item-wrap fancybox">
+                    <a href="frontend/img/bg-img/convocation.jpg" class="item-wrap fancybox">
                         <span class="icon-search2"></span>
                         <img class="img-fluid" src="frontend/img/bg-img/convocation.jpg">
                     </a>
                 </div>
-
-
             </div>
         </div>
     </section>

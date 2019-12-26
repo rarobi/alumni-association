@@ -27,6 +27,15 @@ Route::get('/notice-details', [HomeController::class, 'noticeDetails']);
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog-details', [BlogController::class, 'show']);
 
+Route::get('/news', [BlogController::class, 'newsAll']);
+Route::get('/news-details', [BlogController::class, 'newsDetails']);
+
+Route::get('/events', [BlogController::class, 'eventsAll']);
+Route::get('/event-details', [BlogController::class, 'eventDetails']);
+
+Route::get('/announcements', [BlogController::class, 'announcementAll']);
+Route::get('/announcement-details', [BlogController::class, 'announcementDetails']);
+
 Route::get('/gallery', [HomeController::class, 'gallery']);
 Route::get('/contact', [HomeController::class, 'contact']);
 

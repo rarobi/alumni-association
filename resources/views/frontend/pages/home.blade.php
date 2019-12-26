@@ -61,14 +61,14 @@
                         <h4>About Computer Science & Telecommunication Engineering (CSTE)</h4>
                         <div class="row">
                             <div class="col-sm-4">
-                                <img src="http://i3.ytimg.com/vi/al8y5MoCaAE/hqdefault.jpg">
+                                <iframe  class="col-sm-12" src="https://www.youtube.com/embed/al8y5MoCaAE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="col-sm-8">
                                 <p>Department of CSTE in one of the four founding departments of NSTU. The department currently offers Bachelor of Science (Engineering) in CSTE and Masters of Science (Engineering) in Telecommunication Engineeing.</p>
                             </div>
                         </div>
                         <p>The department is different than other traditional Computer Science departments in the way that, courses of Communication Technology is equally emphasized along with courses of Computer Science in the curriculum..</p>
-                        <a href="#" class="btn fancy-btn fancy-dark">Read More</a>
+                        <a href="{{ url('/about') }}" class="btn fancy-btn fancy-dark">Read More</a>
                     </div>
                 </div>
 
@@ -81,8 +81,8 @@
                                 <img src="{{asset('frontend/img/bg-img/convocation.jpg')}}">
                             </div>
                             <div class="col-sm-8">
-                                <br><a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">NSTU 1st Year Admission 2019-20</a></br>
-                                <span>March 1, 2016</span>  |  <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/#comments">
+                                <br><a href="{{ url('/news-details') }}">NSTU 1st Year Admission 2019-20</a></br>
+                                <span>March 1, 2016</span>  |  <a href="{{ url('/news-details') }}#comments">
                                     4 Comments                 </a></br>
 
                                 NSTU 1st Year Admission 2019-20: Admission for empty seat will be held on 15th December...</p> </div>
@@ -92,13 +92,13 @@
                                 <img src="{{asset('frontend/img/bg-img/convocation.jpg')}}">
                             </div>
                             <div class="col-sm-8">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">Allotment in Abdul Malek Ukil Hal</a></br>
-                                <span>March 1, 2016</span>  |  <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/#comments">
+                                <a href="{{ url('/news-details') }}">Allotment in Abdul Malek Ukil Hal</a></br>
+                                <span>March 1, 2016</span>  |  <a href="{{ url('/news-details') }}#comments">
                                     4 Comments                 </a></br>
                                 Notice:Interview for Seat Allotment in Abdul Malek Ukil Hal...</p>
                             </div>
                         </div>
-                        <a href="#" class="btn fancy-btn fancy-dark">All News</a>
+                        <a href="{{ url('/news') }}" class="btn fancy-btn fancy-dark">All News</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                                 <img src="{{asset('frontend/img/bg-img/convocation.jpg')}}">
                             </div>
                             <div class="col-sm-8">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">োয়াখালী-৪ আসনের ..</a></br>
+                                <a href="{{ url('/event-details') }}">োয়াখালী-৪ আসনের ..</a></br>
                                 <span>March 1, 2016</span></br>
                                 নোয়াখালী-৪ আসনের মাননীয় সংসদ ....</p>
                             </div>
@@ -130,7 +130,7 @@
                                 <img src="{{asset('frontend/img/bg-img/convocation.jpg')}}">
                             </div>
                             <div class="col-sm-8">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">শিক্ষামন্ত্রী সঙ্গে নোবিপ্রবি ..</a></br>
+                                <a href="{{ url('/event-details') }}">শিক্ষামন্ত্রী সঙ্গে নোবিপ্রবি ..</a></br>
                                 <span>March 1, 2016</span></br>
                                 শিক্ষামন্ত্রী সঙ্গে নোবিপ্রবি...</p>
                             </div>
@@ -140,13 +140,13 @@
                                 <img src="{{asset('frontend/img/bg-img/convocation.jpg')}}">
                             </div>
                             <div class="col-sm-8">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">শিক্ষা উপমন্ত্রীর ..</a></br>
+                                <a href="{{ url('/event-details') }}">শিক্ষা উপমন্ত্রীর ..</a></br>
                                 <span>March 1, 2016</span></br>
                                 শিক্ষা উপমন্ত্রীর সঙ্গে...</p>
                             </div>
                         </div>
 
-                        <a href="#" class="btn fancy-btn fancy-dark">ALL EVENTS</a>
+                        <a href="{{ url('/events') }}" class="btn fancy-btn fancy-dark">ALL EVENTS</a>
                     </div>
                 </div>
             </div>
@@ -158,24 +158,24 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">Standard Tender Document ..</a></br>
+                                <a href="{{ url('/announcement-details') }}">Standard Tender Document ..</a></br>
                                 Standard Tender Document (National)...</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">Expansion of Academic ..</a></br>
+                                <a href="{{ url('/announcement-details') }}">Expansion of Academic ..</a></br>
                                 Expansion of Academic and Physical...</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a href="http://demos.themecycle.com/edupress-uni/getting-started-with-illustrator-cc/">Getting Started with ..</a></br>
+                                <a href="{{ url('/announcement-details') }}">Getting Started with ..</a></br>
                                 It was popularised in the 1960s with...</p>
                             </div>
                         </div>
 
-                        <a href="#" class="btn fancy-btn fancy-dark">VIEW ALL</a>
+                        <a href="{!! url('/announcements') !!}" class="btn fancy-btn fancy-dark">VIEW ALL</a>
                     </div>
                 </div>
             </div>

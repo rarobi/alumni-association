@@ -73,6 +73,7 @@
 <script src="{{ asset('frontend/js/others/plugins.js') }}"></script>
 <!-- Active JS -->
 <script src="{{ asset('frontend/js/active.js') }}"></script>
+
 <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('frontend/js/aos.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
@@ -80,21 +81,4 @@
 <script src="{{ asset('frontend/js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
-<script>
-   (function($){
-       $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-           if (!$(this).next().hasClass('show')) {
-               $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-           }
-           var $subMenu = $(this).next(".dropdown-menu");
-           $subMenu.toggleClass('show');
-
-           $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-               $('.dropdown-submenu .show').removeClass("show");
-           });
-
-           return false;
-       });
-   })(jQuery)
-</script>
 </body>
