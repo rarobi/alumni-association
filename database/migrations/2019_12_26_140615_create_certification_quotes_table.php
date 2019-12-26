@@ -15,7 +15,14 @@ class CreateCertificationQuotesTable extends Migration
     {
         Schema::create('certification_quotes', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('job_place')->nullable();
+            $table->string('designation')->nullable();
+            $table->text('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

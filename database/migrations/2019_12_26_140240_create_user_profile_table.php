@@ -18,17 +18,16 @@ class CreateUserProfileTable extends Migration
 
             $table->integer('user_id');
             $table->integer('batch_id');
-            $table->string('nid');
-            $table->string('image');
-            $table->string('education_qualification');
-            $table->integer('marital_status');
-            $table->string('marital_status');
-            $table->string('occupation');
-            $table->string('job_position');
-            $table->string('emergency_contact');
-            $table->string('present_address');
-            $table->string('parmanent_address');
-            $table->string('facebook_link');
+            $table->string('nid')->nullable();
+            $table->string('image')->nullable();
+            $table->string('education_qualification')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('job_position')->nullable();
+            $table->string('emergency_contact')->nullable();
+            $table->string('present_address')->nullable();
+            $table->string('parmanent_address')->nullable();
+            $table->string('facebook_link')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

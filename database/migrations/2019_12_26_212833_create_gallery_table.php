@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePurposeTable extends Migration
+class CreateGalleryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePurposeTable extends Migration
      */
     public function up()
     {
-        Schema::create('purpose', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('purpose');
-            $table->integer('status')->default(1);
-            $table->integer('is_archive')->default(1);
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ class CreatePurposeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purpose');
+        Schema::dropIfExists('gallery');
     }
 }

@@ -187,7 +187,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <ul id="menu-home-menu" class="text-center"><li id="menu-item-961" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-961"><a href="#">How to Apply</a></li>
+                                <ul id="menu-home-menu" class="text-center"><li id="menu-item-961" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-961"><a href="https://nstu.edu.bd/admission">How to Apply</a></li>
                                     <li id="menu-item-962" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-962"><a href="#">Plan to Visit</a></li>
                                     <li id="menu-item-963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-963"><a href="#">Tuition &#038; Student Finance</a></li>
                                     <li id="menu-item-964" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-964"><a href="#">Loans, Grants &#038; Scholarships</a></li>

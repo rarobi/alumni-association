@@ -74,13 +74,13 @@
                                         <!-- Single Input Area -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="website" id="website" placeholder="Website" required>
+                                                <input type="text" class="form-control" name="subject" id="website" placeholder="Website" required>
                                             </div>
                                         </div>
                                         <!-- Single Input Area -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Messages" required></textarea>
+                                                <textarea name="message" class="form-control" id="message" cols="30" rows="20" placeholder="Messages" required></textarea>
                                             </div>
                                         </div>
                                         <!-- Single Input Area -->
