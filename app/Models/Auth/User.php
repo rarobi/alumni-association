@@ -24,12 +24,5 @@ class User extends BaseUser
         return $this->hasMany(Expense::class,'user_id','id');
     }
 
-    public function income(){
-        return $this->hasMany(Income::class,'user_id','id');
-    }
-
-    public function book(){
-        return $this->hasMany(Book::class,'user_id','id');
-    }
 
 }

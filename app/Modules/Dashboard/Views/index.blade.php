@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary mb-1">Members (Total)</div>
-                                <div class="h5 mb-0 font-weight-bold">{{ $memberTotal }}</div>
+                                <div class="h5 mb-0 font-weight-bold"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa fa-users fa-2x"></i>
@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning mb-1">Book (Total)</div>
-                                <div class="h5 mb-0 font-weight-bold">{!! isset($totalBook) ? $totalBook : 0  !!}</div>
+                                <div class="h5 mb-0 font-weight-bold"></div>
                             </div>
 
                             <div class="col-auto">
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success mb-1"> Total Income</div>
-                                <div class="h5 mb-0 font-weight-bold">{!! isset($totalIncome) ? $totalIncome : 0  !!} Tk</div>
+                                <div class="h5 mb-0 font-weight-bold"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa fa-money-bill fa-2x"></i>
@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger mb-1"> Total Expense</div>
-                                <div class="h5 mb-0 font-weight-bold">{!! isset($totalExpense) ? $totalExpense : 0  !!} Tk</div>
+                                <div class="h5 mb-0 font-weight-bold"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa fa-money-bill-wave fa-2x"></i>

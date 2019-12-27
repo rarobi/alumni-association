@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
 
         $this->truncateMultiple([
             'cache',
-            'jobs',
             'sessions',
         ]);
 
