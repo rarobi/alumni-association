@@ -26,6 +26,11 @@ class ProfileController extends Controller
         $this->userRepository = $userRepository;
     }
 
+    public function index()
+    {
+        return view('frontend.pages.profile');
+    }
+
     /**
      * @param UpdateProfileRequest $request
      *

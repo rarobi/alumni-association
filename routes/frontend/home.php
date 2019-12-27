@@ -17,6 +17,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/vision', [HomeController::class, 'vision']);
 
+Route::get('/profile', [ProfileController::class, 'index']);
+
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/members', [HomeController::class, 'members']);
 Route::get('/member-list', [HomeController::class, 'memberList']);

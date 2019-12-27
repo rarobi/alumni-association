@@ -24,7 +24,7 @@
 {{--                            <h4 class="text-center">Please relogin here!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
-                                    <form>
+                                    <form action="{{ url('/profile') }}">
                                         <div class="box_form bg-info p-10">
                                             <div class="form-group">
                                                 <label>Email</label>
