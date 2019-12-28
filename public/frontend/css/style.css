@@ -1205,6 +1205,25 @@ li {
     box-shadow: -5px 8px 4px -1px rgba(0,0,0,0.75);
 }
 /*alumni profile */
+.edit {
+    padding-top: 5px;
+    padding-right: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* display: none; */
+}
+
+#submit-button {
+    background: #43e696;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
 .box_profile {
     background-color: #e1e8ed;
     text-align: center;
@@ -1224,7 +1243,7 @@ li {
 
 figure {
     margin-top: 10px;
-    height: 180px;
+    height: 230px;
 }
 
 .tabs_styled_2 .nav-tabs {

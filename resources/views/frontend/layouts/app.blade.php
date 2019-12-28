@@ -81,4 +81,6 @@
 <script src="{{ asset('frontend/js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
+@yield('after-scripts')
+
 </body>
