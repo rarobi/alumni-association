@@ -18,6 +18,8 @@ class CreateUserProfileTable extends Migration
 
             $table->integer('user_id');
             $table->integer('batch_id');
+            $table->string('session');
+            $table->string('passing_year');
             $table->string('nid')->nullable();
             $table->string('image')->nullable();
             $table->string('education_qualification')->nullable();

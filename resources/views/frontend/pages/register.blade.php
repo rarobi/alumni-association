@@ -24,65 +24,76 @@
 {{--                            <h4 class="text-center">Please registration First!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-7">
-                                    <form>
+                                    {{ html()->form('POST', url('alumni-register'))->class('form-horizontal')->open() }}
                                         <div class="box_form bg-info p-10">
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" placeholder="Your  name">
+                                                    <input type="text" name="name" class="form-control" placeholder="Your  name" required>
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control" placeholder="Your email address">
+                                                    <input type="email" name="email" class="form-control" placeholder="Your email address" required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
                                                     <label>Batch</label>
-                                                    <select type="text" class="form-control">
+                                                    <select type="text" name="batch_id" class="form-control" required>
                                                         <option>-- Select the batch --</option>
-                                                        <option>Batch-01</option>
-                                                        <option>Batch-02</option>
-                                                        <option>Batch-03</option>
-                                                        <option>Batch-04</option>
-                                                        <option>Batch-05</option>
+                                                        <option value="1">Batch-01</option>
+                                                        <option value="2">Batch-02</option>
+                                                        <option value="3">Batch-03</option>
+                                                        <option value="4">Batch-04</option>
+                                                        <option value="5">Batch-05</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label>Session</label>
-                                                    <select type="text" class="form-control">
+                                                    <select type="text" name="session" class="form-control" required>
                                                         <option>-- Select the session --</option>
-                                                        <option>2007-2008</option>
-                                                        <option>2007-2008</option>
-                                                        <option>2007-2008</option>
-                                                        <option>2007-2008</option>
-                                                        <option>2007-2008</option>
+                                                        <option value="2007-2008">2007-2008</option>
+                                                        <option value="2008-2009">2008-2009</option>
+                                                        <option value="2010-2011">2010-2011</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Roll</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Your B.Sc roll">
+                                                    <label>Passing Year</label>
+                                                    <select type="text"name="passing_year" class="form-control" required>
+                                                        <option>-- Select the year --</option>
+                                                        <option value="2010">2010</option>
+                                                        <option value="2011">2011</option>
+                                                        <option value="2012">2012</option>
+                                                        <option value="2013">2013</option>
+                                                        <option value="2014">2014</option>
+                                                        <option value="2015">2015</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control" id="password1" placeholder="Your password">
+                                                    <label>Mobile</label>
+                                                    <input type="number" name="mobile" class="form-control" placeholder="Enter Your mobile" required>
                                                 </div>
+
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Confirm password</label>
-                                                    <input type="password" class="form-control" id="password2" placeholder="Confirm password">
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control" name="password" placeholder="Your password" required>
                                                 </div>
+{{--                                                <div class="form-group col-sm-6">--}}
+{{--                                                    <label>Confirm password</label>--}}
+{{--                                                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm password">--}}
+{{--                                                </div>--}}
                                             </div>
                                                 <div id="pass-info" class="clearfix"></div>
-                                                <div class="checkbox-holder text-left">
-                                                    <div class="checkbox_2">
-                                                        <input type="checkbox" value="accept_2" id="check_2" name="check_2" checked>
-                                                        <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-                                                    </div>
-                                                </div>
+{{--                                                <div class="checkbox-holder text-left">--}}
+{{--                                                    <div class="checkbox_2">--}}
+{{--                                                        <input type="checkbox" value="accept_2" id="check_2" name="check_2" checked>--}}
+{{--                                                        <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                                 <div class="form-group text-center add_top_30">
                                                     <input class="btn btn-dark" type="submit" value="Submit">
                                                 </div>
@@ -92,7 +103,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    </form>
+                                    {{ html()->form()->close() }}
                                 </div>
                             </div>
                             <!-- /row -->

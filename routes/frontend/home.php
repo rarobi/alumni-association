@@ -44,6 +44,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm']);
 Route::get('/alumni-register', [AlumniLoginController::class, 'registerForm']);
+Route::post('/alumni-register', [AlumniLoginController::class, 'register']);
 //Route::get('/', [LoginController::class, 'showLoginForm'])->name('index');
 //Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
