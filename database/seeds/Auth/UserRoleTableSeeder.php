@@ -18,12 +18,7 @@ class UserRoleTableSeeder extends Seeder
         $this->disableForeignKeys();
 
         User::find(1)->assignRole(config('access.users.admin_role'));
-        User::find(2)->assignRole('member');
-        User::find(3)->assignRole('member');
-        User::find(4)->assignRole('member');
-        User::find(5)->assignRole('member');
-        User::find(6)->assignRole('member');
-        User::find(7)->assignRole('member');
+        User::find(2)->assignRole('executive');
 //        User::find(3)->assignRole(config('access.users.default_role'));
 
         $this->enableForeignKeys();

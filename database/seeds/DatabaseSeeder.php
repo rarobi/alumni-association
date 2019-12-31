@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AuthTableSeeder::class);
-        $this->call(PurposeTableSeeder::class);
+//        $this->call(PurposeTableSeeder::class);
         Model::reguard();
     }
 }
