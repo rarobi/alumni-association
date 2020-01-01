@@ -28,11 +28,11 @@
                                         <div class="box_form bg-info p-10">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Your email address">
+                                                <input type="email" name="email" class="form-control" placeholder="Your email address" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Password</label>
-                                                <input type="password" name="password" class="form-control" id="password1" placeholder="Your password">
+                                                <input type="password" name="password" class="form-control" id="password1" placeholder="Your password" required>
                                             </div>
                                             <div id="pass-info" class="clearfix"></div>
                                             <div class="form-group text-center add_top_30">

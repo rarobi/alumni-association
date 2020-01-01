@@ -20,11 +20,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-//        $data['memberTotal']    = User::all()->count();
+        $data['memberTotal']    = User::all()->count();
 //        $data['totalBook']      = Book::all()->sum('stock_quantity');
 //        $data['totalIncome']      = Income::all()->sum('amount');
 //        $data['totalExpense']   = Expense::all()->sum('amount');
-        return view("Dashboard::index");
+        return view("Dashboard::index", $data);
     }
 
     /**
