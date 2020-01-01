@@ -15,6 +15,14 @@ class AlumniLoginController extends Controller
         return view('frontend.pages.login');
     }
 
+    public function login(Request $request) {
+
+        $email    = $request->input('email');
+        $password = $request->input('password');
+        dd($email,$password);
+//        return view('frontend.pages.profie');
+    }
+
     public function registerForm()
     {
         return view('frontend.pages.register');

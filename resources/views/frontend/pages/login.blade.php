@@ -21,18 +21,18 @@
                 <div class="bg_color_2">
                     <div class="container margin_60_35">
                         <div id="register">
-{{--                            <h4 class="text-center">Please relogin here!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
-                                    <form action="{{ url('/profile') }}">
+                                    {{--<form action="{{ url('/profile') }}">--}}
+                                        {{ html()->form('POST', url('alumni-login'))->class('form-horizontal')->open() }}
                                         <div class="box_form bg-info p-10">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control" placeholder="Your email address">
+                                                <input type="email" name="email" class="form-control" placeholder="Your email address">
                                             </div>
                                             <div class="form-group">
                                                 <label>Password</label>
-                                                <input type="password" class="form-control" id="password1" placeholder="Your password">
+                                                <input type="password" name="password" class="form-control" id="password1" placeholder="Your password">
                                             </div>
                                             <div id="pass-info" class="clearfix"></div>
                                             <div class="form-group text-center add_top_30">
@@ -45,7 +45,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    {{ html()->form()->close() }}
                                 </div>
                             </div>
                             <!-- /row -->

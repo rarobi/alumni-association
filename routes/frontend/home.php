@@ -42,7 +42,8 @@ Route::get('/gallery', [HomeController::class, 'gallery']);
 Route::get('/contact', [HomeController::class, 'contact']);
 
 
-Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm']);
+Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm'])->name('alumni.login');;
+Route::post('/alumni-login', [AlumniLoginController::class, 'login']);
 Route::get('/alumni-register', [AlumniLoginController::class, 'registerForm'])->name('alumni.register');
 Route::post('/alumni-register', [AlumniLoginController::class, 'register']);
 //Route::get('/', [LoginController::class, 'showLoginForm'])->name('index');
