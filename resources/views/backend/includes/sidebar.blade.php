@@ -77,83 +77,83 @@
                 {{--</ul>--}}
             {{--</li>--}}
 
-            <li class="nav-item nav-dropdown {{
-                    active_class(Active::checkUriPattern('account/*'), 'open')
-                }}">
-                <a class="nav-link nav-dropdown-toggle {{
-                        active_class(Active::checkUriPattern('account/*'))
-                    }}" href="#">
-                    <i class="nav-icon fa fa-list"></i>
-                    Account
-                </a>
+            {{--<li class="nav-item nav-dropdown {{--}}
+                    {{--active_class(Active::checkUriPattern('account/*'), 'open')--}}
+                {{--}}">--}}
+                {{--<a class="nav-link nav-dropdown-toggle {{--}}
+                        {{--active_class(Active::checkUriPattern('account/*'))--}}
+                    {{--}}" href="#">--}}
+                    {{--<i class="nav-icon fa fa-list"></i>--}}
+                    {{--Account--}}
+                {{--</a>--}}
 
-                <ul class="nav-dropdown-items">
-                    <li class="nav-item">
-                        <a class="nav-link {{
-                                active_class(Active::checkUriPattern('account/list/*'))
-                            }}" href="{{ url('account/list/all') }}">
-                            <i class="fa fa-piggy-bank"></i> Accounts
-                        </a>
-                    </li>
+                {{--<ul class="nav-dropdown-items">--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('account/list/*'))--}}
+                            {{--}}" href="{{ url('account/list/all') }}">--}}
+                            {{--<i class="fa fa-piggy-bank"></i> Accounts--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
 
-                    <li class="nav-item">
-                        <a class="nav-link {{
-                                active_class(Active::checkUriPattern('account/income/*'))
-                            }}" href="{{ route('account.income.index') }}">
-                            <i class="fa fa-money-bill"></i> Income
-                        </a>
-                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('account/income/*'))--}}
+                            {{--}}" href="{{ route('account.income.index') }}">--}}
+                            {{--<i class="fa fa-money-bill"></i> Income--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
 
-                    <li class="nav-item">
-                        <a class="nav-link {{
-                                active_class(Active::checkUriPattern('account/expense/*'))
-                            }}" href="{{ route('account.expense.index') }}">
-                            <i class="fa fa-money-bill-wave"></i> Expense
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('account/expense/*'))--}}
+                            {{--}}" href="{{ route('account.expense.index') }}">--}}
+                            {{--<i class="fa fa-money-bill-wave"></i> Expense--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
 
-            <li class="nav-title">
-                Settings
-            </li>
+                {{--<li class="nav-title">--}}
+                    {{--Settings--}}
+                {{--</li>--}}
             @if ($logged_in_user->isAdmin())
-                <li class="nav-item nav-dropdown {{
-                    active_class(Active::checkUriPattern('settings/*'), 'open')
-                }}">
-                    <a class="nav-link nav-dropdown-toggle {{
-                        active_class(Active::checkUriPattern('settings/*'))
-                    }}" href="#">
-                        <i class="nav-icon fa fa-list"></i>
-                        Settings
-                    </a>
+                {{--<li class="nav-item nav-dropdown {{--}}
+                    {{--active_class(Active::checkUriPattern('settings/*'), 'open')--}}
+                {{--}}">--}}
+                    {{--<a class="nav-link nav-dropdown-toggle {{--}}
+                        {{--active_class(Active::checkUriPattern('settings/*'))--}}
+                    {{--}}" href="#">--}}
+                        {{--<i class="nav-icon fa fa-list"></i>--}}
+                        {{--Settings--}}
+                    {{--</a>--}}
 
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link {{
-                                active_class(Active::checkUriPattern('settings/books/category*'))
-                            }}" href="{{ route('settings.book.category.index') }}">
-                                <i class="fa fa-book"></i> Book Categories
-                            </a>
-                        </li>
+                    {{--<ul class="nav-dropdown-items">--}}
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('settings/books/category*'))--}}
+                            {{--}}" href="{{ route('settings.book.category.index') }}">--}}
+                                {{--<i class="fa fa-book"></i> Book Categories--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
 
-                        <li class="nav-item">
-                            <a class="nav-link {{
-                                active_class(Active::checkUriPattern('settings/books/writers*'))
-                            }}" href="{{ route('settings.book.writers.index') }}">
-                                <i class="fa fa-book"></i> Book Writers
-                            </a>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('settings/books/writers*'))--}}
+                            {{--}}" href="{{ route('settings.book.writers.index') }}">--}}
+                                {{--<i class="fa fa-book"></i> Book Writers--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
 
-                        <li class="nav-item">
-                            <a class="nav-link {{
-                                active_class(Active::checkUriPattern('settings/books/publisher*'))
-                            }}" href="{{ route('settings.book.publisher.index') }}">
-                                <i class="fa fa-book"></i> Book Publishers
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link {{--}}
+                                {{--active_class(Active::checkUriPattern('settings/books/publisher*'))--}}
+                            {{--}}" href="{{ route('settings.book.publisher.index') }}">--}}
+                                {{--<i class="fa fa-book"></i> Book Publishers--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
 
             <li class="nav-title">
                 Administration

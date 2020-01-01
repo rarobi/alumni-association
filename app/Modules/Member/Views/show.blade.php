@@ -17,27 +17,22 @@
                 </h4>
             </div><!--col-->
         </div><!--row-->
-
         <div class="row mt-4 mb-4">
             <div class="col">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-user"></i> @lang('labels.backend.access.users.tabs.titles.overview')</a>
+                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-user"></i> Basic Info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#in-out" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-calendar-check"></i> @lang('labels.backend.access.users.tabs.titles.in-out')</a>
+                        <a class="nav-link" data-toggle="tab" href="#in-out" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-calendar-check"></i> Educational Info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#subscription" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-money-bill"></i> @lang('labels.backend.access.users.tabs.titles.subscription')</a>
+                        <a class="nav-link" data-toggle="tab" href="#subscription" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-money-bill"></i> Professional Info</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#account" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-database"></i> @lang('labels.backend.access.users.tabs.titles.account')</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#library" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-book"></i> @lang('labels.backend.access.users.tabs.titles.library')</a>
-                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link" data-toggle="tab" href="#library" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-book"></i> @lang('labels.backend.access.users.tabs.titles.library')</a>--}}
+                    {{--</li>--}}
                 </ul>
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
                         <div class="row">
@@ -53,7 +48,7 @@
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Name</th>
-                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->first_name }}</td>
                                     </tr>
 
                                     <tr>
@@ -63,7 +58,7 @@
 
                                     <tr>
                                         <th>Status</th>
-                                        <td>{!! $user->status_label !!}</td>
+                                        <td>{!! $user->member_status!!}</td>
                                     </tr>
 
                                     <tr>
@@ -75,12 +70,21 @@
                                         <th>Blood Group</th>
                                         <td>{{ isset($user->blood_group) ? $user->blood_group : 'N/A' }}</td>
                                     </tr>
-
                                     <tr>
-                                        <th>Membership ID</th>
+                                        <th>Date of Birth</th>
                                         <td>
-                                            @if($user->membership_id)
-                                                {{ $user->membership_id }}
+                                            @if($user->dob)
+                                                {{ $user->dob }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Present Address</th>
+                                        <td>
+                                            @if($user->present_address)
+                                                {{ $user->present_address}}
                                             @else
                                                 N/A
                                             @endif
@@ -88,128 +92,28 @@
                                     </tr>
 
                                     <tr>
-                                        <th>Membership Type</th>
+                                        <th>Permanent Address</th>
                                         <td>
-                                            @if($user->membership_type)
-                                                {{ ucfirst($user->membership_type) }}
-                                            @else
-                                                {{ html()->form('POST', route('member.membership',$user->id))->class('form-horizontal')->open() }}
-                                                <div class="form-group row">
-                                                    <div class="col-md-10">
-                                                        {{ html()->select('membership_type')
-                                                            ->options(['' => "Select Type", 'temporary' => 'Temporary', 'parmanent' => 'Parmanent', 'executive' => 'Executive'])
-                                                            ->class('form-control')
-                                                            ->attribute('maxlength', 191) }}
-                                                    </div><!--col-->
-                                                    <div class="col-md-2">
-                                                        {{ form_submit(__('Add')) }}
-                                                    </div><!--col-->
-                                                </div><!--form-group-->
-                                                {{ html()->form()->close() }}
-                                            @endif
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Membership Activation Date</th>
-                                        <td>
-                                            @if($user->membership_activation_date)
-                                                {{ $user->membership_activation_date }}
+                                            @if($user->permanent_address)
+                                                {{ $user->permanent_address}}
                                             @else
                                                 N/A
                                             @endif
                                         </td>
                                     </tr>
 
-                                   <tr>
-                                       <th>Membership End Date</th>
-                                       <td>
-                                           @if($user->membership_end_date)
-                                               {{ $user->membership_end_date }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
+                                    <tr>
+                                        <th>NID Number</th>
+                                        <td>
+                                            @if($user->nid)
+                                                {{ $user->nid}}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                   <tr>
-                                       <th>Date of Birth</th>
-                                       <td>
-                                           @if($user->dob)
-                                               {{ $user->dob }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>Present Job</th>
-                                       <td>
-                                           @if($user->occupation)
-                                               {{ $user->occupation}}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>Job Position</th>
-                                       <td>
-{{--                                            @if($user->occupation)--}}
-{{--                                                {{ $user->occupation}}--}}
-{{--                                            @else--}}
-                                               N/A
-{{--                                            @endif--}}
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>Present Address</th>
-                                       <td>
-                                           @if($user->present_address)
-                                               {{ $user->present_address}}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>Permanent Address</th>
-                                       <td>
-                                           @if($user->permanent_address)
-                                               {{ $user->permanent_address}}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>NID Number</th>
-                                       <td>
-                                           @if($user->nid)
-                                               {{ $user->nid}}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                                   <tr>
-                                       <th>Passport Number</th>
-                                       <td>
-                                           @if($user->passport)
-                                               {{ $user->passport}}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                   </tr>
-
-                               </table>
+                                </table>
                            </div>
                        </div><!--table-responsive-->
                    </div>
@@ -218,56 +122,25 @@
                            <div class="table-responsive">
                                <table class="table table-hover">
                                    <tr>
-                                       <th>Date</th>
-                                       <th>Logged In</th>
-                                       <th>Logged Out</th>
+                                       <th>Institute</th>
+                                       <td>NSTU</td>
                                    </tr>
                                    <tr>
-                                       <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                       <td> @if($user->last_login_at)
-                                               {{ $user->last_login_at }}
-                                            @else
-                                               N/A
-                                            @endif
-                                       </td>
-                                       <td>@if($user->to_be_logged_out)
-                                               {{ $user->to_be_logged_out }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
+                                       <th>Department</th>
+                                       <td>CSTE</td>
                                    </tr>
                                    <tr>
-                                       <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                       <td> @if($user->last_login_at)
-                                               {{ $user->last_login_at }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                       <td>@if($user->to_be_logged_out)
-                                               {{ $user->to_be_logged_out }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
+                                       <th>Batch</th>
+                                       <td>{!! $user->profile->batch_id !!}</td>
                                    </tr>
                                    <tr>
-                                       <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                       <td> @if($user->last_login_at)
-                                               {{ $user->last_login_at }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
-                                       <td>@if($user->to_be_logged_out)
-                                               {{ $user->to_be_logged_out }}
-                                           @else
-                                               N/A
-                                           @endif
-                                       </td>
+                                       <th>Sesson</th>
+                                       <td>{!! $user->profile->session!!}</td>
                                    </tr>
-
+                                   <tr>
+                                       <th>Passing Year</th>
+                                       <td>{!! $user->profile->passing_year !!}</td>
+                                   </tr>
                                </table>
                            </div>
                        </div><!--table-responsive-->
@@ -284,19 +157,16 @@
                        <div class="col">
                            <div class="table-responsive">
                                <table class="table table-hover">
-                                   <tr>
-                                       <th>Today Subscription</th>
-                                       <th>Current Month Subscription</th>
-                                       <th>Total Subscription</th>
-                                   </tr>
-
+                                   {{--<tr>--}}
+                                       {{--<th>Today Subscription</th>--}}
+                                       {{--<th>Current Month Subscription</th>--}}
+                                       {{--<th>Total Subscription</th>--}}
+                                   {{--</tr>--}}
                                    <tr>
                                        {{--<td> {!! $today_suscription !!} TK</td>--}}
                                        {{--<td> {!! $current_suscription !!} TK</td>--}}
 {{--                                        <td> {!! $expense !!} TK </td>--}}
                                    </tr>
-
-
                                </table>
                            </div>
                        </div><!--table-responsive-->
@@ -340,62 +210,17 @@
                        </div>
 
                    </div>
-                   <div class="tab-pane" id="account" role="tabpanel">
-                       <div class="col">
-                           <div class="table-responsive">
-                               <table class="table table-hover">
-                                   <tr>
-                                       <th>Sl</th>
-                                       <th>Current Month Income</th>
-                                       <th>Total Income</th>
-                                   </tr>
-                                   <tr>
-                                       <td>1</td>
-                                       <td>{!! $current_income !!} TK</td>
-                                       <td>{!! $total_income !!} TK</td>
-                                   </tr>
-                               </table>
-                           </div>
-                       </div><!--table-responsive-->
-                   </div>
-                   <div class="tab-pane" id="library" role="tabpanel">
-                       <div class="col">
-                           <div class="table-responsive">
-                           <table class="table table-hover">
-                           <tr>
-                               <th>SL</th>
-                               <th>Book Name</th>
-                               <th>Borrow Date</th>
-                               <th>Return Status</th>
-                               <th>Expected Return Date</th>
-                               <th>Returned Date</th>
-                           </tr>
-                               <?php $i = 0; ?>
-                               @foreach($books as $book)
-                           <tr>
-                                   <?php $i++ ?>
-                                   <td>{!! $i !!}</td>
-                                   <td>{!! $book->bookBorrowDetails->book->name !!}</td>
-                                   <td>{!! $book->issue_date !!}</td>
-                                   <td> @if($book->is_returned == 1)
-                                            Yes
-                                        @else
-                                            No
-                                        @endif
-                                   </td>
-                                   <td>{!! $book->date_for_return !!}</td>
-                                   <td>{!! isset($book->returned_date) ? $book->returned_date : '--' !!}</td>
-
-                           </tr>
-                               @endforeach
-                           </table>
-                           </div>
-                       </div><!--table-responsive-->
-                   </div>
                    <!--tab-->
                </div><!--tab-content-->
            </div><!--col-->
        </div><!--row-->
+        @if($user->member_status == "pending")
+        <div class="row">
+            <div class="col-sm-3 pull-right">
+                <a class="btn btn-info" href="{!! route('member.accept', $user->id) !!}"> Approve Member</a>
+            </div>
+        </div>
+        @endif
    </div><!--card-body-->
 
    <div class="card-footer">

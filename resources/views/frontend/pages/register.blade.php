@@ -17,6 +17,11 @@
 
     <section class="single_blog_area p-t-70 m-b-20">
         <div class="container">
+            @if(session()->has('message'))
+                <div class="alert alert-success text-center">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <main>
                 <div class="bg_color_2">
                     <div class="container margin_60_35">

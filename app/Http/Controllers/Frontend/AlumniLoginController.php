@@ -23,10 +23,11 @@ class AlumniLoginController extends Controller
     public function register(Request $request)
     {
         $user = new User();
-        $user->first_name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->mobile = $request->input('mobile');
-        $user->password = md5($request->input('password'));
+        $user->first_name    = $request->input('name');
+        $user->email         = $request->input('email');
+        $user->mobile        = $request->input('mobile');
+        $user->password      = md5($request->input('password'));
+        $user->member_status = 'pending';
         $user->save();
 
         $user_profile = new UserProfile();
@@ -36,6 +37,7 @@ class AlumniLoginController extends Controller
         $user_profile->passing_year = $request->input('passing_year');
         $user_profile->save();
 
-        return redirect()->back();
+//        return redirect()->route('alumni.register')->withFlashSuccess('Your Request has beed submitted succesfully.Please wait for confirmation');
+        return redirect()->back()->with('message', 'Your Request has beed submitted succesfully. Please wait for confirmation.');
     }
 }

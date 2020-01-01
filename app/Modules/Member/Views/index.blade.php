@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <h4 class="card-title mb-0">
-                    Members Management <small class="text-muted">Active Members</small>
+                    Members <small class="text-muted">List</small>
                 </h4>
             </div><!--col-->
 
@@ -31,8 +31,10 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>@lang('labels.backend.access.users.table.name')</th>
                             <th>@lang('labels.backend.access.users.table.email')</th>
+                            <th>Member Status</th>
                             <th>Blood Group</th>
                             <th>@lang('labels.backend.access.users.table.roles')</th>
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
@@ -42,10 +44,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($users as $key => $user)
                             <tr>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $key + $users->firstItem() }}</td>
+                                <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->member_status }}</td>
                                 <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>
                                 <td>{!! $user->roles_label !!}</td>
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>

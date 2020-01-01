@@ -41,8 +41,10 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('Member::index')
-            ->withUsers($this->memberRepository->getActivePaginated(10, 'id', 'desc'));
+        $data['users'] = User::orderBy('id', 'desc')->paginate(5);
+
+        return view('Member::index',$data);
+//            ->withUsers($this->memberRepository->getActivePaginated(10, 'id', 'desc'));
     }
 
     /**
@@ -107,15 +109,6 @@ class MemberController extends Controller
         $end_of_month     = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
 
         $data['user']    = User::find($userId);
-        $data['books']   = BookBorrow::where('member_id', $userId)->get();
-        $data['total_income']    = Income::where('member_id', $userId)->sum('amount');
-        $data['current_income']  = Income::where('member_id', $userId)->whereBetween('created_at',[$start_of_month,$end_of_month])->sum('amount');
-//        dd($data['total_income'],$data['current_income']);
-
-//        $data['expense'] = Expense::where('user_id', $userId)->sum('amount');
-//        $data['pending'] = Income::where('user_id', $userId)->sum('pending_amount');
-//        $data['today_suscription'] = Expense::where('user_id', $userId)->whereBetween('created_at',[$start_of_today,$end_of_today])->sum('amount');
-//        $data['current_suscription'] = Expense::where('user_id', $userId)->whereBetween('created_at',[$start_of_month,$end_of_month])->sum('amount');
 
         return view('Member::show',$data);
     }
@@ -193,6 +186,15 @@ class MemberController extends Controller
         $user->membership_type = $membership_type;
         $user->save();
         return redirect()->route('member.index')->withFlashSuccess('Membership add successfully');
+    }
+
+    public function acceptMember($member_id) {
+
+        $member = User::findOrFail($member_id);
+        $member->member_status  = 'approved';
+        $member->save();
+
+        return redirect()->route('member.index')->withFlashSuccess('Member approved successfully');
     }
 
 }

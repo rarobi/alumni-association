@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        @if($logged_in_user->isAdmin())
+        @if(!$logged_in_user->isAdmin())
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card card-accent-primary">
                     <div class="card-body">
