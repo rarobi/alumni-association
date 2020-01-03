@@ -14,23 +14,14 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
         'destroy'   => 'settings.alumni.batch.destroy'
     ]]);
 
-    Route::resource('settings/books/writers', 'BookWriterController', ['names' => [
-        'index'     => 'settings.book.writers.index',
-        'create'    => 'settings.book.writers.create',
-        'store'     => 'settings.book.writers.store',
-        'show'      => 'settings.book.writers.show',
-        'edit'      => 'settings.book.writers.edit',
-        'update'    => 'settings.book.writers.update',
-        'destroy'   => 'settings.book.writers.destroy'
+    Route::resource('settings/alumni/session', 'SessionController', ['names' => [
+        'index'     => 'settings.alumni.session.index',
+        'create'    => 'settings.alumni.session.create',
+        'store'     => 'settings.alumni.session.store',
+        'show'      => 'settings.alumni.session.show',
+        'edit'      => 'settings.alumni.session.edit',
+        'update'    => 'settings.alumni.session.update',
+        'destroy'   => 'settings.alumni.session.destroy'
     ]]);
 
-    Route::resource('settings/books/publisher', 'BookPublisherController', ['names' => [
-        'index'     => 'settings.book.publisher.index',
-        'create'    => 'settings.book.publisher.create',
-        'store'     => 'settings.book.publisher.store',
-        'show'      => 'settings.book.publisher.show',
-        'edit'      => 'settings.book.publisher.edit',
-        'update'    => 'settings.book.publisher.update',
-        'destroy'   => 'settings.book.publisher.destroy'
-    ]]);
 });

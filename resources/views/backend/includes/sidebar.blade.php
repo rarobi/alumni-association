@@ -139,8 +139,8 @@
 
                         <li class="nav-item">
                             <a class="nav-link {{
-                                active_class(Active::checkUriPattern('settings/books/writers*'))
-                            }}" href="{{ route('settings.book.writers.index') }}">
+                                active_class(Active::checkUriPattern('settings/alumni/session*'))
+                            }}" href="{{ route('settings.alumni.session.index') }}">
                                 <i class="fa fa-book"></i> Session
                             </a>
                         </li>

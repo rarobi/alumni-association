@@ -3,17 +3,14 @@
 namespace App\Modules\Settings\Controllers;
 
 use App\Modules\Settings\Models\Batch;
-use App\Modules\Settings\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class BatchController extends Controller
 {
-
-
     public function index()
     {
-        $data['batches'] = Batch::all();
+        $data['batches'] = Batch::orderBy('id', 'DESC')->get();
         return view("Settings::batch.index",$data);
     }
 
