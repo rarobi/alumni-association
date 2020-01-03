@@ -33,59 +33,108 @@
                                         <div class="box_form bg-info p-10">
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Name</label>
-                                                    <input type="text" name="name" class="form-control" placeholder="Your  name" required>
+                                                    {{ html()->label('Name')->class('col-md-2 form-control-label required')->for('name') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->text('name')
+                                                            ->class('form-control')
+                                                            ->placeholder('Your Name')
+                                                            ->attribute('maxlength', 191)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    <label>Email</label>
-                                                    <input type="email" name="email" class="form-control" placeholder="Your email address" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-sm-6">
-                                                    <label>Batch</label>
-                                                    <select type="text" name="batch_id" class="form-control" required>
-                                                        <option>-- Select the batch --</option>
-                                                        <option value="1">Batch-01</option>
-                                                        <option value="2">Batch-02</option>
-                                                        <option value="3">Batch-03</option>
-                                                        <option value="4">Batch-04</option>
-                                                        <option value="5">Batch-05</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                    <label>Session</label>
-                                                    <select type="text" name="session" class="form-control" required>
-                                                        <option>-- Select the session --</option>
-                                                        <option value="2007-2008">2007-2008</option>
-                                                        <option value="2008-2009">2008-2009</option>
-                                                        <option value="2010-2011">2010-2011</option>
-                                                    </select>
+                                                    {{ html()->label('Email')->class('col-md-2 form-control-label required')->for('email') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->email('email')
+                                                            ->class('form-control')
+                                                            ->placeholder('Your email address')
+                                                            ->attribute('maxlength', 191)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Passing Year</label>
-                                                    <select type="text"name="passing_year" class="form-control" required>
-                                                        <option>-- Select the year --</option>
-                                                        <option value="2010">2010</option>
-                                                        <option value="2011">2011</option>
-                                                        <option value="2012">2012</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2014">2014</option>
-                                                        <option value="2015">2015</option>
-                                                    </select>
+                                                    {{ html()->label('Batch')->class('col-md-2 form-control-label required')->for('batch') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->select('batch_id')
+                                                            ->options(['' => "Select the batch", '1' => 'Batch-01', '2' => 'Batch-01'])
+                                                            ->class('form-control')
+                                                            ->attribute('maxlength', 191)
+                                                            ->required() }}
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    <label>Mobile</label>
-                                                    <input type="number" name="mobile" class="form-control" placeholder="Enter Your mobile" required>
+                                                    {{ html()->label('Session')->class('col-md-2 form-control-label required')->for('session') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->select('session')
+                                                            ->options(['' => "Select the session", '2007-2008' => '2007-2008', '2008-2009' => '2008-2009'])
+                                                            ->class('form-control')
+                                                            ->attribute('maxlength', 191)
+                                                            ->required() }}
+                                                    </div>
                                                 </div>
-
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control" name="password" placeholder="Your password" required>
+                                                    {{ html()->label('Passing Year')->class('col-md-8 form-control-label required')->for('session') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->select('passing_year')
+                                                            ->options(['' => "Select the year", '2010' => '2010', '2011' => '2011'])
+                                                            ->class('form-control')
+                                                            ->attribute('maxlength', 191)
+                                                            ->required() }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    {{ html()->label('Mobile')->class('col-md-2 form-control-label required')->for('mobile') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->text('mobile')
+                                                            ->class('form-control')
+                                                            ->placeholder('Your Mobile')
+                                                            ->attribute('maxlength', 14)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    {{ html()->label('Roll')->class('col-md-2 form-control-label required')->for('roll') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->text('roll')
+                                                            ->class('form-control')
+                                                            ->placeholder('Enter Your B.Sc roll')
+                                                            ->attribute('maxlength', 14)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    {{ html()->label('Tranx ID')->class('col-md-6 form-control-label required')->for('tranx_id') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->text('transaction_id')
+                                                            ->class('form-control')
+                                                            ->placeholder('Enter BKash transaction numbr')
+                                                            ->attribute('maxlength', 20)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    {{ html()->label('Password')->class('col-md-2 form-control-label required')->for('Password') }}
+                                                    <div class="col-md-12">
+                                                        {{ html()->password('Password')
+                                                            ->class('form-control')
+                                                            ->placeholder('Your password')
+                                                            ->attribute('maxlength', 121)
+                                                            ->required()
+                                                            ->autofocus() }}
+                                                    </div>
                                                 </div>
 {{--                                                <div class="form-group col-sm-6">--}}
 {{--                                                    <label>Confirm password</label>--}}

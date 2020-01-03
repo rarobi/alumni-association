@@ -74,10 +74,12 @@ class AlumniLoginController extends Controller
         $user->save();
 
         $user_profile = new UserProfile();
-        $user_profile->user_id = $user->id;
-        $user_profile->batch_id = $request->input('batch_id');
-        $user_profile->session = $request->input('session');
-        $user_profile->passing_year = $request->input('passing_year');
+        $user_profile->user_id        = $user->id;
+        $user_profile->batch_id       = $request->input('batch_id');
+        $user_profile->session        = $request->input('session');
+        $user_profile->passing_year   = $request->input('passing_year');
+        $user_profile->roll           = $request->input('roll');
+        $user_profile->transaction_id = $request->input('transaction_id');
         $user_profile->save();
 
 //        return redirect()->route('alumni.register')->withFlashSuccess('Your Request has beed submitted succesfully.Please wait for confirmation');
