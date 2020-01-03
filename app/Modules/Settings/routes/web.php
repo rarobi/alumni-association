@@ -4,14 +4,14 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
 
     Route::resource('settings', 'SettingsController');
 
-    Route::resource('settings/books/category', 'BookCategoryController', ['names' => [
-        'index'     => 'settings.book.category.index',
-        'create'    => 'settings.book.category.create',
-        'store'     => 'settings.book.category.store',
-        'show'      => 'settings.book.category.show',
-        'edit'      => 'settings.book.category.edit',
-        'update'    => 'settings.book.category.update',
-        'destroy'   => 'settings.book.category.destroy'
+    Route::resource('settings/alumni/batch', 'BatchController', ['names' => [
+        'index'     => 'settings.alumni.batch.index',
+        'create'    => 'settings.alumni.batch.create',
+        'store'     => 'settings.alumni.batch.store',
+        'show'      => 'settings.alumni.batch.show',
+        'edit'      => 'settings.alumni.batch.edit',
+        'update'    => 'settings.alumni.batch.update',
+        'destroy'   => 'settings.alumni.batch.destroy'
     ]]);
 
     Route::resource('settings/books/writers', 'BookWriterController', ['names' => [
