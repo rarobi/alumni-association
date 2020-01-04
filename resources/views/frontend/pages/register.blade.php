@@ -153,7 +153,7 @@
                                                 </div>
                                                 <div class="checkbox-holder text-left">
                                                     <div class="checkbox_2">
-                                                        <p class="text-center text-dark">If you are already a member? <a href="{{ url('/alumni-login') }}"><strong class="text-white">Login!</strong></a></p>
+                                                        <p class="text-center text-dark">If you are already a member? <a href="{{ url('/login') }}"><strong class="text-white">Login!</strong></a></p>
                                                     </div>
                                                 </div>
                                             </div>
