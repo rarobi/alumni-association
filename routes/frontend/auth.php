@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\Auth\ConfirmAccountController;
 use App\Http\Controllers\Frontend\Auth\ForgotPasswordController;
 use App\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use App\Http\Controllers\Frontend\Auth\PasswordExpiredController;
+use App\Http\Controllers\Frontend\User\ProfileController;
 
 /*
  * Frontend Access Controllers

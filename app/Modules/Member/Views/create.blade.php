@@ -33,19 +33,6 @@
                                     ->autofocus() }}
                             </div><!--col-->
                         </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label('নাম')->class('col-md-2 form-control-label required')->for('name_bn') }}
-
-                            <div class="col-md-10">
-                                {{ html()->text('name_bn')
-                                    ->class('form-control')
-                                    ->placeholder('নাম (বাংলায়)')
-                                    ->attribute('maxlength', 191)
-                                    ->required() }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
                         <div class="form-group row">
                         {{ html()->label('Mobile')->class('col-md-2 form-control-label required')->for('mobile') }}
 
@@ -141,11 +128,11 @@
                         </div><!--form-group-->
 
                         <div class="form-group row">
-                            {{ html()->label('Passport Number')->class('col-md-2 form-control-label')->for('passport') }}
+                            {{ html()->label('Member Status')->class('col-md-2 form-control-label')->for('member_status') }}
                             <div class="col-md-10">
-                                {{ html()->text('passport')
+                                {{ html()->select('member_status')
+                                    ->options(['' => "Select Status", 'pending' => 'Pending', 'review' => 'Review', 'Approved' => 'Approved'])
                                     ->class('form-control')
-                                    ->placeholder('Passport Number')
                                     ->attribute('maxlength', 191) }}
                             </div><!--col-->
                         </div><!--form-group-->
