@@ -37,9 +37,9 @@
 {{--                        <li class="nav-item"><a href="{{ url('/blog') }}">Blog</a></li>--}}
                         <li class="nav-item {{ active_class(Active::checkUriPattern('gallery')) }}"><a href="{{ url('/gallery') }}">Gallery</a></li>
                         <li class="nav-item {{ active_class(Active::checkUriPattern('contact')) }}"><a href="{{ url('/contact') }}">Contact</a></li>
-{{--                        @if(access()->hasRoles(['administrator', 'member']))--}}
-{{--                        <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>--}}
-{{--                        @endif--}}
+                        @if(Auth::user())
+                        <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>
+                        @endif
                     </ul>
                 </div>
                  </div>

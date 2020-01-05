@@ -73,12 +73,9 @@ class AlumniLoginController extends Controller
         $user->first_name    = $request->input('name');
         $user->email         = $request->input('email');
         $user->mobile        = $request->input('mobile');
-//        $user->password      = md5($request->input('password'));
         $user->password      = bcrypt($request->input('password'));
         $user->member_status = 'pending';
         $user->save();
-
-//        $user = User::create(request(['name', 'email', 'password']));
 
         $user_profile = new UserProfile();
         $user_profile->user_id        = $user->id;

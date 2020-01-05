@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auth\User;
 use App\Repositories\Frontend\Auth\UserRepository;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProfileController.
@@ -28,7 +30,10 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('frontend.pages.profile');
+        $user_id = Auth::id();
+        $data['user'] = User::findOrFail($user_id);
+
+        return view('frontend.pages.profile', $data);
     }
 
     /**

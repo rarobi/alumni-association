@@ -129,7 +129,7 @@
                                             <div class="form-group col-sm-6">
                                                 {{ html()->label('Password')->class('col-md-2 form-control-label required')->for('Password') }}
                                                 <div class="col-md-12">
-                                                    {{ html()->password('Password')
+                                                    {{ html()->password('password')
                                                         ->class('form-control')
                                                         ->placeholder('Your password')
                                                         ->attribute('maxlength', 121)

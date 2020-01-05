@@ -14,6 +14,7 @@
         </div>
     </div>
     <!-- ***** Banner Area End ***** -->
+{{--    {!! dd($user) !!}--}}
     <section class="single_blog_area p-t-70">
         <div class="container">
             <div class="row justify-content-center">
@@ -34,7 +35,7 @@
                                     <div id="progress" class="progress" style="display: none;">
                                         <div class="progress-bar progress-bar-primary"></div>
                                     </div>
-                                    <h1>Mr. Robiul Alam</h1>
+                                    <h1>{!! $user->first_name !!}</h1>
                                 </figure>
                             </div>
                         </aside>
@@ -62,8 +63,8 @@
                                         <div class="wrapper_indent">
                                             <p>Institute: Noakhali Science & Technology University</p>
                                             <p>Department: CSTE</p>
-                                            <p>Batch: 06</p>
-                                            <p>Session: 2010-11</p>
+                                            <p>Batch: 0{!! $user->profile->batch_id !!}</p>
+                                            <p>Session: {!! $user->profile->session !!}</p>
 
                                         </div> </div>
                                     <!-- /tab_1 -->
@@ -73,11 +74,11 @@
                                             <h3>Personal statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p>Name: Md. Robiul Alam</p>
-                                            <p>Age: 30 years</p>
-                                            <p>Mobile: 01671069297</p>
-                                            <p>Date of Birth: 1993/08/17</p>
-                                            <p>Email: prothomrobi@gmail.com</p>
+                                            <p>Name: {!! $user->first_name !!}</p>
+                                            <p>Age: Null</p>
+                                            <p>Mobile: {!! $user->mobile !!}</p>
+                                            <p>Date of Birth: {!! isset($user->dob) ? $user->dob : 'Null' !!}</p>
+                                            <p>Email: {!! $user->email !!}</p>
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
