@@ -21,6 +21,7 @@
     <link href="{{ asset('frontend/css/util.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/responsive/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 
 </head>
 
@@ -73,6 +74,8 @@
 <script src="{{ asset('frontend/js/others/plugins.js') }}"></script>
 <!-- Active JS -->
 <script src="{{ asset('frontend/js/active.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
 <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('frontend/js/aos.js') }}"></script>

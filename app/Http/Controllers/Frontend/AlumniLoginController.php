@@ -4,6 +4,8 @@ namespace App\Http\Controllers\frontend;
 
 use App\Models\Auth\User;
 use App\Models\UserProfile;
+use App\Modules\Settings\Models\Batch;
+use App\Modules\Settings\Models\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -29,7 +31,6 @@ class AlumniLoginController extends Controller
 //        dd($user_data);
 //
         $user   = User::where('email', $email)->where('password', $password)->first();
-        dd($user);
 
 //        if (auth()->attempt($user_data, $request->has('remember')))
 //        {
@@ -55,12 +56,15 @@ class AlumniLoginController extends Controller
 //        }
 //dd(4);
 
-//        return view('frontend.pages.profie');
+        return view('frontend.pages.profie');
     }
 
     public function registerForm()
     {
-        return view('frontend.pages.register');
+        $data['batches'] = Batch::pluck('name','id');
+        $data['sessions'] = Session::pluck('session', 'session');
+
+        return view('frontend.pages.register', $data);
     }
 
     public function register(Request $request)
@@ -69,9 +73,12 @@ class AlumniLoginController extends Controller
         $user->first_name    = $request->input('name');
         $user->email         = $request->input('email');
         $user->mobile        = $request->input('mobile');
-        $user->password      = md5($request->input('password'));
+//        $user->password      = md5($request->input('password'));
+        $user->password      = bcrypt($request->input('password'));
         $user->member_status = 'pending';
         $user->save();
+
+//        $user = User::create(request(['name', 'email', 'password']));
 
         $user_profile = new UserProfile();
         $user_profile->user_id        = $user->id;
