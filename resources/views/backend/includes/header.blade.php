@@ -45,6 +45,9 @@
             <div class="dropdown-header text-center">
               <strong>Account</strong>
             </div>
+              <a class="dropdown-item" href="{{ route('profile') }}">
+                  <i class="fas fa-user"></i>Profile
+              </a>
             <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}">
                 <i class="fas fa-lock"></i> @lang('navs.general.logout')
             </a>
