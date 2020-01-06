@@ -7,9 +7,10 @@ use App\Modules\Member\Controllers\MemberPasswordController;
 
 Route::group(['module' => 'Member', 'middleware' => ['web','auth'], 'namespace' => 'App\Modules\Member\Controllers'], function() {
 
+    Route::get('member/pending_list', 'MemberController@pendingList')->name('member.pending-list');
+
     Route::resource('member', 'MemberController');
 
-//    Route::post('member/membership/{id}', 'MemberController@addMembership')->name('member.membership');
     Route::get('member/accept//{id}', 'MemberController@acceptMember')->name('member.accept');
 
     Route::post('member/log-in-out', 'MemberController@loggedInOut')->name('member.log-in-out');

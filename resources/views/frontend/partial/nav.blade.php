@@ -38,7 +38,12 @@
                         <li class="nav-item {{ active_class(Active::checkUriPattern('gallery')) }}"><a href="{{ url('/gallery') }}">Gallery</a></li>
                         <li class="nav-item {{ active_class(Active::checkUriPattern('contact')) }}"><a href="{{ url('/contact') }}">Contact</a></li>
                         @if(Auth::user())
-                        <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{!! Auth::user()->first_name !!}</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
+                                    <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>
+                                </ul>
+                            </li>
                         @endif
                     </ul>
                 </div>

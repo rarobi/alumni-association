@@ -18,6 +18,7 @@ use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -191,10 +192,23 @@ class MemberController extends Controller
     public function acceptMember($member_id) {
 
         $member = User::findOrFail($member_id);
-        $member->member_status  = 'approved';
+        if(Auth::user()->hasRole('administrator')){
+            $member->member_status  = 'approved';
+        } else{
+            $member->member_status  = 'reviewed';
+        }
         $member->save();
 
         return redirect()->route('member.index')->withFlashSuccess('Member approved successfully');
+    }
+
+    public function pendingList() {
+
+        $data['pending_users'] = User::orderBy('id', 'desc')->where('member_status', 'pending')->paginate(5);
+
+        $data['review_users'] = User::orderBy('id', 'desc')->where('member_status', 'reviewed')->paginate(5);
+
+        return view('Member::pending_list',$data);
     }
 
 }

@@ -35,7 +35,7 @@
                                     <div id="progress" class="progress" style="display: none;">
                                         <div class="progress-bar progress-bar-primary"></div>
                                     </div>
-                                    <h1>{!! $user->first_name !!}</h1>
+{{--                                    <h1>{!! $user->first_name !!}</h1>--}}
                                 </figure>
                             </div>
                         </aside>
@@ -61,24 +61,24 @@
                                             <h3>Educational Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p>Institute: Noakhali Science & Technology University</p>
-                                            <p>Department: CSTE</p>
-                                            <p>Batch: 0{!! $user->profile->batch_id !!}</p>
-                                            <p>Session: {!! $user->profile->session !!}</p>
+                                            <p><b>Institute:</b> Noakhali Science & Technology University</p>
+                                            <p><b>Department:</b> CSTE</p>
+                                            <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
+                                            <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
 
                                         </div> </div>
                                     <!-- /tab_1 -->
                                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
                                         <div class="indent_title_in">
                                             <i class="pe-7s-user"></i>
-                                            <h3>Personal statement</h3>
+                                            <h3>Personal Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p>Name: {!! $user->first_name !!}</p>
-                                            <p>Age: Null</p>
-                                            <p>Mobile: {!! $user->mobile !!}</p>
-                                            <p>Date of Birth: {!! isset($user->dob) ? $user->dob : 'Null' !!}</p>
-                                            <p>Email: {!! $user->email !!}</p>
+                                            <p><b>Name:</b> {!! $user->first_name !!}</p>
+                                            <p><b>Age:</b> Not Provided</p>
+                                            <p><b>Mobile:</b> {!! isset($user->mobile) ?$user->mobile : 'Not Provided'  !!}</p>
+                                            <p><b>Date of Birth:</b> {!! isset($user->dob) ? $user->dob : 'Not Provided' !!}</p>
+                                            <p><b>Email:</b> {!! $user->email !!}</p>
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
@@ -91,9 +91,9 @@
                                             <h3>Professional Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p>Institute: .............................</p>
-                                            <p>Department: ..................</p>
-                                            <p>Designation: ................</p>
+                                            <p><b>Institute:</b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
+                                            <p><b>Department:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
+                                            <p><b>Designation:</b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
 
                                         </div>
                                         <!-- End review-container -->

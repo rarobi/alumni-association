@@ -214,7 +214,7 @@
                </div><!--tab-content-->
            </div><!--col-->
        </div><!--row-->
-        @if($user->member_status == "pending")
+        @if(($user->member_status == "pending") ||  $user->member_status == "reviewed"))
         <div class="row">
             <div class="col-sm-3 pull-right">
                 <a class="btn btn-info" href="{!! route('member.accept', $user->id) !!}"> Approve Member</a>
