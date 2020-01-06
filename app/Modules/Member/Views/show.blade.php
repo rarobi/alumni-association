@@ -38,7 +38,8 @@
                         <div class="row">
                             <div class="offset-sm-5 col-sm-7">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')" style="margin: 0px 15px 3px 0px" >
-                                    <a href="{!! route('member.edit',$user->id) !!}" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>
+{{--                                    <a href="{!! route('member.edit',$user->id) !!}" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>--}}
+                                    <a href="" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>
                                 </div><!--btn-toolbar-->
                             </div><!--col-->
                         </div><!--row-->
@@ -131,15 +132,15 @@
                                    </tr>
                                    <tr>
                                        <th>Batch</th>
-                                       <td>{!! $user->profile->batch_id !!}</td>
+                                       <td>{!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'N/A' !!}</td>
                                    </tr>
                                    <tr>
                                        <th>Sesson</th>
-                                       <td>{!! $user->profile->session!!}</td>
+                                       <td>{!! isset($user->profile->session) ? $user->profile->session : 'N/A' !!} </td>
                                    </tr>
                                    <tr>
                                        <th>Passing Year</th>
-                                       <td>{!! $user->profile->passing_year !!}</td>
+                                       <td>{!! isset($user->profile->passing_year) ? $user->profile->passing_year : 'N/A' !!} </td>
                                    </tr>
                                </table>
                            </div>
@@ -214,10 +215,13 @@
                </div><!--tab-content-->
            </div><!--col-->
        </div><!--row-->
-        @if(($user->member_status == "pending") ||  $user->member_status == "reviewed"))
+        @if(($user->member_status == "pending") ||  ($user->member_status == "reviewed"))
         <div class="row">
-            <div class="col-sm-3 pull-right">
+            <div class="col-sm-10">
                 <a class="btn btn-info" href="{!! route('member.accept', $user->id) !!}"> Approve Member</a>
+            </div>
+            <div class="col-sm-2 pull-right">
+                <a class="btn btn-warning " href="{!! route('member.index') !!}"><i class="fa fa-arrow-left"> Back</i></a>
             </div>
         </div>
         @endif
