@@ -20,11 +20,14 @@
             <main>
                 <div class="bg_color_2">
                     <div class="container margin_60_35">
+                        @if(Session::has('flash_danger'))
+                            <p class="alert {{ Session::get('alert-class', 'alert-info') }} text-center">{{ Session::get('flash_danger') }}</p>
+                        @endif
                         <div id="register">
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
                                     {{--<form action="{{ url('/profile') }}">--}}
-                                        {{ html()->form('POST', url('alumni-login'))->class('form-horizontal')->open() }}
+                                        {{ html()->form('POST', route('frontend.auth.login.post'))->class('form-horizontal')->open() }}
                                         <div class="box_form bg-info p-10">
                                             <div class="form-group">
                                                 <label>Email</label>

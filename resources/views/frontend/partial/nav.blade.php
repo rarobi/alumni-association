@@ -15,7 +15,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="{{ url('/login') }}">Login</a></li>
+                                <li><a href="{{ url('/alumni-login') }}">Login</a></li>
                                 <li><a href="{{ url('/alumni-register') }}">Registration</a></li>
                                 <li><a href="{{ url('/vision') }}">Vision</a></li>
                                 <li class="dropdown">

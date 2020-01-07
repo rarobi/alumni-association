@@ -117,7 +117,7 @@ class LoginController extends Controller
 
         if($user->member_status != 'approved'){
             auth()->logout();
-            return redirect('/login')->with('flash_danger', 'Your request is not accepted yet. Please wait for confirmation. ');
+            return redirect('/alumni-login')->with('flash_danger', 'Your request is not accepted yet. Please wait for confirmation. ');
         }
 
         if (! $user->isActive()) {

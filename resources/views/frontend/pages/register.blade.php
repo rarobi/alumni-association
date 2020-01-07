@@ -26,12 +26,15 @@
                 <div class="bg_color_2">
                     <div class="container margin_60_35">
                         <div id="register">
-                            {{--                            <h4 class="text-center">Please registration First!</h4>--}}
+{{--                                                        <h4 class="text-center">Please registration First!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-7">
                                     {{ html()->form('POST', url('alumni-register'))->class('form-horizontal')->open() }}
                                     <div class="box_form bg-info p-10">
                                         <div class="row">
+{{--                                            <div>--}}
+{{--                                                <p> Please pay first brfore registration.</p>--}}
+{{--                                            </div>--}}
                                             <div class="form-group col-sm-6">
                                                 {{ html()->label('Name')->class('col-md-2 form-control-label required')->for('name') }}
                                                 <div class="col-md-12">
@@ -154,7 +157,7 @@
                                         </div>
                                         <div class="checkbox-holder text-left">
                                             <div class="checkbox_2">
-                                                <p class="text-center text-dark">If you are already a member? <a href="{{ url('/login') }}"><strong class="text-white">Login!</strong></a></p>
+                                                <p class="text-center text-dark">If you are already a member? <a href="{{ url('/alumni-login') }}"><strong class="text-white">Login!</strong></a></p>
                                             </div>
                                         </div>
                                     </div>
