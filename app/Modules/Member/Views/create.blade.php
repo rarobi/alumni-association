@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    {{ html()->form('POST', route('member.store'))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('member.store'))->attribute('enctype','multipart/form-data')->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">

@@ -3,11 +3,7 @@
 namespace App\Modules\Member\Controllers;
 
 
-use App\Events\Backend\SendSmsToMember;
-use App\Http\Requests\Member\StoreMemberRequest;
 use App\Models\UserProfile;
-use App\Modules\Account\Models\Income;
-use App\Modules\Library\Models\BookBorrow;
 use App\Modules\Settings\Models\Batch;
 use App\Modules\Settings\Models\Session;
 use Carbon\Carbon;
@@ -81,26 +77,41 @@ class MemberController extends Controller
         $member->first_name = $request->input('name');
         $member->mobile = $request->input('mobile');
         $member->email = $request->input('email');
-        $member->blood_group = $request->input('dob');
+        $member->blood_group = $request->input('blood_group');
+        $member->dob = $request->input('dob');
         $member->member_status = $request->input('member_status');
-        $member->save();
+        $member->password = $request->input('password');
+//        $member->save();
 
         $member_profile = new UserProfile();
-        $member_profile->user_id        = $member->id;
+//        $member_profile->user_id        = $member->id;
         $member_profile->batch_id       = $request->input('batch_id');
         $member_profile->session        = $request->input('session');
         $member_profile->passing_year   = $request->input('passing_year');
         $member_profile->roll           = $request->input('roll');
-        $member_profile->transaction_id = $request->input('transaction_id');
+        $member_profile->transaction_id = $request->input('tranx_id');
         $member_profile->education_qualification = $request->input('educational_qualification');
         $member_profile->occupation = $request->input('occupation');
         $member_profile->job_position = $request->input('job_position');
         $member_profile->job_place = $request->input('job_place');
         $member_profile->present_address = $request->input('present_address');
-        $member_profile->permanent_address = $request->input('permanent_address');
+        $member_profile->parmanent_address = $request->input('permanent_address');
 
+//        $member_profile->image = $request->input('image');
 
-        $member_profile->image = $request->input('image');
+        $prefix = date('Ymd_');
+        $photo = $request->has('photo');
+//dd($photo);
+        if ($request->has('photo')) {
+            $mime_type = $photo->getClientMimeType();
+            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+                return redirect('member/create')->with('flash_danger','Profile image must be png or jpg or jpeg format!');
+            }
+            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
+            $photo->move('uploads/member_profile/', $photoFile);
+            $member_profile->image = $photoFile;
+        }
+//dd("no");
         $member_profile->save();
 
 //        $this->memberRepository->create($request->only(
