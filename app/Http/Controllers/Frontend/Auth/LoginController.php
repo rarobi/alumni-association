@@ -10,6 +10,7 @@ use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 /**
@@ -73,21 +74,51 @@ class LoginController extends Controller
      * @throws GeneralException
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function authenticated(Request $request, $user)
-    {
-        // Check to see if the users account is confirmed and active
-//        if (! $user->isConfirmed()) {
-//            auth()->logout();
-//
-//            // If the user is pending (account approval is on)
-//            if ($user->isPending()) {
-//                throw new GeneralException(__('exceptions.frontend.auth.confirmation.pending'));
+
+
+//    protected function authenticated(Request $request, $user)
+//    {
+//        /*
+//         * deny access if account is not verified
+//         * */
+//        if($user->user_type != '1x101'){
+//            if (!$user->verification_status){
+//                auth()->logout();
+//                return redirect()->route('login')->with('flash_danger', 'You need to verify your account. We have sent you an activation code, please check your email.');
 //            }
 //
-//            // Otherwise see if they want to resent the confirmation e-mail
+//            /*
+//             * deny access if account is not approved
+//             * */
+//            if(!$user->approve_status) {
+//                auth()->logout();
+//                return redirect()->route('login')->with('flash_danger', 'Your account is not approved . Please contact with authority');
+//            }
 //
-//            throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()}))]));
+//            /*
+//             * deny access if account is deactivated
+//             * */
+//            if(!$user->activation_status) {
+//                auth()->logout();
+//                return redirect()->route('login')->with('flash_danger', 'Your account is currently deactivated . Please contact with authority');
+//            }
 //        }
+//
+//        $redirectPath = $this->redirectPath();
+//
+//        return redirect()->intended($redirectPath);
+//
+//    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+
+
+        if($user->member_status != 'approved'){
+            auth()->logout();
+            return redirect('/login')->with('flash_danger', 'Your request is not accepted yet. Please wait for confirmation. ');
+        }
 
         if (! $user->isActive()) {
             auth()->logout();

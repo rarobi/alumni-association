@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name' => 'Admin',
             'last_name' => 'Admin',
-            'member_status' => 'active',
+            'member_status' => 'approved',
             'email' => 'admin@society.com',
             'password' => '123456',
         ]);
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name' => 'Robiul',
             'last_name' => 'Alam',
-            'member_status' => 'active',
+            'member_status' => 'approved',
             'email' => 'member@society.com',
             'password' => '123456',
         ]);

@@ -32,6 +32,9 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
+            @if(Session::has('flash_danger'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('flash_danger') }}</p>
+            @endif
             {{ html()->form('POST', route('frontend.auth.login.post'))->class('form-horizontal login100-form validate-form')->open() }}
             <span class="login100-form-title p-b-26">
 						Welcome Admin

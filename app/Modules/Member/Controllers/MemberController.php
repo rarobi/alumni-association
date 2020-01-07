@@ -5,8 +5,11 @@ namespace App\Modules\Member\Controllers;
 
 use App\Events\Backend\SendSmsToMember;
 use App\Http\Requests\Member\StoreMemberRequest;
+use App\Models\UserProfile;
 use App\Modules\Account\Models\Income;
 use App\Modules\Library\Models\BookBorrow;
+use App\Modules\Settings\Models\Batch;
+use App\Modules\Settings\Models\Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,7 +60,10 @@ class MemberController extends Controller
      */
     public function create(RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
-        return view('Member::create')
+        $data['batches'] = Batch::pluck('name','id');
+        $data['sessions'] = Session::pluck('session', 'session');
+
+        return view('Member::create', $data)
             ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
             ->withPermissions($permissionRepository->get(['id', 'name']));
     }
@@ -68,29 +74,61 @@ class MemberController extends Controller
      * @throws \Throwable
      * @return mixed
      */
-    public function store(StoreMemberRequest $request)
+    public function store(Request $request)
     {
-        $this->memberRepository->create($request->only(
-            'name',
-            'name_bn',
-            'mobile',
-            'educational_qualification',
-            'occupation',
-            'job_position',
-            'present_address',
-            'permanent_address',
-            'blood_group',
-            'nid',
-            'passport',
-            'dob',
-            'email',
-            'password',
-            'active',
-            'confirmation_code',
-            'confirmed',
-            'roles',
-            'permissions'
-        ));
+//        dd($request->all());
+        $member = New User();
+        $member->first_name = $request->input('name');
+        $member->mobile = $request->input('mobile');
+        $member->email = $request->input('email');
+        $member->blood_group = $request->input('dob');
+        $member->member_status = $request->input('member_status');
+        $member->save();
+
+        $member_profile = new UserProfile();
+        $member_profile->user_id        = $member->id;
+        $member_profile->batch_id       = $request->input('batch_id');
+        $member_profile->session        = $request->input('session');
+        $member_profile->passing_year   = $request->input('passing_year');
+        $member_profile->roll           = $request->input('roll');
+        $member_profile->transaction_id = $request->input('transaction_id');
+        $member_profile->education_qualification = $request->input('educational_qualification');
+        $member_profile->occupation = $request->input('occupation');
+        $member_profile->job_position = $request->input('job_position');
+        $member_profile->job_place = $request->input('job_place');
+        $member_profile->present_address = $request->input('present_address');
+        $member_profile->permanent_address = $request->input('permanent_address');
+
+
+        $member_profile->image = $request->input('image');
+        $member_profile->save();
+
+//        $this->memberRepository->create($request->only(
+//            'name',
+//            'mobile',
+//            'educational_qualification',
+//            'roll',
+//            'batch_id',
+//            'session',
+//            'passing_year',
+//            'occupation',
+//            'job_position',
+//            'job_place',
+//            'present_address',
+//            'permanent_address',
+//            'blood_group',
+//            'dob',
+//            'nid',
+//            'member_status',
+//            'email',
+//            'password',
+//            'image',
+//            'active',
+//            'confirmation_code',
+//            'confirmed',
+//            'roles',
+//            'permissions'
+//        ));
 
         return redirect()->route('member.index')->withFlashSuccess('Member created successfully');
     }

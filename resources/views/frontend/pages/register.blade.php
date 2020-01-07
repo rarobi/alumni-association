@@ -173,11 +173,11 @@
 @endsection
 
 @section('after-scripts')
-   <script>
-       $("#year").datepicker({
-           format: "yyyy",
-           viewMode: "years",
-           minViewMode: "years"
-       });
-   </script>
+    <script>
+        $("#year").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
+    </script>
 @endsection

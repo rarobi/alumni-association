@@ -111,7 +111,6 @@ class MemberRepository extends BaseRepository
         return DB::transaction(function () use ($data) {
             $user = parent::create([
                 'name' => $data['name'],
-                'name_bn' => $data['name_bn'],
                 'mobile' => $data['mobile'],
                 'educational_qualification' => $data['educational_qualification'],
                 'occupation' => $data['occupation'],
