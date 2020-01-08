@@ -152,14 +152,26 @@ class LoginController extends Controller
         // Remove any session data from backend
         resolve(AuthHelper::class)->flushTempSession();
 
-        // Fire event, Log out user, Redirect
-        event(new UserLoggedOut($request->user()));
+        if(Auth::user()->hasRole('administrator')){
+            // Fire event, Log out user, Redirect
+            event(new UserLoggedOut($request->user()));
 
-        // Laravel specific logic
-        $this->guard()->logout();
-        $request->session()->invalidate();
+            // Laravel specific logic
+            $this->guard()->logout();
+            $request->session()->invalidate();
 
-        return redirect()->route('frontend.auth.login');
+            return redirect()->route('frontend.auth.login');
+        } else{
+            // Fire event, Log out user, Redirect
+            event(new UserLoggedOut($request->user()));
+
+            // Laravel specific logic
+            $this->guard()->logout();
+            $request->session()->invalidate();
+
+            return redirect('/alumni-login');
+        }
+
     }
 
     /**

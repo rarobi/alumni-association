@@ -12,25 +12,41 @@
                         <li class="nav-item {{ active_class(Active::checkUriPattern('/')) }}">
                             <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        @if(!Auth::user())
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Registration</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="{{ url('/alumni-login') }}">Login</a></li>
-                                <li><a href="{{ url('/alumni-register') }}">Registration</a></li>
-                                <li><a href="{{ url('/vision') }}">Vision</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Members</a>
-                                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{ url('/elected-members') }}">Elected Members</a></li>
-                                        <li><a class="dropdown-item" href="{{ url('/members') }}">General Members</a></li>
+                                <li><a href="{{ url('/registration-rules') }}">Rules</a></li>
+                                <li><a href="{{ url('/alumni-register') }}">Register</a></li>
+                                {{--<li><a href="{{ url('/vision') }}">Vision</a></li>--}}
+                                {{--<li class="dropdown">--}}
+                                    {{--<a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Members</a>--}}
+                                    {{--<ul class="dropdown-menu " aria-labelledby="navbarDropdown">--}}
+                                        {{--<li><a class="dropdown-item" href="{{ url('/elected-members') }}">Elected Members</a></li>--}}
+                                        {{--<li><a class="dropdown-item" href="{{ url('/members') }}">General Members</a></li>--}}
                                         {{--<li class="dropdown">--}}
                                             {{--<a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown3</a>--}}
                                             {{--<ul class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
                                                 {{--<li><a href="#">Action</a></li>--}}
                                             {{--</ul>--}}
                                         {{--</li>--}}
-                                    </ul>
-                                </li>
+                                    {{--</ul>--}}
+                                {{--</li>--}}
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
+                                <li class="nav-item"><a href="{{ url('/alumni-login') }}">Alumni Login</a></li>
+                                <li class="nav-item"><a href="{{ url('/login') }}">Admin Login</a></li>
+                            </ul>
+                        </li>
+                        @endif
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Members</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
+                                <li><a class="dropdown-item" href="{{ url('/elected-members') }}">Elected Members</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/members') }}">General Members</a></li>
                             </ul>
                         </li>
                         <li class="nav-item {{ active_class(Active::checkUriPattern('notice')) }}"><a href="{{ url('/notice') }}">Notice</a></li>

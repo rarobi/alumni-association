@@ -17,7 +17,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/vision', [HomeController::class, 'vision']);
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+//Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/members', [HomeController::class, 'members']);
@@ -41,8 +41,10 @@ Route::get('/announcement-details', [BlogController::class, 'announcementDetails
 Route::get('/gallery', [HomeController::class, 'gallery']);
 Route::get('/contact', [HomeController::class, 'contact']);
 
+Route::get('/registration-rules', [HomeController::class, 'registrationRules']);
 
-Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm'])->name('alumni.login');;
+
+Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm'])->name('alumni.login');
 Route::post('/alumni-login', [AlumniLoginController::class, 'login']);
 Route::get('/alumni-register', [AlumniLoginController::class, 'registerForm'])->name('alumni.register');
 Route::post('/alumni-register', [AlumniLoginController::class, 'register']);

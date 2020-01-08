@@ -59,4 +59,8 @@ class HomeController extends Controller
     public function contact(){
         return view('frontend.pages.contact');
     }
+
+    public function registrationRules() {
+        return view('frontend.pages.rules');
+    }
 }

@@ -90,6 +90,15 @@
                     Sign Up
                 </a>
             </div>
+                <div class="text-center p-t-15">
+						<span class="txt1">
+							Go to
+						</span>
+
+                    <a class="txt2 text-info" href="{{ url('/') }}">
+                        Home
+                    </a>
+                </div>
             {{ html()->form()->close() }}
         </div>
     </div>

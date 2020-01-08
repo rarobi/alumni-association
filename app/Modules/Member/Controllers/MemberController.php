@@ -72,7 +72,6 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $member = New User();
         $member->first_name = $request->input('name');
         $member->mobile = $request->input('mobile');
@@ -81,10 +80,10 @@ class MemberController extends Controller
         $member->dob = $request->input('dob');
         $member->member_status = $request->input('member_status');
         $member->password = $request->input('password');
-//        $member->save();
+        $member->save();
 
         $member_profile = new UserProfile();
-//        $member_profile->user_id        = $member->id;
+        $member_profile->user_id        = $member->id;
         $member_profile->batch_id       = $request->input('batch_id');
         $member_profile->session        = $request->input('session');
         $member_profile->passing_year   = $request->input('passing_year');
@@ -97,12 +96,10 @@ class MemberController extends Controller
         $member_profile->present_address = $request->input('present_address');
         $member_profile->parmanent_address = $request->input('permanent_address');
 
-//        $member_profile->image = $request->input('image');
-
         $prefix = date('Ymd_');
-        $photo = $request->has('photo');
-//dd($photo);
-        if ($request->has('photo')) {
+        $photo = $request->file('photo');
+
+        if ($request->file('photo')) {
             $mime_type = $photo->getClientMimeType();
             if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
                 return redirect('member/create')->with('flash_danger','Profile image must be png or jpg or jpeg format!');
@@ -111,7 +108,6 @@ class MemberController extends Controller
             $photo->move('uploads/member_profile/', $photoFile);
             $member_profile->image = $photoFile;
         }
-//dd("no");
         $member_profile->save();
 
 //        $this->memberRepository->create($request->only(
