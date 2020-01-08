@@ -65,7 +65,20 @@ class ProfileController extends Controller
 //        dd($request->all());
         $input_image = $_FILES["image_path"];
 
-        $prefix = date('Ymd_');
+//        $prefix = date('Ymd_');
+        $path = '/uploads/member_profile/';
+        $destinationPath = public_path().$path;
+//        dd($destinationPath);
+        $fileName = sha1(time()).'-'.basename($request->file('image_path')->getClientOriginalName());
+        $target_file_name = $destinationPath .$fileName;
+
+        \File::exists($destinationPath) or \File::makeDirectory($destinationPath);
+
+        if (move_uploaded_file($request->file('image_path')->getPathname(), $target_file_name)) {
+            $requestedData['image_path']         = $fileName;
+        } else {
+            throw new \Exception('Error while uploading');
+        }
 //        dd($input_image['name']);
 //        if ($request->file('photo')) {
 //            $mime_type = $input_image['name']->getClientMimeType();
