@@ -139,14 +139,14 @@
         var URL = "{{ url('profile-upload') }}";
         $("#uploadimage").on('submit', (function (e) {
             e.preventDefault();
+
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: URL,
                 type: "POST",
-//                data: new FormData(this),
-                data: {
-                    'data':new FormData(this),
-                    "_token": "{{ csrf_token() }}",
-                },
+                data: new FormData(this),
                 contentType: false,
                 cache: false,
                 processData: false,

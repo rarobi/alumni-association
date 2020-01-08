@@ -62,7 +62,19 @@ class ProfileController extends Controller
     }
 
     public function profileUpload(Request $request){
-        dd("hi");
+//        dd($request->all());
+        $input_image = $_FILES["image_path"];
 
+        $prefix = date('Ymd_');
+//        dd($input_image['name']);
+//        if ($request->file('photo')) {
+//            $mime_type = $input_image['name']->getClientMimeType();
+//            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+//                return redirect('member/create')->with('flash_danger','Profile image must be png or jpg or jpeg format!');
+//            }
+//            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$input_image['name']->getClientOriginalExtension();
+//            $photo->move('uploads/member_profile/', $photoFile);
+//            $member_profile->image = $photoFile;
+//        }
     }
 }
