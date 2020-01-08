@@ -22,6 +22,7 @@
                     <div class="row">
                         <aside class="col-xl-3 col-lg-4" id="sidebar">
                             <div class="box_profile">
+                                <form id="uploadimage" method="post"  enctype="multipart/form-data">
                                 <figure>
                                     <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">
                                     <div class="edit">
@@ -37,6 +38,7 @@
                                     </div>
 {{--                                    <h1>{!! $user->first_name !!}</h1>--}}
                                 </figure>
+                                </form>
                             </div>
                         </aside>
                         <!-- /asdide -->
@@ -134,13 +136,17 @@
             }
         }
 
-        var URL = "#";
+        var URL = "{{ url('profile-upload') }}";
         $("#uploadimage").on('submit', (function (e) {
             e.preventDefault();
             $.ajax({
                 url: URL,
                 type: "POST",
-                data: new FormData(this),
+//                data: new FormData(this),
+                data: {
+                    'data':new FormData(this),
+                    "_token": "{{ csrf_token() }}",
+                },
                 contentType: false,
                 cache: false,
                 processData: false,

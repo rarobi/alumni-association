@@ -7,6 +7,7 @@ use App\Models\Auth\User;
 use App\Repositories\Frontend\Auth\UserRepository;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 /**
  * Class ProfileController.
@@ -58,5 +59,10 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('frontend.user.account')->withFlashSuccess(__('strings.frontend.user.profile_updated'));
+    }
+
+    public function profileUpload(Request $request){
+        dd("hi");
+
     }
 }
