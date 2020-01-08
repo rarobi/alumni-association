@@ -17,7 +17,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/vision', [HomeController::class, 'vision']);
 
-//Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/edit/{id}', [ProfileController::class, 'editProfile'])->name('profile.edit');
+
 Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name('profile.upload');
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);

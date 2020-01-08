@@ -71,9 +71,17 @@
                                         </div> </div>
                                     <!-- /tab_1 -->
                                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
-                                        <div class="indent_title_in">
+                                        <div class="indent_title_in1">
                                             <i class="pe-7s-user"></i>
-                                            <h3>Personal Statement</h3>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <h3>Personal Statement</h3>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="{!! url('/profile/edit', $user->id) !!}" class="btn btn-primary" data-toggle="tooltip" title="Edit Profile"><i class="fa fa-edit"> Edit Profile</i></a>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="wrapper_indent">
                                             <p><b>Name:</b> {!! $user->first_name !!}</p>
@@ -147,6 +155,7 @@
                 url: URL,
                 type: "POST",
                 data: new FormData(this),
+                mimeType: "multipart/form-data",
                 contentType: false,
                 cache: false,
                 processData: false,

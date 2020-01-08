@@ -36,7 +36,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 135px!important;">
                                 <li class="nav-item"><a href="{{ url('/alumni-login') }}">Alumni Login</a></li>
                                 <li class="nav-item"><a href="{{ url('/login') }}">Admin Login</a></li>
                             </ul>
