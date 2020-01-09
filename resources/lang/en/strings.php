@@ -87,6 +87,11 @@ return [
             'email_body_title' => 'You have a new contact form request: Below are the details:',
             'subject' => 'A new :app_name contact form submission!',
         ],
+
+        'register' => [
+            'email_body_title' => 'You have a new registration request: Below are the details:',
+            'subject' => 'A new :app_name alumni form registration!',
+        ],
     ],
 
     'frontend' => [
