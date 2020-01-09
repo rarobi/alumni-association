@@ -17,11 +17,11 @@ class CreateUserProfileTable extends Migration
             $table->bigIncrements('id');
 
             $table->integer('user_id');
-            $table->integer('batch_id');
-            $table->string('session');
-            $table->string('passing_year');
-            $table->string('roll');
-            $table->string('transaction_id');
+            $table->integer('batch_id')->nullable();
+            $table->string('session')->nullable();
+            $table->string('passing_year')->nullable();
+            $table->string('roll')->nullable();
+            $table->string('transaction_id')->nullable();
             $table->string('nid')->nullable();
             $table->string('image')->nullable();
             $table->string('education_qualification')->nullable();

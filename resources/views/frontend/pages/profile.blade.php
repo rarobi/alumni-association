@@ -74,11 +74,11 @@
                                         <div class="indent_title_in1">
                                             <i class="pe-7s-user"></i>
                                             <div class="row">
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-11">
                                                     <h3>Personal Statement</h3>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <a href="{!! url('/profile/edit', $user->id) !!}" class="btn btn-primary" data-toggle="tooltip" title="Edit Profile"><i class="fa fa-edit"> Edit Profile</i></a>
+                                                <div class="col-sm-1">
+                                                    <a href="{!! url('/profile/edit', $user->id) !!}" class="btn btn-primary" data-toggle="tooltip" title="Edit Profile"><i class="fa fa-edit"> </i></a>
                                                 </div>
                                             </div>
 
@@ -89,6 +89,8 @@
                                             <p><b>Mobile:</b> {!! isset($user->mobile) ?$user->mobile : 'Not Provided'  !!}</p>
                                             <p><b>Date of Birth:</b> {!! isset($user->dob) ? $user->dob : 'Not Provided' !!}</p>
                                             <p><b>Email:</b> {!! $user->email !!}</p>
+                                            <p><b>Present Address:</b> {!! isset($user->profile->present_address) ? $user->profile->present_address : 'Not Provided' !!}</p>
+                                            <p><b>Parmanent Address:</b> {!! isset($user->profile->parmanent_address) ? $user->profile->parmanent_address : 'Not Provided' !!}</p>
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
@@ -101,9 +103,9 @@
                                             <h3>Professional Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p><b>Institute:</b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
-                                            <p><b>Department:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
-                                            <p><b>Designation:</b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
+                                            <p><b>Occupation:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
+                                            <p><b>Job Place:</b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
+                                            <p><b>Job Position:</b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
 
                                         </div>
                                         <!-- End review-container -->
