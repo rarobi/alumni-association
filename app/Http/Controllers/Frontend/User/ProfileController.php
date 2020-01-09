@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
+use App\Modules\Settings\Models\Batch;
+use App\Modules\Settings\Models\Session;
 use App\Repositories\Frontend\Auth\UserRepository;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +39,16 @@ class ProfileController extends Controller
         return view('frontend.pages.profile', $data);
     }
 
+    public function editProfile ($id){
+
+        $data['batches'] = Batch::pluck('name','id');
+        $data['sessions'] = Session::pluck('session', 'session');
+        $data['user'] = User::findOrFail($id);
+
+//        dd($user);
+        return view('frontend.pages.edit-profile', $data);
+    }
+
     /**
      * @param UpdateProfileRequest $request
      *
@@ -62,7 +74,7 @@ class ProfileController extends Controller
     }
 
     public function profileUpload(Request $request){
-//        dd($request->all());
+//        dd($request->file('image_path'));
         $input_image = $_FILES["image_path"];
 
 //        $prefix = date('Ymd_');
