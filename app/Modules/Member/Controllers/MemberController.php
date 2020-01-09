@@ -72,33 +72,33 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-//        $member = New User();
-//        $member->first_name = $request->input('name');
-//        $member->mobile = $request->input('mobile');
-//        $member->email = $request->input('email');
-//        $member->blood_group = $request->input('blood_group');
-//        $member->dob = $request->input('dob');
-//        $member->member_status = $request->input('member_status');
-//        $member->password = $request->input('password');
-//        $member->save();
+        $member = New User();
+        $member->first_name = $request->input('name');
+        $member->mobile = $request->input('mobile');
+        $member->email = $request->input('email');
+        $member->blood_group = $request->input('blood_group');
+        $member->dob = $request->input('dob');
+        $member->member_status = $request->input('member_status');
+        $member->password = $request->input('password');
+        $member->save();
 
         $member_profile = new UserProfile();
-//        $member_profile->user_id        = $member->id;
-//        $member_profile->batch_id       = $request->input('batch_id');
-//        $member_profile->session        = $request->input('session');
-//        $member_profile->passing_year   = $request->input('passing_year');
-//        $member_profile->roll           = $request->input('roll');
-//        $member_profile->transaction_id = $request->input('tranx_id');
-//        $member_profile->education_qualification = $request->input('educational_qualification');
-//        $member_profile->occupation = $request->input('occupation');
-//        $member_profile->job_position = $request->input('job_position');
-//        $member_profile->job_place = $request->input('job_place');
-//        $member_profile->present_address = $request->input('present_address');
-//        $member_profile->parmanent_address = $request->input('permanent_address');
+        $member_profile->user_id        = $member->id;
+        $member_profile->batch_id       = $request->input('batch_id');
+        $member_profile->session        = $request->input('session');
+        $member_profile->passing_year   = $request->input('passing_year');
+        $member_profile->roll           = $request->input('roll');
+        $member_profile->transaction_id = $request->input('tranx_id');
+        $member_profile->education_qualification = $request->input('educational_qualification');
+        $member_profile->occupation = $request->input('occupation');
+        $member_profile->job_position = $request->input('job_position');
+        $member_profile->job_place = $request->input('job_place');
+        $member_profile->present_address = $request->input('present_address');
+        $member_profile->parmanent_address = $request->input('permanent_address');
 
         $prefix = date('Ymd_');
         $photo = $request->file('photo');
-dd($photo);
+
         if ($request->file('photo')) {
             $mime_type = $photo->getClientMimeType();
             if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
