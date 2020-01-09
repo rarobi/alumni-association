@@ -24,10 +24,14 @@
                             <div class="box_profile">
                                 <form id="uploadimage" method="post"  enctype="multipart/form-data">
                                 <figure>
-                                    <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">
-                                    <div class="edit">
+                                    @if(!is_null($user->profile) && !is_null($user->profile->image))
+                                    <img class="thumbnail-image" src="/uploads/member_profile/{{ $user->profile->image }}" alt="" style="height:190px">
+                                    @else
+                                        <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">
+                                    @endif
+                                        <div class="edit">
                                         <label for="user-profile-image">
-                                            <input type="file" name="image_path" class="file thumbnail-file" id="user-profile-image" accept="image/*" style="display: none;">
+                                            <input type="file" name="image_path" multiple class="file thumbnail-file" id="user-profile-image" accept="image/*" style="display: none;">
                                             <i class="fa fa-camera fa-2x"></i>
                                         </label>
                                     </div>

@@ -116,32 +116,30 @@ class ProfileController extends Controller
     }
 
     public function profileUpload(Request $request){
-//        dd($request->file('image_path'));
-        $input_image = $_FILES["image_path"];
 
-//        $prefix = date('Ymd_');
-        $path = '/uploads/member_profile/';
-        $destinationPath = public_path().$path;
-//        dd($destinationPath);
-        $fileName = sha1(time()).'-'.basename($request->file('image_path')->getClientOriginalName());
+        $user_id  = Auth::id();
+        $user_profile = UserProfile::where('user_id', $user_id)->first();
+
+        $input_image = $request->file('image_path');
+
+        $prefix = date('Ymd_');
+        $file_path = '/uploads/member_profile/';
+
+        $destinationPath = public_path().$file_path;
+
+        /* TODO: Need to trim the image original name & refactor the code */
+        $fileName = $prefix.basename($input_image->getClientOriginalName());
+
         $target_file_name = $destinationPath .$fileName;
 
         \File::exists($destinationPath) or \File::makeDirectory($destinationPath);
 
-        if (move_uploaded_file($request->file('image_path')->getPathname(), $target_file_name)) {
-            $requestedData['image_path']         = $fileName;
+        if (move_uploaded_file($input_image->getPathname(), $target_file_name)) {
+            $user_profile->image         = $fileName;
+            $user_profile->save();
         } else {
             throw new \Exception('Error while uploading');
         }
-//        dd($input_image['name']);
-//        if ($request->file('photo')) {
-//            $mime_type = $input_image['name']->getClientMimeType();
-//            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
-//                return redirect('member/create')->with('flash_danger','Profile image must be png or jpg or jpeg format!');
-//            }
-//            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$input_image['name']->getClientOriginalExtension();
-//            $photo->move('uploads/member_profile/', $photoFile);
-//            $member_profile->image = $photoFile;
-//        }
+        $user_profile->save();
     }
 }
