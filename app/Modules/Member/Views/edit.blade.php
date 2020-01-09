@@ -37,18 +37,6 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('নাম')->class('col-md-2 form-control-label required')->for('name_bn') }}
-
-                        <div class="col-md-10">
-                            {{ html()->text('name_bn')
-                                ->class('form-control')
-                                ->placeholder('নাম (বাংলায়)')
-                                ->attribute('maxlength', 191)
-                                ->required() }}
-                        </div><!--col-->
-                    </div><!--form-group-->
-
-                    <div class="form-group row">
                         {{ html()->label('Mobile')->class('col-md-2 form-control-label required')->for('mobile') }}
 
                         <div class="col-md-10">
@@ -72,11 +60,66 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Present Job')->class('col-md-2 form-control-label')->for('occupation') }}
+                        {{ html()->label('Roll')->class('col-md-2 form-control-label required')->for('roll') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('roll')
+                               ->class('form-control')
+                               ->placeholder('Enter Your B.Sc roll')
+                               ->attribute('maxlength', 14)
+                               ->required()
+                               ->autofocus() }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    <div class="form-group row">
+                        {{ html()->label('Batch')->class('col-md-2 form-control-label')->for('batch') }}
+                        <div class="col-md-10">
+                            {{ html()->select('batch_id', $batches)
+                                ->class('form-control')
+                                ->placeholder("Select a batch")
+                                ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    <div class="form-group row">
+                        {{ html()->label('Session')->class('col-md-2 form-control-label required')->for('session') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('session', $sessions)
+                                ->class('form-control')
+                                ->placeholder("Select a session")
+                                ->attribute('maxlength', 191)
+                                ->required() }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    <div class="form-group row">
+                        {{ html()->label('Passing Year')->class('col-md-2 form-control-label required')->for('passing_year') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('passing_year')
+                              ->class('form-control')
+                              ->id('year')
+                              ->placeholder("Enter Passing year (Ex. 2008)")
+                              ->attribute('maxlength', 191)
+                              ->required() }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Occupation')->class('col-md-2 form-control-label')->for('occupation') }}
                         <div class="col-md-10">
                             {{ html()->text('occupation')
                                 ->class('form-control')
                                 ->placeholder('Occupation')
+                                ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Job Place')->class('col-md-2 form-control-label')->for('job_place') }}
+                        <div class="col-md-10">
+                            {{ html()->text('job_place')
+                                ->class('form-control')
+                                ->placeholder('Enter Job Place. ( Office Name / Business Area)')
                                 ->attribute('maxlength', 191) }}
                         </div><!--col-->
                     </div><!--form-group-->
@@ -143,14 +186,27 @@
                                 ->attribute('maxlength', 191) }}
                         </div><!--col-->
                     </div><!--form-group-->
-
                     <div class="form-group row">
-                        {{ html()->label('Passport Number')->class('col-md-2 form-control-label')->for('passport') }}
+                        {{ html()->label('Member Status')->class('col-md-2 form-control-label')->for('member_status') }}
                         <div class="col-md-10">
-                            {{ html()->text('passport')
+                            {{ html()->select('member_status')
+                                ->options(['' => "Select Status", 'pending' => 'Pending', 'review' => 'Review', 'Approved' => 'Approved'])
                                 ->class('form-control')
-                                ->placeholder('Passport Number')
                                 ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    <div class="form-group row">
+                        {{ html()->label('Image')->class('col-md-2 form-control-label')->for('image') }}
+                        <div class="col-md-10">
+                            <span id="photo_err" class="text-danger" style="font-size: 15px;"></span>
+                            <div>
+                                <img src="{{ url('/img/backend/avatars/photo.png') }}" id="profilePhotoViewer" width="150" height="150" class="img img-responsive img-thumbnail" style="border-radius: 10px;">
+                            </div>
+                            <br>
+                            <label class="btn btn-primary btn-sm">
+                                <input onchange="changePhoto(this)" type="file" name="photo" style="display: none">
+                                <i class="fa fa-image"></i> Upload photo
+                            </label>
                         </div><!--col-->
                     </div><!--form-group-->
                 </div><!--col-->
@@ -158,7 +214,7 @@
             <hr>
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
+                    {{ form_cancel(route('member.index'), __('buttons.general.cancel')) }}
                 </div><!--col-->
 
                 <div class="col text-right">

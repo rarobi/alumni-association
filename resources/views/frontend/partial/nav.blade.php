@@ -58,6 +58,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{!! Auth::user()->first_name !!}</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
                                     <li class="nav-item"><a href="{{ url('profile') }}">Profile</a></li>
+                                    @if(Auth::user()->hasRole('administrator'))
+                                    <li class="nav-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                                    @endif
                                     <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>
                                 </ul>
                             </li>

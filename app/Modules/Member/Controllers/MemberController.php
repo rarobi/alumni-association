@@ -169,8 +169,11 @@ class MemberController extends Controller
      */
     public function edit($userId, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
+        $data['batches'] = Batch::pluck('name','id');
+        $data['sessions'] = Session::pluck('session', 'session');
+
         $user = User::find($userId);
-        return view('Member::edit')
+        return view('Member::edit', $data)
             ->withUser($user)
             ->withRoles($roleRepository->get())
             ->withUserRoles($user->roles->pluck('name')->all())
