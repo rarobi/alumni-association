@@ -38,8 +38,8 @@
                         <div class="row">
                             <div class="offset-sm-5 col-sm-7">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')" style="margin: 0px 15px 3px 0px" >
-{{--                                    <a href="{!! route('member.edit',$user->id) !!}" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>--}}
-                                    <a href="" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>
+                                    <a href="{!! route('member.edit',$user->id) !!}" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>
+{{--                                    <a href="" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>--}}
                                 </div><!--btn-toolbar-->
                             </div><!--col-->
                         </div><!--row-->
@@ -84,8 +84,8 @@
                                     <tr>
                                         <th>Present Address</th>
                                         <td>
-                                            @if($user->present_address)
-                                                {{ $user->present_address}}
+                                            @if($user->profile->present_address)
+                                                {{ $user->profile->present_address}}
                                             @else
                                                 N/A
                                             @endif
@@ -95,8 +95,8 @@
                                     <tr>
                                         <th>Permanent Address</th>
                                         <td>
-                                            @if($user->permanent_address)
-                                                {{ $user->permanent_address}}
+                                            @if($user->profile->parmanent_address)
+                                                {{$user->profile->parmanent_address }}
                                             @else
                                                 N/A
                                             @endif
@@ -106,8 +106,8 @@
                                     <tr>
                                         <th>NID Number</th>
                                         <td>
-                                            @if($user->nid)
-                                                {{ $user->nid}}
+                                            @if($user->profile->nid)
+                                                {{ $user->profile->nid}}
                                             @else
                                                 N/A
                                             @endif
@@ -158,15 +158,17 @@
                        <div class="col">
                            <div class="table-responsive">
                                <table class="table table-hover">
-                                   {{--<tr>--}}
-                                       {{--<th>Today Subscription</th>--}}
-                                       {{--<th>Current Month Subscription</th>--}}
-                                       {{--<th>Total Subscription</th>--}}
-                                   {{--</tr>--}}
                                    <tr>
-                                       {{--<td> {!! $today_suscription !!} TK</td>--}}
-                                       {{--<td> {!! $current_suscription !!} TK</td>--}}
-{{--                                        <td> {!! $expense !!} TK </td>--}}
+                                       <th>Occupation</th>
+                                       <td>{!! isset($user->profile->occupation) ? $user->profile->occupation : 'N/A' !!} </td>
+                                   </tr>
+                                   <tr>
+                                       <th>Job Place</th>
+                                       <td> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'N/A' !!} </td>
+                                   </tr>
+                                   <tr>
+                                       <th>Job Position</th>
+                                       <td> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'N/A' !!} </td>
                                    </tr>
                                </table>
                            </div>
@@ -215,7 +217,7 @@
                </div><!--tab-content-->
            </div><!--col-->
        </div><!--row-->
-        @if(($user->member_status == "pending") ||  ($user->member_status == "reviewed"))
+        @if(($user->member_status != "approved") ||  ($user->member_status == "reviewed"))
         <div class="row">
             <div class="col-sm-10">
                 <a class="btn btn-info" href="{!! route('member.accept', $user->id) !!}"> Approve Member</a>

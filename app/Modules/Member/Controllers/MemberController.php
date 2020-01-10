@@ -189,22 +189,66 @@ class MemberController extends Controller
      * @throws \Throwable
      * @return mixed
      */
-    public function update($userId,Request $request)
+    public function update($userId, Request $request)
     {
-        $member = User::find($userId);
-        $member->name                       = $request->get('name');
-        $member->name_bn                    = $request->get('name_bn');
-        $member->mobile                     = $request->get('mobile');
-        $member->educational_qualification  = $request->get('educational_qualification');
-        $member->occupation                 = $request->get('occupation');
-        $member->job_position               = $request->get('job_position');
-        $member->present_address            = $request->get('present_address');
-        $member->permanent_address          = $request->get('permanent_address');
-        $member->nid                        = $request->get('nid');
-        $member->passport                   = $request->get('passport');
-        $member->blood_group                = $request->get('blood_group');
-        $member->dob                        = $request->get('dob');
+//        dd($request->all(), $userId);
+
+        $member = User::find($userId);;
+        $member->first_name = $request->input('name');
+        $member->mobile = $request->input('mobile');
+//        $member->email = $request->input('email');
+        $member->blood_group = $request->input('blood_group');
+        $member->dob = $request->input('dob');
+//        $member->member_status = $request->input('member_status');
+//        $member->password = $request->input('password');
         $member->save();
+
+        $user_profile = UserProfile::where('user_id', $userId)->first();
+        if(is_null($user_profile)){
+            $user_profile = new UserProfile();
+            $user_profile->user_id  = $member->id;
+            $user_profile->education_qualification  = $request->input('educational_qualification');
+            $user_profile->roll  = $request->input('roll');
+            $user_profile->batch_id  = $request->input('batch_id');
+            $user_profile->session  = $request->input('session');
+            $user_profile->passing_year  = $request->input('passing_year');
+            $user_profile->occupation  = $request->input('occupation');
+            $user_profile->job_place  = $request->input('job_place');
+            $user_profile->job_position  = $request->input('job_position');
+            $user_profile->present_address  = $request->input('present_address');
+            $user_profile->parmanent_address  = $request->input('permanent_address');
+            $user_profile->nid  = $request->input('nid');
+//            $user_profile->save();
+        } else {
+
+            $user_profile->education_qualification  = $request->input('educational_qualification');
+            $user_profile->roll  = $request->input('roll');
+            $user_profile->batch_id  = $request->input('batch_id');
+            $user_profile->session  = $request->input('session');
+            $user_profile->passing_year  = $request->input('passing_year');
+            $user_profile->occupation  = $request->input('occupation');
+            $user_profile->job_place  = $request->input('job_place');
+            $user_profile->job_position  = $request->input('job_position');
+            $user_profile->present_address  = $request->input('present_address');
+            $user_profile->parmanent_address  = $request->input('permanent_address');
+            $user_profile->nid  = $request->input('nid');
+//            $user_profile->save();
+        }
+
+        $prefix = date('Ymd_');
+        $photo = $request->file('photo');
+
+        if ($request->file('photo')) {
+            $mime_type = $photo->getClientMimeType();
+            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+                return redirect('member/create')->with('flash_danger','Profile image must be png or jpg or jpeg format!');
+            }
+            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
+            $photo->move('uploads/member_profile/', $photoFile);
+            $user_profile->image = $photoFile;
+        }
+        $user_profile->save();
+
         return redirect()->route('member.index')->withFlashSuccess('Member updated successfully');
     }
 
