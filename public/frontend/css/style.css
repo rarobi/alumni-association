@@ -1204,6 +1204,17 @@ li {
 .center.member-box {
     box-shadow: -5px 8px 4px -1px rgba(0,0,0,0.75);
 }
+/*Alumni List*/
+.faculty-member-image-box {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    height: 335px;
+}
+
+img.img-responsive.img-fullwidth {
+    height: 190px;
+}
+
 /*alumni profile */
 .edit {
     padding-top: 5px;
