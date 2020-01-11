@@ -40,6 +40,10 @@ class HomeController extends Controller
         return view('frontend.pages.member_list');
     }
 
+    public function memberDetails(){
+        return view('frontend.pages.member_details');
+    }
+
     public function notice(){
         return view('frontend.pages.notice');
     }

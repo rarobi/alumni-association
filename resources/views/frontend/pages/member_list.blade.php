@@ -35,7 +35,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -50,7 +50,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -65,7 +65,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -80,7 +80,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -95,7 +95,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -110,7 +110,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
@@ -125,22 +125,7 @@
                             <h6 class="text-info">Dr. Humayun Kabir</h6>
                             <div class="details m-t-30">
 
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="http://127.0.0.1:8000/about" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>

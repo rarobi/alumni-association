@@ -24,6 +24,7 @@ Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/members', [HomeController::class, 'members']);
 Route::get('/member-list', [HomeController::class, 'memberList']);
+Route::get('/member-details', [HomeController::class, 'memberDetails']);
 
 Route::get('/notice', [HomeController::class, 'notice']);
 Route::get('/notice-details', [HomeController::class, 'noticeDetails']);
