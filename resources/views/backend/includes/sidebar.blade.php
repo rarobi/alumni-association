@@ -44,6 +44,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{
+                    active_class(Active::checkUriPattern('gallery'))
+                }}" href="{{ url('gallery') }}">
+                    <i class="nav-icon fas fa-camera"></i>
+                    Gallery
+                </a>
+            </li>
+
             {{--<li class="nav-item nav-dropdown {{--}}
                     {{--active_class(Active::checkUriPattern('library/*'), 'open')--}}
                 {{--}}">--}}
@@ -142,7 +151,7 @@
                     <a class="nav-link nav-dropdown-toggle {{
                         active_class(Active::checkUriPattern('settings/*'))
                     }}" href="#">
-                        <i class="nav-icon fa fa-list"></i>
+                        <i class="nav-icon fa fa-cogs"></i>
                         Settings
                     </a>
 
