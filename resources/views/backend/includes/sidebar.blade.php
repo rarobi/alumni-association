@@ -26,6 +26,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{
+                    active_class(Active::checkUriPattern('notice'))
+                }}" href="{{ url('notice') }}">
+                    <i class="nav-icon fas fa-bell"></i>
+                    Notices
+                </a>
+            </li>
+
             {{--<li class="nav-item nav-dropdown {{--}}
                     {{--active_class(Active::checkUriPattern('library/*'), 'open')--}}
                 {{--}}">--}}
