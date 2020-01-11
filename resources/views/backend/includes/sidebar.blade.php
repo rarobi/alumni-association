@@ -35,6 +35,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{
+                    active_class(Active::checkUriPattern('event'))
+                }}" href="{{ url('event') }}">
+                    <i class="nav-icon fas fa-calendar-check"></i>
+                    Events
+                </a>
+            </li>
+
             {{--<li class="nav-item nav-dropdown {{--}}
                     {{--active_class(Active::checkUriPattern('library/*'), 'open')--}}
                 {{--}}">--}}
