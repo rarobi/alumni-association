@@ -36,16 +36,16 @@
                         <h6>Link Categories</h6>
                         <nav>
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Agency</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Studio</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> About</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Studio</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Services</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blogs</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Work</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Privacy</a></li>
+                                <li><a href="{{ url('/') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
+                                <li><a href="{{ url('/about') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> About</a></li>
+                                <li><a href="{{ url('/notice') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Notice</a></li>
+                                <li><a href="{{ url('/news') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> News</a></li>
+                                <li><a href="{{ url('/events') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Event</a></li>
+                                <li><a href="{{ url('/gallery') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Gallery</a></li>
+                                <li><a href="{{ url('/member-list') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Alumni</a></li>
+                                <li><a href="{{ url('/registration-rules') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Rules</a></li>
+                                <li><a href="{{ url('/alumni-register') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Register</a></li>
+                                <li><a href="{{ url('/announcements') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Announcement</a></li>
                             </ul>
                         </nav>
                     </div>
