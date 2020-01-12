@@ -1,0 +1,5 @@
+<?php
+
+/**
+ *	Certification Helper
+ */

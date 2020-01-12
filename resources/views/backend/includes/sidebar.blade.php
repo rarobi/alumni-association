@@ -62,6 +62,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{
+                    active_class(Active::checkUriPattern('certification'))
+                }}" href="{{ url('certification') }}">
+                    <i class="nav-icon fas fa-certificate"></i>
+                    Certification
+                </a>
+            </li>
+
             {{--<li class="nav-item nav-dropdown {{--}}
                     {{--active_class(Active::checkUriPattern('library/*'), 'open')--}}
                 {{--}}">--}}
