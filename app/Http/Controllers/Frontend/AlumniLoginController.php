@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Events\Frontend\AlumniRegistration;
 use App\Models\Auth\User;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
 use App\Modules\Settings\Models\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Log;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+
 class AlumniLoginController extends Controller
 {
 
@@ -86,8 +92,73 @@ class AlumniLoginController extends Controller
         $user_profile->transaction_id = $request->input('transaction_id');
         $user_profile->save();
 
+        if($user_profile->id) {
+            $this->sendEmail($request->all());
+        }
+
 //        return redirect()->route('alumni.register')->withFlashSuccess('Your Request has beed submitted succesfully.Please wait for confirmation');
         return redirect()->back()->with('message', 'Your Request has beed submitted succesfully. Please wait for confirmation.');
+    }
+
+    /**
+     * @param $user
+     */
+    public function sendEmail($user) {
+
+//        dd($user, 4);
+        // Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = env('MAIL_HOST');                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = env('MAIL_USERNAME');;                     // SMTP username
+            $mail->Password   = env('MAIL_PASSWORD');                               // SMTP password
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = env('MAIL_PORT');                                    // TCP port to connect to
+
+            //Recipients
+            $mail->setFrom('no-reply@mail.com', env('APP_NAME','Help Desk | Daktarbhai'));
+            //$mail->addAddress($emailTo, '');     // Add a recipient email, Recipient Name is optional
+            $mail->addReplyTo('info@example.com', 'Information');
+
+            $mail->addAddress('prothomrobi1@gmail.com', '');     // Add a recipient
+//            $mail->addAddress('ellen@example.com');               // Name is optional
+//            $mail->addCC('cc@example.com');
+//            $mail->addBCC('bcc@example.com');
+
+            // Attachments
+//            $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Alumni Registrarion';
+            $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            // disable verify_peer, its only for local server
+            $serverType = env('APP_ENV');
+            if($serverType == 'local'){
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    ));
+            }
+
+
+            $mail->send();
+            Log::info('Message has been sent') ;
+
+        } catch (Exception $e) {
+            $message =  "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            Log::error($message);
+        }
     }
 
 

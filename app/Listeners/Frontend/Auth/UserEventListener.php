@@ -2,6 +2,9 @@
 
 namespace App\Listeners\Frontend\Auth;
 
+use App\Mail\Frontend\Registration\RegistrationAlert;
+use Mail;
+
 /**
  * Class UserEventListener.
  */
@@ -52,6 +55,13 @@ class UserEventListener
     }
 
     /**
+     * @param $user
+     */
+    public function alumniRegistered($user){
+        Mail::to('robi.hislbd@gmail.com')->send(new RegistrationAlert($user));
+    }
+
+    /**
      * @param $event
      */
     public function onProviderRegistered($event)
@@ -97,6 +107,11 @@ class UserEventListener
         $events->listen(
             \App\Events\Frontend\Auth\UserConfirmed::class,
             'App\Listeners\Frontend\Auth\UserEventListener@onConfirmed'
+        );
+
+        $events->listen(
+            \App\Events\Frontend\AlumniRegistration::class,
+            'App\Listeners\Frontend\Auth\UserEventListener@alumniRegistered'
         );
     }
 }
