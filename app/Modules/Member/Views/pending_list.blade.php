@@ -17,12 +17,12 @@
             </div><!--col-->
 
             <div class="col-sm-7">
-                @if($logged_in_user->isAdmin())
+{{--                @if($logged_in_user->isAdmin())--}}
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
                     <a href="{{ route('member.index') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="Member List"><i class="fas fa-list"></i></a>
 {{--                    <a href="{{ url('member/create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>--}}
 				</div><!--btn-toolbar-->
-                @endif
+{{--                @endif--}}
             </div><!--col-->
         </div><!--row-->
 
@@ -39,9 +39,9 @@
                             <th>Blood Group</th>
                             <th>@lang('labels.backend.access.users.table.roles')</th>
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
-                            @if($logged_in_user->isAdmin())
+{{--                            @if($logged_in_user->isAdmin())--}}
                             <th>@lang('labels.general.actions')</th>
-                            @endif
+{{--                            @endif--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -54,9 +54,9 @@
                                 <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>
                                 <td>{!! $user->roles_label !!}</td>
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
-                                @if($logged_in_user->isAdmin())
+{{--                                @if($logged_in_user->isAdmin())--}}
                                 <td>{!! $user->action_buttons !!}</td>
-                                @endif
+{{--                                @endif--}}
                             </tr>
                         @endforeach
                         </tbody>
