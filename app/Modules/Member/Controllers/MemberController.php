@@ -41,7 +41,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::orderBy('id', 'desc')->paginate(5);
+        $data['users'] = User::orderBy('id', 'desc')->paginate(10);
 
         return view('Member::index',$data);
 //            ->withUsers($this->memberRepository->getActivePaginated(10, 'id', 'desc'));

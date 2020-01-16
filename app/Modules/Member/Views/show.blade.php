@@ -84,7 +84,7 @@
                                     <tr>
                                         <th>Present Address</th>
                                         <td>
-                                            @if($user->profile->present_address)
+                                            @if($user->profile && $user->profile->present_address)
                                                 {{ $user->profile->present_address}}
                                             @else
                                                 N/A
@@ -95,7 +95,7 @@
                                     <tr>
                                         <th>Permanent Address</th>
                                         <td>
-                                            @if($user->profile->parmanent_address)
+                                            @if($user->profile && $user->profile->parmanent_address)
                                                 {{$user->profile->parmanent_address }}
                                             @else
                                                 N/A
@@ -106,7 +106,7 @@
                                     <tr>
                                         <th>NID Number</th>
                                         <td>
-                                            @if($user->profile->nid)
+                                            @if($user->profile && $user->profile->nid)
                                                 {{ $user->profile->nid}}
                                             @else
                                                 N/A

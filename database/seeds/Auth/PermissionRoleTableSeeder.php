@@ -20,7 +20,7 @@ class PermissionRoleTableSeeder extends Seeder
 
         // Create Roles
         $admin = Role::create(['name' => config('access.users.admin_role')]);
-        $executive = Role::create(['name' => 'executive']);
+        $executive = Role::create(['name' => 'batch-admin']);
         $member = Role::create(['name' => 'member']);
 //        $user = Role::create(['name' => config('access.users.default_role')]);
 

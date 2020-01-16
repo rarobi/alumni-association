@@ -57,6 +57,7 @@ class SendAlumniRegistrationEmail extends Command
             $mail->isSMTP();                                            // Send using SMTP
             $mail->Host       = env('MAIL_HOST');                   // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+           //TODO:: username and password need to be changed
             $mail->Username   = env('MAIL_USERNAME');              // SMTP username
             $mail->Password   = env('MAIL_PASSWORD');              // SMTP password
             $mail->SMTPSecure = env('MAIL_ENCRYPTION');            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
