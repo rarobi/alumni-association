@@ -3,6 +3,7 @@
 namespace App\Modules\Member\Controllers;
 
 
+use App\Models\EmailQueue;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
 use App\Modules\Settings\Models\Session;
@@ -18,6 +19,9 @@ use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class MemberController extends Controller
 {
@@ -285,11 +289,22 @@ class MemberController extends Controller
 
         $member = User::findOrFail($member_id);
         if(Auth::user()->hasRole('administrator')){
-            $member->member_status  = 'approved';
+
+            try{
+                $member->member_status  = 'approved';
+                $member->save();
+                 //send approved confirmation email to alumni
+                $this->sendConfirmationEmail($member);
+            } catch (\Exception $exception){
+                dd('exception');
+                $message =  "Member not approved for: ". $exception->getMessage();
+                Log::error($message);
+            }
+
         } else{
             $member->member_status  = 'reviewed';
+            $member->save();
         }
-        $member->save();
 
         return redirect()->route('member.index')->withFlashSuccess('Member approved successfully');
     }
@@ -302,6 +317,75 @@ class MemberController extends Controller
             $data['pending_users'] = User::where('member_status', 'pending')->orderBy('id', 'desc')->paginate(10);
         }
         return view('Member::pending_list',$data);
+    }
+
+    /**
+     * @param $member
+     */
+    public function sendConfirmationEmail($member) {
+
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = env('MAIL_HOST');                   // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            //TODO:: username and password need to be changed
+            $mail->Username   = env('MAIL_USERNAME');              // SMTP username
+            $mail->Password   = env('MAIL_PASSWORD');              // SMTP password
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = env('MAIL_PORT');                  // TCP port to connect to
+
+            $emailTo = str_replace("'", "", $member->email);
+            $mail->setFrom('no-reply@mail.com', env('APP_NAME','CSTE Alumni Association'));
+            //$mail->addAddress($emailTo, '');     // Add a recipient email, Recipient Name is optional
+            $mail->addReplyTo('info@example.com', 'Information');
+//dd($mail->Username,$mail->Password,$mail->SMTPSecure,$mail->Port,$emailTo);
+            if($emailTo){
+                $toEmailExplode = explode(',', $emailTo);
+                if (!empty($toEmailExplode[1])) {
+                    foreach ($toEmailExplode as $toEmail) {
+                        $mail->addAddress($toEmail);
+                    }
+                } else {
+                    $mail->addAddress($emailTo);
+                }
+            }
+
+            // Content
+            $mail->isHTML(true); // Set email format to HTML
+            $mail->Subject = 'Approval Confirmation';
+            $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. ';
+            $mail->AltBody = '';
+
+            // disable verify_peer, its only for local server
+            $serverType = env('APP_ENV');
+            if($serverType == 'local'){
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    ));
+            }
+            // disable verify_peer, its only for local server
+
+            if (!$mail->send()) {
+                $message =  "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                Log::error($message);
+            } else {
+                $message =  "Confirmation email sent to " . $member->email;
+                Log::error($message);
+            }
+            $mail->ClearAddresses();
+            $mail->ClearCCs();
+
+        } catch (Exception $e) {
+            $message =  "Message could not be sent for: ". $e->getMessage();
+            Log::error($message);
+        }
     }
 
 }

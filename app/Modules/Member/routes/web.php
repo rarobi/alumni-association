@@ -11,7 +11,7 @@ Route::group(['module' => 'Member', 'middleware' => ['web','auth'], 'namespace' 
 
     Route::resource('member', 'MemberController');
 
-    Route::get('member/accept//{id}', 'MemberController@acceptMember')->name('member.accept');
+    Route::get('member/accept/{id}', 'MemberController@acceptMember')->name('member.accept');
 
     Route::post('member/log-in-out', 'MemberController@loggedInOut')->name('member.log-in-out');
 

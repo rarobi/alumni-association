@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <h4 class="card-title mb-0">
-                    Members <small class="text-muted">List</small>
+                    Members <small class="text-muted">Approved List</small>
                 </h4>
             </div><!--col-->
 
