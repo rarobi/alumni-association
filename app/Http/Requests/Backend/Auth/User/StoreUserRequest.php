@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'first_name' => ['required', 'max:191'],
-            'last_name'  => ['required', 'max:191'],
+//            'last_name'  => ['required', 'max:191'],
 //            'name_bn' => ['required', 'max:191'],
             'email' => ['required', 'email', 'max:191', Rule::unique('users')],
 //            'password' => PasswordRules::register($this->email),

@@ -35,6 +35,7 @@ class BaseUser extends Authenticatable implements AuditableInterface
         'last_login_at',
         'last_login_ip',
         'to_be_logged_out',
+        'member_status'
     ];
 
     use Auditable,

@@ -70,6 +70,7 @@ class UserController extends Controller
             'last_name',
             'email',
             'password',
+            'member_status',
             'active',
             'confirmed',
             'confirmation_email',

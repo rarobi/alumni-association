@@ -108,6 +108,7 @@ class UserRepository extends BaseRepository
                 'active' => isset($data['active']) && $data['active'] === '1',
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => isset($data['confirmed']) && $data['confirmed'] === '1',
+                'member_status' => 'approved'
             ]);
 
             // See if adding any additional permissions
