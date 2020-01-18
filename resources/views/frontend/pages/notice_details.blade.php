@@ -24,17 +24,15 @@
                         <!-- Single Post -->
                         <div class="col-12 col-sm-12">
                             <div class="single-post">
-                                <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
+                                <p>  {!! $notice->description !!}</p>
                                 <!-- Post Thumb -->
                                 <div class="post-thumb">
-                                    Posted At:  <span class="text-info"> At 08:00 A.M, March 1, 2016</span> <br>
-                                    Posted By <span class="text-info"> Robiul ALam</span>
+                                    Posted At:  <span class="text-info">{!!  \Carbon\Carbon::parse($notice->created_at)->format('j F Y') !!}</span> <br>
                                 </div>
                                 <!-- Post Content -->
-                                <div>
-                                     <h6 class="btn btn-info">Attachment Documents</h6>
-                                </div>
+{{--                                <div>--}}
+{{--                                     <h6 class="btn btn-info">Attachment Documents</h6>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

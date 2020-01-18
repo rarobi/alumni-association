@@ -27,7 +27,7 @@ Route::get('/member-list/{id}', [HomeController::class, 'memberList']);
 Route::get('/member/{id}', [HomeController::class, 'memberDetails']);
 
 Route::get('/latest-notice', [HomeController::class, 'notice']);
-Route::get('/notice-details', [HomeController::class, 'noticeDetails']);
+Route::get('/latest-notice/{id}', [HomeController::class, 'noticeDetails']);
 
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog-details', [BlogController::class, 'show']);

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Gallery\Models\Gallery;
+use App\Modules\Notice\Models\Notice;
 use App\Modules\Settings\Models\Batch;
 use App\Models\Auth\User;
+use Mockery\Matcher\Not;
 
 /**
  * Class HomeController.
@@ -15,10 +17,6 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-//    public function index()
-//    {
-//        return view('frontend.index');
-//    }
 
     public function index(){
         return view('frontend.pages.home');
@@ -52,11 +50,13 @@ class HomeController extends Controller
     }
 
     public function notice(){
-        return view('frontend.pages.notice');
+        $data['notices'] = Notice::orderBy('id', 'DESC')->paginate(5);
+        return view('frontend.pages.notice', $data);
     }
 
-    public function noticeDetails() {
-        return view('frontend.pages.notice_details');
+    public function noticeDetails($id) {
+        $data['notice'] = Notice::find($id);
+        return view('frontend.pages.notice_details', $data);
     }
 
     public function blog(){
