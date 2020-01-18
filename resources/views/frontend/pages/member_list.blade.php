@@ -18,120 +18,39 @@
     <!-- ****** Single Blog Area Start ****** -->
     <section class="site-section single_blog_area p-t-70" id="gallery-section">
         <div class="container">
+            @if(count($members) > 0)
             <div id="posts" class="row no-gutter">
-{{--                <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">--}}
-{{--                    <a href="frontend/img/blog-img/blog-4.jpg" class="item-wrap fancybox">--}}
-{{--                        <span class="icon-search2"></span>--}}
-{{--                        <img class="img-fluid" src="frontend/img/blog-img/blog-4.jpg">--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+                @foreach($members as $member)
                 <div class="item col-sm-2 m-b-10">
                     <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
+                        @if($member->profile && $member->profile->image)
+                        <img src="/uploads/member_profile/{{ $member->profile->image }}"
+                             alt="image"
                              class="img-responsive img-fullwidth">
-
+                        @else
+                            <img src="/frontend/img/bg-img/dummy-profile.jpg"
+                                 alt=""
+                                 class="img-responsive img-fullwidth">
+                        @endif
                         <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
+                            <h6 class="text-info">{{ $member->first_name }}</h6>
                             <div class="details m-t-30">
 
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('member', $member->id) !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="item col-sm-2 m-b-10">
-                    <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        <img src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg"
-                             alt=""
-                             class="img-responsive img-fullwidth">
-
-                        <div class="media-body faculty-title">
-                            <h6 class="text-info">Dr. Humayun Kabir</h6>
-                            <div class="details m-t-30">
-
-                                <a href="{!! url('member-details') !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
+                @endforeach
             </div>
+            <div class="row m-b-20">
+               {!! $members->render() !!}
+            </div>
+            @else
+            <div class="row">
+                <h4 class="text-center">No Member found</h4>
+            </div>
+            @endif
         </div>
     </section>
     <!-- ****** Single Blog Area End ****** -->

@@ -17,29 +17,32 @@
 
     <section class="site-section single_blog_area p-t-70" id="gallery-section">
         <div class="container">
-            <div class="row justify-content-center mb-5" data-aos="fade">
-                <div id="filters" class="filters text-center button-group col-md-7">
-                    <button class="btn btn-primary active" data-filter="*">All</button>
-                    <button class="btn btn-primary" data-filter=".web">Classes</button>
-                    <button class="btn btn-primary" data-filter=".design">Intern</button>
-                    <button class="btn btn-primary" data-filter=".brand">Training</button>
-                </div>
-            </div>
+            {{--<div class="row justify-content-center mb-5" data-aos="fade">--}}
+                {{--<div id="filters" class="filters text-center button-group col-md-7">--}}
+                    {{--<button class="btn btn-primary active" data-filter="*">All</button>--}}
+                    {{--<button class="btn btn-primary" data-filter=".web">Classes</button>--}}
+                    {{--<button class="btn btn-primary" data-filter=".design">Intern</button>--}}
+                    {{--<button class="btn btn-primary" data-filter=".brand">Training</button>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
+            @if(count($galleries) > 0)
+            @foreach($galleries as $gallery)
             <div id="posts" class="row no-gutter">
                 <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
-                    <a href="frontend/img/blog-img/blog-4.jpg" class="item-wrap fancybox">
+                    <a href="/uploads/gallery/{{ $gallery->image }}" class="item-wrap fancybox">
                         <span class="icon-search2"></span>
-                        <img class="img-fluid" src="frontend/img/blog-img/blog-4.jpg">
-                    </a>
-                </div>
-                <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
-                    <a href="frontend/img/bg-img/convocation.jpg" class="item-wrap fancybox">
-                        <span class="icon-search2"></span>
-                        <img class="img-fluid" src="frontend/img/bg-img/convocation.jpg">
+                        <img class="img-fluid" src="/uploads/gallery/{{ $gallery->image }}">
                     </a>
                 </div>
             </div>
+            @endforeach
+
+            @else
+             <div>
+                 <h4 class="text-center"> No Gallery Availabe</h4>
+             </div>
+            @endif
         </div>
     </section>
 

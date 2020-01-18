@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Gallery\Models\Gallery;
+use App\Modules\Settings\Models\Batch;
+use App\Models\Auth\User;
 
 /**
  * Class HomeController.
@@ -33,15 +36,19 @@ class HomeController extends Controller
         return view('frontend.pages.elected_member');
     }
     public function members(){
-        return view('frontend.pages.member');
+        $data['batches'] = Batch::orderBy('id', 'ASC')->paginate(6);
+        return view('frontend.pages.member', $data);
     }
 
-    public function memberList() {
-        return view('frontend.pages.member_list');
+    public function memberList($id) {
+        $data['members'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('batch_id', $id)
+            ->paginate(12);
+        return view('frontend.pages.member_list',  $data);
     }
 
-    public function memberDetails(){
-        return view('frontend.pages.member_details');
+    public function memberDetails($id){
+        $data['member'] = User::find($id);
+        return view('frontend.pages.member_details', $data);
     }
 
     public function notice(){
@@ -57,7 +64,8 @@ class HomeController extends Controller
     }
 
     public function gallery(){
-        return view('frontend.pages.gallery');
+        $data['galleries'] =  Gallery::orderBy('id', 'DESC')->paginate(10);
+        return view('frontend.pages.gallery', $data);
     }
 
     public function contact(){

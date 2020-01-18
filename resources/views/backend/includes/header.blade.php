@@ -38,7 +38,7 @@
         {{--</li>--}}
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="d-md-down-none">{{ $logged_in_user->name }}</span>
+              <span class="d-md-down-none">{{ isset($logged_in_user->name) ? $logged_in_user->name : 'Default' }}</span>
               @if(!is_null( $logged_in_user->profile))
               <img src="/uploads/member_profile/{{ $logged_in_user->profile->image }}" class="img-avatar" alt="{{ $logged_in_user->email }}">
               @else

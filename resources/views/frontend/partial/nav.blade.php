@@ -49,9 +49,9 @@
                                 <li><a class="dropdown-item" href="{{ url('/members') }}">General Members</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item {{ active_class(Active::checkUriPattern('notice')) }}"><a href="{{ url('/notice') }}">Notice</a></li>
+                        <li class="nav-item {{ active_class(Active::checkUriPattern('notice')) }}"><a href="{{ url('/latest-notice') }}">Notice</a></li>
 {{--                        <li class="nav-item"><a href="{{ url('/blog') }}">Blog</a></li>--}}
-                        <li class="nav-item {{ active_class(Active::checkUriPattern('gallery')) }}"><a href="{{ url('/gallery') }}">Gallery</a></li>
+                        <li class="nav-item {{ active_class(Active::checkUriPattern('gallery')) }}"><a href="{{ url('/alumni-gallery') }}">Gallery</a></li>
                         <li class="nav-item {{ active_class(Active::checkUriPattern('contact')) }}"><a href="{{ url('/contact') }}">Contact</a></li>
                         @if(Auth::user())
                             <li class="nav-item dropdown">

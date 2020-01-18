@@ -19,6 +19,7 @@ use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -296,7 +297,7 @@ class MemberController extends Controller
                  //send approved confirmation email to alumni
                 $this->sendConfirmationEmail($member);
             } catch (\Exception $exception){
-                dd('exception');
+//                dd('exception');
                 $message =  "Member not approved for: ". $exception->getMessage();
                 Log::error($message);
             }
@@ -342,7 +343,9 @@ class MemberController extends Controller
             $mail->setFrom('no-reply@mail.com', env('APP_NAME','CSTE Alumni Association'));
             //$mail->addAddress($emailTo, '');     // Add a recipient email, Recipient Name is optional
             $mail->addReplyTo('info@example.com', 'Information');
+
 //dd($mail->Username,$mail->Password,$mail->SMTPSecure,$mail->Port,$emailTo);
+
             if($emailTo){
                 $toEmailExplode = explode(',', $emailTo);
                 if (!empty($toEmailExplode[1])) {
@@ -357,7 +360,7 @@ class MemberController extends Controller
             // Content
             $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = 'Approval Confirmation';
-            $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. ';
+            $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. Thank You.';
             $mail->AltBody = '';
 
             // disable verify_peer, its only for local server

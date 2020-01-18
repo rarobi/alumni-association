@@ -24,12 +24,15 @@
                             <div class="box_profile p-t-20 p-l-0 p-r-0 p-b-0">
                                 <form id="uploadimage" method="post"  enctype="multipart/form-data">
                                     <figure>
-{{--                                        @if(!is_null($user->profile) && !is_null($user->profile->image))--}}
-{{--                                            <img class="thumbnail-image" src="/uploads/member_profile/{{ $user->profile->image }}" alt="" style="height:190px">--}}
-{{--                                        @else--}}
-{{--                                            <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">--}}
-{{--                                        @endif--}}
-                                            <img class="thumbnail-image" src="https://nstu.edu.bd/uploads/avatar/KcGhSKgwLr1553895871.jpg" alt="" style="height:190px">
+                                        @if($member->profile && $member->profile->image)
+                                            <img src="/uploads/member_profile/{{ $member->profile->image }}"
+                                                 alt="image"
+                                                 class="thumbnail-image">
+                                        @else
+                                            <img src="/frontend/img/bg-img/dummy-profile.jpg"
+                                                 alt=""
+                                                 class="thumbnail-image">
+                                        @endif
                                     </figure>
                                 </form>
                             </div>
@@ -56,12 +59,11 @@
                                             <h3>Educational Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p><b>Institute:</b> Noakhali Science & Technology University</p>
-                                            <p><b>Department:</b> CSTE</p>
+                                            <p><b>Institute: </b> Noakhali Science & Technology University</p>
+                                            <p><b>Department: </b> CSTE</p>
 {{--                                            <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>--}}
-                                            <p><b>Batch:</b> Not Provided</p>
-{{--                                            <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>--}}
-                                            <p><b>Session:</b>Not Provided</p>
+                                            <p><b>Batch: </b> {{ isset($member->profile) ? $member->profile->batch_id : 'Not Provided'}}</p>
+                                            <p><b>Session: </b> {!! isset($member->profile) ? $member->profile->session : 'Not Provided' !!}</p>
 
                                         </div> </div>
                                     <!-- /tab_1 -->
@@ -76,13 +78,13 @@
 
                                         </div>
                                         <div class="wrapper_indent">
-                                            <p><b>Name:</b> Not Provided</p>
-                                            <p><b>Age:</b> Not Provided</p>
-                                            <p><b>Mobile:</b> Not Provided</p>
-                                            <p><b>Date of Birth:</b> Not Provided</p>
-                                            <p><b>Email:</b> Not Provided</p>
-                                            <p><b>Present Address:</b> Not Provided</p>
-                                            <p><b>Parmanent Address:</b>Not Provided</p>
+                                            <p><b>Name: </b>{!! isset($member->first_name) ? $member->first_name : 'Not Provided' !!}</p>
+                                            <p><b>Age: </b>Not Provided</p>
+                                            <p><b>Mobile: </b>{!! isset($member->mobile) ? $member->mobile : 'Not Provided' !!}</p>
+                                            <p><b>Date of Birth: </b>{!! isset($member->dob) ? $member->dob : 'Not Provided' !!}</p>
+                                            <p><b>Email: </b>{!! isset($member->email) ? $member->email : 'Not Provided' !!}</p>
+                                            <p><b>Present Address: </b>{!! isset($member->profile->present_address) ? $member->profile->present_address : 'Not Provided' !!}</p>
+                                            <p><b>Parmanent Address: </b>{!! isset($member->profile->parmanent_address) ? $member->profile->parmanent_address : 'Not Provided' !!}</p>
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
@@ -95,12 +97,10 @@
                                             <h3>Professional Statement</h3>
                                         </div>
                                         <div class="wrapper_indent">
-{{--                                            <p><b>Occupation:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>--}}
-                                            <p><b>Occupation:</b> Not Provided</p>
-{{--                                            <p><b>Job Place:</b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>--}}
-                                            <p><b>Job Place:</b> Not Provided</p>
-{{--                                            <p><b>Job Position:</b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>--}}
-                                            <p><b>Job Position:</b> Not Provided</p>
+{{--                                            <p><b>Occupation:</b> {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>--}}
+                                            <p><b>Occupation: </b>{!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>
+                                            <p><b>Job Place: </b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
+                                            <p><b>Job Position: </b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
 
                                         </div>
                                         <!-- End review-container -->

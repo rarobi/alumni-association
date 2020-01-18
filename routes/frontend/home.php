@@ -23,10 +23,10 @@ Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/members', [HomeController::class, 'members']);
-Route::get('/member-list', [HomeController::class, 'memberList']);
-Route::get('/member-details', [HomeController::class, 'memberDetails']);
+Route::get('/member-list/{id}', [HomeController::class, 'memberList']);
+Route::get('/member/{id}', [HomeController::class, 'memberDetails']);
 
-Route::get('/notice', [HomeController::class, 'notice']);
+Route::get('/latest-notice', [HomeController::class, 'notice']);
 Route::get('/notice-details', [HomeController::class, 'noticeDetails']);
 
 Route::get('/blog', [BlogController::class, 'index']);
@@ -41,7 +41,7 @@ Route::get('/event-details', [BlogController::class, 'eventDetails']);
 Route::get('/announcements', [BlogController::class, 'announcementAll']);
 Route::get('/announcement-details', [BlogController::class, 'announcementDetails']);
 
-Route::get('/gallery', [HomeController::class, 'gallery']);
+Route::get('/alumni-gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/registration-rules', [HomeController::class, 'registrationRules']);
