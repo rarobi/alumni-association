@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('blood_group')->nullable();
             $table->string('dob')->nullable();
             $table->string('member_status')->nullable();
+            $table->string('member_category')->nullable();
             $table->string('user_name')->nullable();
             $table->string('password')->nullable();
             $table->timestamp('password_changed_at')->nullable();

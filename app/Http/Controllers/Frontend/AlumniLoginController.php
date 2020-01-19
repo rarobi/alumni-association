@@ -58,6 +58,7 @@ class AlumniLoginController extends Controller
         $user->mobile        = $request->input('mobile');
         $user->password      = bcrypt($request->input('password'));
         $user->member_status = 'pending';
+        $user->member_category = 'general';
         $user->save();
 
         $user_profile = new UserProfile();
