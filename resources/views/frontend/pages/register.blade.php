@@ -117,14 +117,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                {{ html()->label('Tranx ID')->class('col-md-6 form-control-label required')->for('tranx_id') }}
+                                                {{ html()->label('Payment')->class('col-md-6 form-control-label required')->for('payment') }}
                                                 <div class="col-md-12">
-                                                    {{ html()->text('transaction_id')
-                                                        ->class('form-control')
-                                                        ->placeholder('Enter BKash transaction numbr')
-                                                        ->attribute('maxlength', 20)
-                                                        ->required()
-                                                        ->autofocus() }}
+                                                    {{ html()->select('paymemt_type')
+                                                        ->class('form-control payment')
+                                                        ->options(['' => 'select an option', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'bank' => 'Bank Transfer'])
+                                                        ->required() }}
                                                 </div>
                                             </div>
                                         </div>
@@ -136,6 +134,17 @@
                                                         ->class('form-control')
                                                         ->placeholder('Your password')
                                                         ->attribute('maxlength', 121)
+                                                        ->required()
+                                                        ->autofocus() }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                {{ html()->label('Tranx ID')->class('col-md-6 form-control-label required')->for('tranx_id') }}
+                                                <div class="col-md-12">
+                                                    {{ html()->text('transaction_id')
+                                                        ->class('form-control')
+                                                        ->placeholder('Enter transaction numbr')
+                                                        ->attribute('maxlength', 20)
                                                         ->required()
                                                         ->autofocus() }}
                                                 </div>
@@ -181,6 +190,11 @@
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years"
+        });
+
+        $('.payment').on('change', function() {
+            var payment_option = this.value;
+            alert( payment_option );
         });
     </script>
 @endsection
