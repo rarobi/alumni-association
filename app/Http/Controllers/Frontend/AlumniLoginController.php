@@ -76,7 +76,7 @@ class AlumniLoginController extends Controller
 
             $emailQueue = new EmailQueue();
             $emailQueue->content = $emailContent;
-            $emailQueue->to = $user->email;
+            $emailQueue->to = env('MAIL_USERNAME');
             $emailQueue->cc = null;
             $emailQueue->subject = 'An Alumni Registration Request';
             $emailQueue->status = 1;

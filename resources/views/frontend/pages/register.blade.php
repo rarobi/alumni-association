@@ -138,7 +138,7 @@
                                                         ->autofocus() }}
                                                 </div>
                                             </div>
-                                            <div class="form-group col-sm-6">
+                                            <div class="form-group tranx-box col-sm-6" style="display: none">
                                                 {{ html()->label('Tranx ID')->class('col-md-6 form-control-label required')->for('tranx_id') }}
                                                 <div class="col-md-12">
                                                     {{ html()->text('transaction_id')
@@ -194,7 +194,9 @@
 
         $('.payment').on('change', function() {
             var payment_option = this.value;
-            alert( payment_option );
+            if(payment_option == 'bkash' || payment_option == 'rocket'){
+                $('.tranx-box').show();
+            }
         });
     </script>
 @endsection
