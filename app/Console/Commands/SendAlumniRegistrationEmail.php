@@ -49,6 +49,7 @@ class SendAlumniRegistrationEmail extends Command
 
     public function sendAlumniRegistrationEmail(){
 
+        Log::info("enter for email send");
         $mail = new PHPMailer(true);
 
         try {
@@ -62,12 +63,14 @@ class SendAlumniRegistrationEmail extends Command
             $mail->Password   = env('MAIL_PASSWORD');              // SMTP password
             $mail->SMTPSecure = env('MAIL_ENCRYPTION');            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port       = env('MAIL_PORT');                  // TCP port to connect to
-
+            Log::info("Check:".$mail->Host. ' '.$mail->Username.' '.$mail->Password.' '.$mail->SMTPSecure.' '.$mail->Port);
             $emailQueue = EmailQueue::where('sending_status',0)
                 ->where('status',1)
                 ->where('times_of_try','<',9)
                 ->take(1)
                 ->get();
+
+            Log::info("get email from queue");
 
             if (count($emailQueue)>0){
                 foreach ($emailQueue as $key => $email){
@@ -88,6 +91,8 @@ class SendAlumniRegistrationEmail extends Command
                             $mail->addAddress($emailTo);
                         }
                     }
+
+                    Log::info("get sender: ".$emailTo);
 
                     if($emailCC){
                         $ccEmailExplode = explode(',', $emailCC);
@@ -137,6 +142,9 @@ class SendAlumniRegistrationEmail extends Command
                     $mail->ClearCCs();
 
                     $email->save();
+
+                    Log::info("Sent email.");
+
                 }
             }
 

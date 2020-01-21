@@ -22,9 +22,9 @@ Route::post('/profile/update/{id}', [ProfileController::class, 'updateProfile'])
 Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name('profile.upload');
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
-Route::get('/members', [HomeController::class, 'members']);
-Route::get('/member-list/{id}', [HomeController::class, 'memberList']);
-Route::get('/member/{id}', [HomeController::class, 'memberDetails']);
+Route::get('/alumni', [HomeController::class, 'members']);
+Route::get('/alumni-list/{id}', [HomeController::class, 'memberList']);
+Route::get('/alumni/{id}', [HomeController::class, 'memberDetails']);
 
 Route::get('/latest-notice', [HomeController::class, 'notice']);
 Route::get('/latest-notice/{id}', [HomeController::class, 'noticeDetails']);

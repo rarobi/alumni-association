@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('cste:send-alumni-registration-email')
-            ->everyMinute()
+            ->everyFiveMinutes()
             ->withoutOverlapping(5);
 
     }

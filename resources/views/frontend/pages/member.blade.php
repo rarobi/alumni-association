@@ -21,7 +21,7 @@
                 @foreach($batches as $batch)
                 <div class="col-sm-4 m-b-15">
                     <div class="center member-box">
-                        <a href="{{ url('/member-list', $batch->id) }}">
+                        <a href="{{ url('/alumni-list', $batch->id) }}">
                             <div class="img-thumbnail image" >
                                 <h4 class="text-center">{!! $batch->name !!} </h4>
                                 <img class="album-img" width="100%" src="{{asset('frontend/img/bg-img/convocation.jpg')}}" alt="">

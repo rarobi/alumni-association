@@ -62,8 +62,18 @@
                                             <p><b>Institute: </b> Noakhali Science & Technology University</p>
                                             <p><b>Department: </b> CSTE</p>
 {{--                                            <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>--}}
-                                            <p><b>Batch: </b> {{ isset($member->profile) ? $member->profile->batch_id : 'Not Provided'}}</p>
-                                            <p><b>Session: </b> {!! isset($member->profile) ? $member->profile->session : 'Not Provided' !!}</p>
+                                            <p><b>Batch: </b>@if(!is_null($member->profile))
+                                                {{ isset($member->profile->batch_id) ? $member->profile->batch_id : 'Not Provided'}}
+                                                  @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
+                                            <p><b>Session: </b>@if(!is_null($member->profile))
+                                                {!! isset($member->profile->session) ? $member->profile->session : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
 
                                         </div> </div>
                                     <!-- /tab_1 -->
@@ -83,8 +93,18 @@
                                             <p><b>Mobile: </b>{!! isset($member->mobile) ? $member->mobile : 'Not Provided' !!}</p>
                                             <p><b>Date of Birth: </b>{!! isset($member->dob) ? $member->dob : 'Not Provided' !!}</p>
                                             <p><b>Email: </b>{!! isset($member->email) ? $member->email : 'Not Provided' !!}</p>
-                                            <p><b>Present Address: </b>{!! isset($member->profile->present_address) ? $member->profile->present_address : 'Not Provided' !!}</p>
-                                            <p><b>Parmanent Address: </b>{!! isset($member->profile->parmanent_address) ? $member->profile->parmanent_address : 'Not Provided' !!}</p>
+                                            <p><b>Present Address: </b>@if(!is_null($member->profile))
+                                                {!! isset($member->profile->present_address) ? $member->profile->present_address : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
+                                            <p><b>Parmanent Address: </b>@if(!is_null($member->profile))
+                                                {!! isset($member->profile->parmanent_address) ? $member->profile->parmanent_address : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
@@ -98,9 +118,24 @@
                                         </div>
                                         <div class="wrapper_indent">
 {{--                                            <p><b>Occupation:</b> {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>--}}
-                                            <p><b>Occupation: </b>{!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>
-                                            <p><b>Job Place: </b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
-                                            <p><b>Job Position: </b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
+                                            <p><b>Occupation: </b>@if(!is_null($member->profile))
+                                                {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
+                                            <p><b>Job Place: </b> @if(!is_null($member->profile))
+                                                {!! isset($member->profile->job_place) ? $member->profile->job_place : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
+                                            <p><b>Job Position: </b> @if(!is_null($member->profile))
+                                                {!! isset($member->profile->job_position) ? $member->profile->job_position : 'Not Provided' !!}
+                                                @else
+                                                    Not Provided
+                                                @endif
+                                            </p>
 
                                         </div>
                                         <!-- End review-container -->

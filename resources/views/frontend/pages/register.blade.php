@@ -26,15 +26,15 @@
                 <div class="bg_color_2">
                     <div class="container margin_60_35">
                         <div id="register">
-{{--                                                        <h4 class="text-center">Please registration First!</h4>--}}
+                            {{--                                                        <h4 class="text-center">Please registration First!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-7">
                                     {{ html()->form('POST', url('alumni-register'))->class('form-horizontal')->open() }}
                                     <div class="box_form bg-info p-10">
                                         <div class="row">
-{{--                                            <div>--}}
-{{--                                                <p> Please pay first brfore registration.</p>--}}
-{{--                                            </div>--}}
+                                            {{--                                            <div>--}}
+                                            {{--                                                <p> Please pay first brfore registration.</p>--}}
+                                            {{--                                            </div>--}}
                                             <div class="form-group col-sm-6">
                                                 {{ html()->label('Name')->class('col-md-2 form-control-label required')->for('name') }}
                                                 <div class="col-md-12">
@@ -139,7 +139,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group tranx-box col-sm-6" style="display: none">
-                                                {{ html()->label('Tranx ID')->class('col-md-6 form-control-label required')->for('tranx_id') }}
+                                                {{ html()->label('Tranx ID')->class('col-md-6 form-control-label')->for('tranx_id') }}
                                                 <div class="col-md-12">
                                                     {{ html()->text('transaction_id')
                                                         ->class('form-control')
@@ -149,18 +149,41 @@
                                                         ->autofocus() }}
                                                 </div>
                                             </div>
+                                            <div class="form-group branch-box col-sm-6" style="display: none">
+                                                {{ html()->label('Branch Name')->class('col-md-6 form-control-label')->for('tranx_id') }}
+                                                <div class="col-md-12">
+                                                    {{ html()->text('transaction_id')
+                                                        ->class('form-control')
+                                                        ->placeholder('Enter branch name') }}
+                                                </div>
+                                            </div>
                                             {{--                                                <div class="form-group col-sm-6">--}}
                                             {{--                                                    <label>Confirm password</label>--}}
                                             {{--                                                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm password">--}}
                                             {{--                                                </div>--}}
                                         </div>
+                                        <div class="row bank" style="display: none">
+                                            <div class="form-group col-sm-6">
+                                                {{ html()->label('Payment Date')->class('col-md-12 form-control-label')->for('payment_date') }}
+                                                <div class="col-md-12">
+                                                    {{ html()->text('payment_date')
+                                                        ->class('form-control')
+                                                        ->id('date')
+                                                        ->placeholder("Enter Payment date")
+                                                        ->attribute('maxlength', 191) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                {{ html()->label('Document')->class('col-md-6 form-control-label required')->for('document') }}
+                                                <div class="col-md-12">
+                                                    {{ html()->file('document')
+                                                        ->class('form-control')
+                                                        ->attribute('maxlength', 20)
+                                                        ->autofocus() }}
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div id="pass-info" class="clearfix"></div>
-                                        {{--                                                <div class="checkbox-holder text-left">--}}
-                                        {{--                                                    <div class="checkbox_2">--}}
-                                        {{--                                                        <input type="checkbox" value="accept_2" id="check_2" name="check_2" checked>--}}
-                                        {{--                                                        <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
                                         <div class="form-group text-center add_top_30">
                                             <input class="btn btn-dark" type="submit" value="Submit">
                                         </div>
@@ -192,10 +215,25 @@
             minViewMode: "years"
         });
 
+        $('#date').datepicker({
+            maxDate: '0',
+            dateFormat: "Y-m-d",
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "-100:+0"
+        });
+
         $('.payment').on('change', function() {
             var payment_option = this.value;
             if(payment_option == 'bkash' || payment_option == 'rocket'){
                 $('.tranx-box').show();
+                $('.bank').hide();
+                $('.branch-box').hide();
+            } else {
+                $('.bank').show();
+                $('.branch-box').show();
+                $('.tranx-box').hide();
+
             }
         });
     </script>
