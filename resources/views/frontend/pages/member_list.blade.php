@@ -36,7 +36,7 @@
                             <h6 class="text-info">{{ $member->first_name }}</h6>
                             <div class="details m-t-30">
 
-                                <a href="{!! url('alumni', $member->id) !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
+                                <a href="{!! url('alumni', $member->user_id) !!}" class="btn fancy-btn fancy-active" style="width: 140px;height: 40px">Details</a>
                             </div>
                         </div>
                     </article>

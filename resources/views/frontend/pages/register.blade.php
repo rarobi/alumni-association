@@ -216,11 +216,9 @@
         });
 
         $('#date').datepicker({
-            maxDate: '0',
-            dateFormat: "Y-m-d",
-            changeYear: true,
+            format: "yyyy-mm-dd",
             changeMonth: true,
-            yearRange: "-100:+0"
+            changeYear: true,
         });
 
         $('.payment').on('change', function() {
