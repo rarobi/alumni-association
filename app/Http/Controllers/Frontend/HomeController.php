@@ -7,6 +7,7 @@ use App\Modules\Gallery\Models\Gallery;
 use App\Modules\Notice\Models\Notice;
 use App\Modules\Settings\Models\Batch;
 use App\Models\Auth\User;
+use Carbon\Carbon;
 use Mockery\Matcher\Not;
 
 /**
@@ -45,6 +46,8 @@ class HomeController extends Controller
     }
 
     public function memberDetails($id){
+
+//        $data['today'] = Carbon::now()->format('Y-m-d');
         $data['member'] = User::find($id);
         return view('frontend.pages.member_details', $data);
     }

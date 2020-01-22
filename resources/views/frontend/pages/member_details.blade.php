@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="wrapper_indent">
                                             <p><b>Name: </b>{!! isset($member->first_name) ? $member->first_name : 'Not Provided' !!}</p>
-                                            <p><b>Age: </b>Not Provided</p>
+                                            <p><b>Age: </b>{!! \Carbon\Carbon::parse($member->dob)->age !!} Years</p>
                                             <p><b>Mobile: </b>{!! isset($member->mobile) ? $member->mobile : 'Not Provided' !!}</p>
                                             <p><b>Date of Birth: </b>{!! isset($member->dob) ? $member->dob : 'Not Provided' !!}</p>
                                             <p><b>Email: </b>{!! isset($member->email) ? $member->email : 'Not Provided' !!}</p>

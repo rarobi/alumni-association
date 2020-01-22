@@ -139,6 +139,10 @@
                                        <td>{!! isset($user->profile->session) ? $user->profile->session : 'N/A' !!} </td>
                                    </tr>
                                    <tr>
+                                       <th>B.Sc Roll</th>
+                                       <td>{!! isset($user->profile->roll) ? $user->profile->roll : 'N/A' !!} </td>
+                                   </tr>
+                                   <tr>
                                        <th>Passing Year</th>
                                        <td>{!! isset($user->profile->passing_year) ? $user->profile->passing_year : 'N/A' !!} </td>
                                    </tr>
