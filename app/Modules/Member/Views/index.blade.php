@@ -33,10 +33,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Batch</th>
+                            <th>B.Sc Roll</th>
                             <th>@lang('labels.backend.access.users.table.name')</th>
                             <th>@lang('labels.backend.access.users.table.email')</th>
                             <th>Member Status</th>
-                            <th>Blood Group</th>
+{{--                            <th>Blood Group</th>--}}
                             <th>@lang('labels.backend.access.users.table.roles')</th>
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
                             @if($logged_in_user->isAdmin())
@@ -48,12 +50,14 @@
                         @foreach($users as $key => $user)
                             <tr>
                                 <td>{{ $key + $users->firstItem() }}</td>
+                                <td>{{ isset($user->batch_id) ? $user->batch_id : 'Not Provided' }}</td>
+                                <td>{{ isset($user->roll) ? $user->batch_id : 'Not Provided' }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>
-                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>
+{{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
                                 <td>{!! $user->roles_label !!}</td>
-                                <td>{{ $user->updated_at->diffForHumans() }}</td>
+                                <td>{{ $user->updated_at }}</td>
                                 @if($logged_in_user->isAdmin())
                                 <td>{!! $user->action_buttons !!}</td>
                                 @endif
