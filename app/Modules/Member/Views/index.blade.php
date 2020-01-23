@@ -51,7 +51,7 @@
                             <tr>
                                 <td>{{ $key + $users->firstItem() }}</td>
                                 <td>{{ isset($user->batch_id) ? $user->batch_id : 'Not Provided' }}</td>
-                                <td>{{ isset($user->roll) ? $user->batch_id : 'Not Provided' }}</td>
+                                <td>{{ isset($user->roll) ? $user->roll : 'Not Provided' }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>

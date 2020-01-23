@@ -29,7 +29,7 @@
                             {{--                                                        <h4 class="text-center">Please registration First!</h4>--}}
                             <div class="row justify-content-center">
                                 <div class="col-md-7">
-                                    {{ html()->form('POST', url('alumni-register'))->class('form-horizontal')->open() }}
+                                    {{ html()->form('POST', url('alumni-register'))->attribute('enctype','multipart/form-data')->class('form-horizontal')->open() }}
                                     <div class="box_form bg-info p-10">
                                         <div class="row">
                                             {{--                                            <div>--}}
@@ -117,7 +117,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                {{ html()->label('Payment')->class('col-md-6 form-control-label required')->for('payment') }}
+                                                {{ html()->label('Payment Type')->class('col-md-12 form-control-label required')->for('payment') }}
                                                 <div class="col-md-12">
                                                     {{ html()->select('paymemt_type')
                                                         ->class('form-control payment')
@@ -145,22 +145,17 @@
                                                         ->class('form-control')
                                                         ->placeholder('Enter transaction numbr')
                                                         ->attribute('maxlength', 20)
-                                                        ->required()
                                                         ->autofocus() }}
                                                 </div>
                                             </div>
                                             <div class="form-group branch-box col-sm-6" style="display: none">
-                                                {{ html()->label('Branch Name')->class('col-md-6 form-control-label')->for('tranx_id') }}
+                                                {{ html()->label('Branch Name')->class('col-md-6 form-control-label')->for('branch_name') }}
                                                 <div class="col-md-12">
-                                                    {{ html()->text('transaction_id')
+                                                    {{ html()->text('branch_name')
                                                         ->class('form-control')
                                                         ->placeholder('Enter branch name') }}
                                                 </div>
                                             </div>
-                                            {{--                                                <div class="form-group col-sm-6">--}}
-                                            {{--                                                    <label>Confirm password</label>--}}
-                                            {{--                                                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm password">--}}
-                                            {{--                                                </div>--}}
                                         </div>
                                         <div class="row bank" style="display: none">
                                             <div class="form-group col-sm-6">

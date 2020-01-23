@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Events\Frontend\AlumniRegistration;
 use App\Models\Auth\User;
 use App\Models\EmailQueue;
+use App\Models\Payment;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
 use App\Modules\Settings\Models\Session;
@@ -69,6 +70,27 @@ class AlumniLoginController extends Controller
         $user_profile->roll           = $request->input('roll');
         $user_profile->transaction_id = $request->input('transaction_id');
         $user_profile->save();
+
+        $payment = new Payment();
+        $payment->user_id        = $user->id;
+        $payment->payment_type   = $request->input('paymemt_type');
+        $payment->transaction_id = $request->input('transaction_id');
+        $payment->branch_name    = $request->input('branch_name');
+        $payment->payment_date   = $request->input('payment_date');
+
+        $prefix = date('Ymd_');
+        $photo = $request->file('document');
+
+        if ($request->file('document')) {
+            $mime_type = $photo->getClientMimeType();
+            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+                return redirect('/alumni-register')->with('flash_danger','Document image must be png or jpg or jpeg format!');
+            }
+            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
+            $photo->move('uploads/payment_documents/', $photoFile);
+            $payment->document = $photoFile;
+        }
+        $payment->save();
 
         if($user_profile->id) {
 
