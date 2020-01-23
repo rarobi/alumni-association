@@ -33,10 +33,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Batch</th>
+                            <th>B.Sc Roll</th>
                             <th>@lang('labels.backend.access.users.table.name')</th>
                             <th>@lang('labels.backend.access.users.table.email')</th>
                             <th>Member Status</th>
-                            <th>Blood Group</th>
+{{--                            <th>Blood Group</th>--}}
                             <th>@lang('labels.backend.access.users.table.roles')</th>
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
 {{--                            @if($logged_in_user->isAdmin())--}}
@@ -48,10 +50,12 @@
                         @foreach($pending_users as $key => $user)
                             <tr>
                                 <td>{{ $key + $pending_users->firstItem() }}</td>
+                                <td>{{ $user->batch_id }}</td>
+                                <td>{{ $user->roll }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>
-                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>
+{{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
                                 <td>{!! $user->roles_label !!}</td>
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
 {{--                                @if($logged_in_user->isAdmin())--}}

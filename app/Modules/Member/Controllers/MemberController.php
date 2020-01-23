@@ -46,8 +46,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::where('member_status', 'approved')->orderBy('id', 'desc')->paginate(10);
-
+//        $data['users'] = User::where('member_status', 'approved')->orderBy('id', 'desc')->paginate(10);
+        $data['users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'approved')->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
         return view('Member::index',$data);
 //            ->withUsers($this->memberRepository->getActivePaginated(10, 'id', 'desc'));
     }
@@ -313,9 +313,10 @@ class MemberController extends Controller
     public function pendingList() {
 
         if(Auth::user()->hasRole('administrator')){
-            $data['pending_users'] = User::where('member_status', 'reviewed')->orderBy('id', 'desc')->paginate(10);
+//            $data['pending_users'] = User::where('member_status', 'reviewed')->orderBy('id', 'desc')->paginate(10);
+            $data['pending_users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'reviewed')->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
         } elseif (Auth::user()->hasRole('batch-admin')){
-            $data['pending_users'] = User::where('member_status', 'pending')->orderBy('id', 'desc')->paginate(10);
+            $data['pending_users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'pending')->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
         }
         return view('Member::pending_list',$data);
     }
