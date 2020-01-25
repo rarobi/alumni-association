@@ -53,10 +53,28 @@ class AlumniLoginController extends Controller
 
     public function register(Request $request)
     {
+        $mobile = $request->input('mobile');
+        $email  = $request->input('email');
+
+        $duplicate_email = User::where('email', $email)->first();
+        if($duplicate_email) {
+            return redirect()->back()->with('message', 'This Email already used. Please enter unique email.');
+        }
+
+        $rules['paymemt_type'] = 'required';
+        if($request->get('paymemt_type') == 'bank'){
+            $rules['branch_name'] = 'required';
+        } else {
+            $rules['transaction_id'] = 'required';
+            $rules['transaction_number'] = 'required';
+        }
+
+        $this->validate($request, $rules);
+
         $user = new User();
         $user->first_name    = $request->input('name');
-        $user->email         = $request->input('email');
-        $user->mobile        = $request->input('mobile');
+        $user->email         = $email;
+        $user->mobile        = $mobile;
         $user->password      = bcrypt($request->input('password'));
         $user->member_status = 'pending';
         $user->member_category = 'general';
@@ -75,10 +93,11 @@ class AlumniLoginController extends Controller
         $payment->user_id        = $user->id;
         $payment->payment_type   = $request->input('paymemt_type');
         $payment->transaction_id = $request->input('transaction_id');
+        $payment->transaction_number = $request->input('transaction_number');
         $payment->branch_name    = $request->input('branch_name');
         $payment->payment_date   = $request->input('payment_date');
 
-        $prefix = date('Ymd_');
+        $prefix = date('Ymd_'.$mobile.'_');
         $photo = $request->file('document');
 
         if ($request->file('document')) {

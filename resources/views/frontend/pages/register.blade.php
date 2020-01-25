@@ -17,6 +17,11 @@
 
     <section class="single_blog_area p-t-70 m-b-20">
         <div class="container">
+                @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="text-center text-danger">{{ $error }}</div>
+                    @endforeach
+                @endif
             @if(session()->has('message'))
                 <div class="alert alert-success text-center">
                     {{ session()->get('message') }}
@@ -121,7 +126,7 @@
                                                 <div class="col-md-12">
                                                     {{ html()->select('paymemt_type')
                                                         ->class('form-control payment')
-                                                        ->options(['' => 'select an option', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'bank' => 'Bank Transfer'])
+                                                        ->options(['' => 'select an option', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'nogod' => 'Nogod', 'bank' => 'Bank Transfer'])
                                                         ->required() }}
                                                 </div>
                                             </div>
@@ -165,7 +170,8 @@
                                                         ->class('form-control')
                                                         ->id('date')
                                                         ->placeholder("Enter Payment date")
-                                                        ->attribute('maxlength', 191) }}
+                                                        ->attribute('maxlength', 191)
+                                                         ->required()}}
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
@@ -174,7 +180,21 @@
                                                     {{ html()->file('document')
                                                         ->class('form-control')
                                                         ->attribute('maxlength', 20)
-                                                        ->autofocus() }}
+                                                        ->autofocus()
+                                                        ->required()}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row sender" style="display: none">
+                                            <div class="form-group col-sm-6">
+                                                {{ html()->label('Transaction Number')->class('col-md-12 form-control-label')->for('transaction_number') }}
+                                                <div class="col-md-12">
+                                                    {{ html()->text('transaction_number')
+                                                        ->class('form-control')
+                                                        ->id('date')
+                                                        ->placeholder("Enter Transaction Mobile Number")
+                                                        ->attribute('maxlength', 191)
+                                                         }}
                                                 </div>
                                             </div>
                                         </div>
@@ -218,15 +238,17 @@
 
         $('.payment').on('change', function() {
             var payment_option = this.value;
-            if(payment_option == 'bkash' || payment_option == 'rocket'){
+            if(payment_option == 'bkash' || payment_option == 'rocket' || payment_option == 'nogod'){
                 $('.tranx-box').show();
-                $('.bank').hide();
+                $('.bank').show();
                 $('.branch-box').hide();
+                $('.sender').show();
+
             } else {
                 $('.bank').show();
                 $('.branch-box').show();
                 $('.tranx-box').hide();
-
+                $('.sender').hide();
             }
         });
     </script>
