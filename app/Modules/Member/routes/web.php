@@ -9,7 +9,16 @@ Route::group(['module' => 'Member', 'middleware' => ['web','auth'], 'namespace' 
 
     Route::get('member/pending_list', 'MemberController@pendingList')->name('member.pending-list');
 
-    Route::resource('member', 'MemberController');
+//    Route::resource('member', 'MemberController');
+    Route::resource('member', 'MemberController', ['names' => [
+        'index'     => 'member.index',
+        'create'    => 'member.create',
+        'store'     => 'member.store',
+        'show'      => 'member.show',
+        'edit'      => 'member.edit',
+        'update'    => 'member.update',
+        'destroy'   => 'member.destroy'
+    ]]);
 
     Route::get('member/accept/{id}', 'MemberController@acceptMember')->name('member.accept');
 

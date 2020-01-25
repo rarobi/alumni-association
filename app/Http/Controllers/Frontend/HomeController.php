@@ -40,7 +40,8 @@ class HomeController extends Controller
     }
 
     public function memberList($id) {
-        $data['members'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('batch_id', $id)
+        $data['members'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')
+            ->where('batch_id', $id)->where('member_status', '=', 'approved')
             ->paginate(12);
         return view('frontend.pages.member_list',  $data);
     }

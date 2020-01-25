@@ -39,7 +39,7 @@
                             <th>@lang('labels.backend.access.users.table.email')</th>
                             <th>Member Status</th>
 {{--                            <th>Blood Group</th>--}}
-                            <th>@lang('labels.backend.access.users.table.roles')</th>
+{{--                            <th>@lang('labels.backend.access.users.table.roles')</th>--}}
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
 {{--                            @if($logged_in_user->isAdmin())--}}
                             <th>@lang('labels.general.actions')</th>
@@ -56,10 +56,14 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>
 {{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
-                                <td>{!! $user->roles_label !!}</td>
+{{--                                <td>{!! $user->roles_label !!}</td>--}}
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
 {{--                                @if($logged_in_user->isAdmin())--}}
-                                <td>{!! $user->action_buttons !!}</td>
+{{--                                <td>{!! $user->action_buttons !!}</td>--}}
+                                <td>
+                                    <a href="{{ route('member.show', $user->user_id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('member.edit', $user->user_id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+                                </td>
 {{--                                @endif--}}
                             </tr>
                         @endforeach

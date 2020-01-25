@@ -39,7 +39,7 @@
                             <th>@lang('labels.backend.access.users.table.email')</th>
                             <th>Member Status</th>
 {{--                            <th>Blood Group</th>--}}
-                            <th>@lang('labels.backend.access.users.table.roles')</th>
+{{--                            <th>@lang('labels.backend.access.users.table.roles')</th>--}}
                             <th>@lang('labels.backend.access.users.table.last_updated')</th>
                             @if($logged_in_user->isAdmin())
                             <th>@lang('labels.general.actions')</th>
@@ -48,6 +48,7 @@
                         </thead>
                         <tbody>
                         @foreach($users as $key => $user)
+{{--                         {!! dd($user) !!}--}}
                             <tr>
                                 <td>{{ $key + $users->firstItem() }}</td>
                                 <td>{{ isset($user->batch_id) ? $user->batch_id : 'Not Provided' }}</td>
@@ -56,10 +57,16 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>
 {{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
-                                <td>{!! $user->roles_label !!}</td>
+{{--                                <td>{!! $user->roles_label !!}</td>--}}
                                 <td>{{ $user->updated_at }}</td>
                                 @if($logged_in_user->isAdmin())
-                                <td>{!! $user->action_buttons !!}</td>
+{{--                                <td>{!! $user->action_buttons !!}</td>--}}
+                                    <td>
+{{--                                        <a href="{{ route('member.show', $user->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>--}}
+                                        <a href="#" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+{{--                                        <a href="{{ route('member.edit', $user->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
+                                        <a href="#" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+                                    </td>
                                 @endif
                             </tr>
                         @endforeach

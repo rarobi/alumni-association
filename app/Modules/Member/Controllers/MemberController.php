@@ -47,9 +47,9 @@ class MemberController extends Controller
     public function index()
     {
 //        $data['users'] = User::where('member_status', 'approved')->orderBy('id', 'desc')->paginate(10);
-        $data['users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'approved')->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
+        $data['users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'approved')
+            ->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
         return view('Member::index',$data);
-//            ->withUsers($this->memberRepository->getActivePaginated(10, 'id', 'desc'));
     }
 
     /**
