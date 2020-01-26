@@ -226,9 +226,9 @@
             <div class="col-sm-10">
                 <a class="btn btn-info" href="{!! route('member.accept', $user->id) !!}"> Approve Member</a>
             </div>
-{{--            <div class="col-sm-2 pull-right">--}}
-{{--                <a class="btn btn-warning " href="{!! route('member.index') !!}"><i class="fa fa-arrow-left"> Back</i></a>--}}
-{{--            </div>--}}
+            <div class="col-sm-2 pull-right">
+                <a class="btn btn-warning " href="{{ url()->previous() }}"><i class="fa fa-arrow-left"> Back</i></a>
+            </div>
         </div>
         @endif
    </div><!--card-body-->
