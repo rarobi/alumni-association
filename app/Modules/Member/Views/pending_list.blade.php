@@ -56,7 +56,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->member_status }}</td>
 {{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
-{{--                                <td>{!! $user->roles_label !!}</td>--}}
+                                <td>{!! $user->roles_label !!}</td>
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
 {{--                                @if($logged_in_user->isAdmin())--}}
 {{--                                <td>{!! $user->action_buttons !!}</td>--}}
