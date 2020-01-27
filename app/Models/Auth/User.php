@@ -6,6 +6,7 @@ use App\Models\Auth\Traits\Scope\UserScope;
 use App\Models\Auth\Traits\Method\UserMethod;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
 use App\Models\Auth\Traits\Relationship\UserRelationship;
+use App\Models\Payment;
 use App\Models\UserProfile;
 use App\Modules\Account\Models\Expense;
 use App\Modules\Account\Models\Income;
@@ -23,6 +24,10 @@ class User extends BaseUser
 
     public function profile(){
         return $this->hasOne(UserProfile::class,'user_id','id');
+    }
+
+    public function payment() {
+        return $this->hasOne(Payment::class,'user_id', 'id');
     }
 
 
