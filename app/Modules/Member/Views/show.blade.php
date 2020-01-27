@@ -27,14 +27,14 @@
                         <a class="nav-link" data-toggle="tab" href="#in-out" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-calendar-check"></i> Educational Info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#subscription" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-money-bill"></i> Professional Info</a>
+                        <a class="nav-link" data-toggle="tab" href="#subscription" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-briefcase"></i> Professional Info</a>
                     </li>
-                    {{--<li class="nav-item">--}}
-                        {{--<a class="nav-link" data-toggle="tab" href="#library" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-book"></i> @lang('labels.backend.access.users.tabs.titles.library')</a>--}}
-                    {{--</li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#payment" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-money-bill"></i> Payment Info</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
+                   <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
                         <div class="row">
                             <div class="offset-sm-5 col-sm-7">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')" style="margin: 0px 15px 3px 0px" >
@@ -217,6 +217,47 @@
                        </div>
 
                    </div>
+                    <div class="tab-pane" id="payment" role="tabpanel">
+                        <div class="col">
+{{--                            {!! dd($user->payment) !!}--}}
+                            @if(!is_null($user->payment))
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Payment Type</th>
+                                        <td>{!! isset($user->payment->payment_type) ? $user->payment->payment_type : 'N/A' !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Transaction ID</th>
+                                        <td>{!! isset($user->payment->transaction_id) ? $user->payment->transaction_id : 'N/A' !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Transaction Mobile Number</th>
+                                        <td>{!! isset($user->payment->transaction_number) ? $user->payment->transaction_number : 'N/A' !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Branch Name</th>
+                                        <td>{!! isset($user->payment->branch_name) ? $user->payment->branch_name : 'N/A' !!} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment Date</th>
+                                        <td>{!! isset($user->payment->payment_date) ? $user->payment->payment_date : 'N/A' !!} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Document</th>
+                                        <td>
+                                            <img src="/uploads/payment_documents/{{ $user->payment->document }}" height="200" width="300">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            @else
+                            <div class="row">
+                                <p class="text-center"> No Data Found</p>
+                            </div>
+                            @endif
+                        </div><!--table-responsive-->
+                    </div>
                    <!--tab-->
                </div><!--tab-content-->
            </div><!--col-->
