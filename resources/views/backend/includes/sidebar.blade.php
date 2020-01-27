@@ -76,7 +76,7 @@
                     active_class(Active::checkUriPattern('payment'))
                 }}" href="{{ url('payment') }}">
                     <i class="nav-icon fas fa-money-bill"></i>
-                    Payment
+                    Payment Info
                 </a>
             </li>
 

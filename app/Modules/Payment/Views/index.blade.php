@@ -18,6 +18,7 @@
 
                 <div class="col-sm-7">
                     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
+                        <a href="{{ url('payment/create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
                     </div><!--btn-toolbar-->
                 </div><!--col-->
             </div><!--row-->
@@ -52,7 +53,13 @@
                                     <td>{!! isset($payment->tranaction_id) ? $payment->tranaction_id : 'Not Provided' !!}</td>
                                     <td>{!! isset($payment->payment_date) ? $payment->payment_date : 'Not Provided' !!}</td>
                                     <td>
-                                        <a href="{{ route('event.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+                                        <form  action="{{ route('payment.destroy',$payment->id) }}" method="post">
+                                            @method('DELETE')
+                                            {!! csrf_field() !!}
+                                            <a href="{{ route('payment.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+                                            <button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
