@@ -71,6 +71,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{
+                    active_class(Active::checkUriPattern('payment'))
+                }}" href="{{ url('payment') }}">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    Payment
+                </a>
+            </li>
+
             {{--<li class="nav-item nav-dropdown {{--}}
                     {{--active_class(Active::checkUriPattern('library/*'), 'open')--}}
                 {{--}}">--}}
