@@ -55,8 +55,9 @@
                             <p>Fill out the form below to recieve a free and confidential.</p>
                         </div>
                         <div class="contact-form">
-                            <form action="#" method="post">
-                                <!-- Message Input Area Start -->
+{{--                            <form action="{!! route('contact.store') !!}" method="post">--}}
+                            {{ html()->form('POST', url('alumni-contact'))->class('form-horizontal')->open() }}
+                            <!-- Message Input Area Start -->
                                 <div class="contact_input_area">
                                     <div class="row">
                                         <!-- Single Input Area -->
@@ -74,7 +75,7 @@
                                         <!-- Single Input Area -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="subject" id="website" placeholder="Website" required>
+                                                <input type="text" class="form-control" name="mobile" id="website" placeholder="Mobile" required>
                                             </div>
                                         </div>
                                         <!-- Single Input Area -->
@@ -89,7 +90,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                {{ html()->form()->close() }}
                         </div>
                     </div>
                 </div>

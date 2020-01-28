@@ -52,8 +52,8 @@ Route::post('/alumni-login', [AlumniLoginController::class, 'login']);
 Route::get('/alumni-register', [AlumniLoginController::class, 'registerForm'])->name('alumni.register');
 Route::post('/alumni-register', [AlumniLoginController::class, 'register']);
 //Route::get('/', [LoginController::class, 'showLoginForm'])->name('index');
-//Route::get('contact', [ContactController::class, 'index'])->name('contact');
-Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
+//Route::post('/alumni-contact', [ContactController::class, 'store'])->name('alumni-contact.store');
+Route::post('alumni-contact', [ContactController::class, 'send'])->name('contact.send');
 
 /*
  * These frontend controllers require the user to be logged in

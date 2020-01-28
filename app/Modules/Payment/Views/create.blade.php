@@ -72,8 +72,8 @@
                                  ->required()}}
                         </div>
                     </div>
-                    <div class="form-group row">
-                        {{ html()->label('Document')->class('col-md-2 form-control-label required')->for('document') }}
+                    <div class="form-group row document">
+                        {{ html()->label('Document')->class('col-md-2 form-control-label')->for('document') }}
                         <div class="col-md-10">
                             <span id="photo_err" class="text-danger" style="font-size: 15px;"></span>
                             <div>
@@ -112,11 +112,13 @@
                     $('.tranx_id').show();
                     $('.sender').show();
                     $('.branch-box').hide();
+                    $('.document').show();
 
                 } else if(payment_option == 'bank') {
                     $('.branch-box').show();
                     $('.tranx_id').hide();
                     $('.sender').hide();
+                    $('.document').hide();
                 }
             });
 

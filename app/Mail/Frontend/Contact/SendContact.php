@@ -27,6 +27,7 @@ class SendContact extends Mailable
     public function __construct(Request $request)
     {
         $this->request = $request;
+//        dd($this->request);
     }
 
     /**
