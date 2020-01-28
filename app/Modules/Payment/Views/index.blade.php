@@ -18,7 +18,9 @@
 
                 <div class="col-sm-7">
                     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
+                        @if ($logged_in_user->hasRole('payment-receiver-admin'))
                         <a href="{{ url('payment/create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+                        @endif
                     </div><!--btn-toolbar-->
                 </div><!--col-->
             </div><!--row-->
@@ -51,7 +53,7 @@
                                             {{--N/A--}}
                                         {{--@endif--}}
                                     {{--</td>--}}
-                                    <td>{!! isset($payment->tranaction_id) ? $payment->tranaction_id : 'Not Provided' !!}</td>
+                                    <td>{!! isset($payment->transaction_id) ? $payment->transaction_id : 'Not Provided' !!}</td>
                                     <td>{!! isset($payment->payment_date) ? $payment->payment_date : 'Not Provided' !!}</td>
                                     <td>{!! isset($payment->branch_name) ? $payment->branch_name : 'Not Provided' !!}</td>
                                     <td>
@@ -60,7 +62,9 @@
                                             {!! csrf_field() !!}
                                             <a href="{{ route('payment.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
 {{--                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
+                                            @if ($logged_in_user->hasRole('payment-receiver-admin'))
                                             <button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>
+                                            @endif
                                         </form>
                                     </td>
                                 </tr>

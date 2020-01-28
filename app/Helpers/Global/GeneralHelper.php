@@ -31,7 +31,7 @@ if (! function_exists('home_route')) {
     function home_route()
     {
         if (auth()->check()) {
-            if (auth()->user()->hasRole(['administrator', 'batch-admin'])) {
+            if (auth()->user()->hasRole(['administrator', 'batch-admin', 'payment-receiver-admin'])) {
                 return 'dashboard.index';
             }
 

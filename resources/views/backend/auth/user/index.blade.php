@@ -40,7 +40,7 @@
                         <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{!! $user->confirmed_label !!}</td>
                                 <td>{!! $user->roles_label !!}</td>

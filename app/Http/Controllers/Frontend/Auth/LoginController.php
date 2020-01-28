@@ -152,7 +152,7 @@ class LoginController extends Controller
         // Remove any session data from backend
         resolve(AuthHelper::class)->flushTempSession();
 
-        if(Auth::user()->hasRole(['administrator', 'batch-admin'])){
+        if(Auth::user()->hasRole(['administrator', 'batch-admin', 'payment-receiver-admin'])){
             // Fire event, Log out user, Redirect
             event(new UserLoggedOut($request->user()));
 

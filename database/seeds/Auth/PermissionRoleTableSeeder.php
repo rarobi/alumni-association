@@ -21,11 +21,12 @@ class PermissionRoleTableSeeder extends Seeder
         // Create Roles
         $admin = Role::create(['name' => config('access.users.admin_role')]);
         $executive = Role::create(['name' => 'batch-admin']);
+        $payment_receiver_admin = Role::create(['name' => 'payment-receiver-admin']);
         $member = Role::create(['name' => 'member']);
 //        $user = Role::create(['name' => config('access.users.default_role')]);
 
         // Create Permissions
-        $permissions = ['view backend', 'view profile'];
+        $permissions = ['view backend', 'view profile', 'view payment'];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
@@ -39,6 +40,9 @@ class PermissionRoleTableSeeder extends Seeder
 
         // Assign Permissions to member Roles
         $member->givePermissionTo('view profile');
+
+        // Assign Permissions to payment-receiver-admin Roles
+        $payment_receiver_admin->givePermissionTo('view payment');
 
         $this->enableForeignKeys();
     }
