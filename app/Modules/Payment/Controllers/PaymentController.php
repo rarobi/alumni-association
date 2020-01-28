@@ -2,7 +2,8 @@
 
 namespace App\Modules\Payment\Controllers;
 
-use App\Modules\Payment\Models\Payment;
+use App\Modules\Payment\Models\StorePaymentInfo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $data['payments'] = Payment::orderBy('id', 'DESC')->paginate(10);
+        $data['payments'] = StorePaymentInfo::orderBy('id', 'DESC')->paginate(10);
         return view("Payment::index", $data);
     }
 
@@ -38,7 +39,39 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules['paymemt_type'] = 'required';
+        if($request->get('paymemt_type') == 'bank'){
+            $rules['branch_name'] = 'required';
+        } else {
+            $rules['transaction_id'] = 'required';
+            $rules['transaction_number'] = 'required';
+        }
+
+        $this->validate($request, $rules);
+
+        $store_payment_info = new StorePaymentInfo();
+//        $store_payment_info->user_mobile        = $request->input('mobile');
+        $store_payment_info->payment_type   = $request->input('paymemt_type');
+        $store_payment_info->transaction_id = $request->input('transaction_id');
+        $store_payment_info->transaction_number = $request->input('transaction_number');
+        $store_payment_info->branch_name    = $request->input('branch_name');
+        $store_payment_info->payment_date   = Carbon::parse($request->input('payment_date'))->format('Y-m-d');
+
+        $prefix = date('Ymd_');
+        $photo = $request->file('document');
+
+        if ($request->file('document')) {
+            $mime_type = $photo->getClientMimeType();
+            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+                return redirect('/alumni-register')->with('flash_danger','Document image must be png or jpg or jpeg format!');
+            }
+            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
+            $photo->move('uploads/store_payment_documents/', $photoFile);
+            $store_payment_info->document = $photoFile;
+        }
+        $store_payment_info->save();
+
+        return redirect()->route('payment.index')->withFlashSuccess('Payment created successfully');
     }
 
     /**
@@ -49,7 +82,8 @@ class PaymentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['payment'] = StorePaymentInfo::find($id);
+        return view("Payment::show", $data);
     }
 
     /**
@@ -83,6 +117,10 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $store_payment = StorePaymentInfo::find($id);
+        $store_payment->delete();
+
+        return redirect()->route('payment.index')->withFlashSuccess('Payment deleted successfully');
+
     }
 }

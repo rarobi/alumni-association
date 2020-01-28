@@ -30,10 +30,11 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>User id</th>
+                                {{--<th>User Mobile</th>--}}
                                 <th>Payment Type</th>
                                 <th>Transaction Id</th>
                                 <th>Payment Date</th>
+                                <th>Branch Name</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -41,7 +42,7 @@
                             @foreach($payments as $payment)
                                 <tr>
                                     <td>{{ $payment->id }}</td>
-                                    <td>{{ $payment->user_id }}</td>
+{{--                                    <td>{{ $payment->user_id }}</td>--}}
                                     <td> {!! isset($payment->payment_type) ? $payment->payment_type : 'Not Provided' !!}
                                     </td>
                                     {{--<td>@if($payment->image)--}}
@@ -52,12 +53,13 @@
                                     {{--</td>--}}
                                     <td>{!! isset($payment->tranaction_id) ? $payment->tranaction_id : 'Not Provided' !!}</td>
                                     <td>{!! isset($payment->payment_date) ? $payment->payment_date : 'Not Provided' !!}</td>
+                                    <td>{!! isset($payment->branch_name) ? $payment->branch_name : 'Not Provided' !!}</td>
                                     <td>
                                         <form  action="{{ route('payment.destroy',$payment->id) }}" method="post">
                                             @method('DELETE')
                                             {!! csrf_field() !!}
                                             <a href="{{ route('payment.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+{{--                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
                                             <button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
@@ -66,7 +68,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <div>
+                        {!! $payments->render() !!}
+                    </div>
                 </div><!--col-->
+
             </div><!--row-->
         </div><!--card-body-->
     </div><!--card-->
