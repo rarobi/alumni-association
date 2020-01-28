@@ -63,7 +63,7 @@ class PaymentController extends Controller
         if ($request->file('document')) {
             $mime_type = $photo->getClientMimeType();
             if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
-                return redirect('/alumni-register')->with('flash_danger','Document image must be png or jpg or jpeg format!');
+                return redirect('/payment')->with('flash_danger','Document image must be png or jpg or jpeg format!');
             }
             $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
             $photo->move('uploads/store_payment_documents/', $photoFile);
