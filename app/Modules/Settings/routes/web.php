@@ -24,4 +24,7 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
         'destroy'   => 'settings.alumni.session.destroy'
     ]]);
 
+    Route::get('settings/alumni/change-password', 'SettingsController@index')->name('settings.alumni.change-password');
+    Route::post('settings/alumni/change-password', 'SettingsController@store')->name('settings.alumni.change-password.store');
+
 });
