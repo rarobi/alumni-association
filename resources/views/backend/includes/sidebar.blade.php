@@ -217,6 +217,51 @@
                         Payment Info
                     </a>
                 </li>
+                <li class="nav-item nav-dropdown {{
+                    active_class(Active::checkUriPattern('settings/*'), 'open')
+                }}">
+                    <a class="nav-link nav-dropdown-toggle {{
+                        active_class(Active::checkUriPattern('settings/*'))
+                    }}" href="#">
+                        <i class="nav-icon fa fa-cogs"></i>
+                        Settings
+                    </a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/batch*'))
+                            }}" href="{{ route('settings.alumni.batch.index') }}">
+                                <i class="fa fa-book"></i> Batch
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/session*'))
+                            }}" href="{{ route('settings.alumni.session.index') }}">
+                                <i class="fa fa-book"></i> Session
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/change-password*'))
+                            }}" href="{{ route('settings.alumni.change-password') }}">
+                                <i class="fa fa-book"></i> Change Password
+                            </a>
+                        </li>
+
+
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link {{--}}
+                        {{--                                active_class(Active::checkUriPattern('settings/books/publisher*'))--}}
+                        {{--                            }}" href="{{ route('settings.book.publisher.index') }}">--}}
+                        {{--                                <i class="fa fa-book"></i> Book Publishers--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </li>
             @endif
             @if ($logged_in_user->hasRole('batch-admin'))
                 <li class="nav-item">
@@ -246,6 +291,51 @@
                         <i class="nav-icon fas fa-money-bill"></i>
                         Payment Info
                     </a>
+                </li>
+                <li class="nav-item nav-dropdown {{
+                    active_class(Active::checkUriPattern('settings/*'), 'open')
+                }}">
+                    <a class="nav-link nav-dropdown-toggle {{
+                        active_class(Active::checkUriPattern('settings/*'))
+                    }}" href="#">
+                        <i class="nav-icon fa fa-cogs"></i>
+                        Settings
+                    </a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/batch*'))
+                            }}" href="{{ route('settings.alumni.batch.index') }}">
+                                <i class="fa fa-book"></i> Batch
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/session*'))
+                            }}" href="{{ route('settings.alumni.session.index') }}">
+                                <i class="fa fa-book"></i> Session
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/change-password*'))
+                            }}" href="{{ route('settings.alumni.change-password') }}">
+                                <i class="fa fa-book"></i> Change Password
+                            </a>
+                        </li>
+
+
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link {{--}}
+                        {{--                                active_class(Active::checkUriPattern('settings/books/publisher*'))--}}
+                        {{--                            }}" href="{{ route('settings.book.publisher.index') }}">--}}
+                        {{--                                <i class="fa fa-book"></i> Book Publishers--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
                 </li>
             @endif
 

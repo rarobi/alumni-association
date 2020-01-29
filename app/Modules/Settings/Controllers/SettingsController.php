@@ -46,7 +46,6 @@ class SettingsController extends Controller
     {
         $current_time = Carbon::now()->format('Y-m-d H:i:s');
 
-        try {
         $userId =   Auth::id();
         $currentPassword = $request->input('current_password');
         $newPassword     = $request->input('new_password');
@@ -55,38 +54,23 @@ class SettingsController extends Controller
         $user = User::find($userId);
 
         if( ! $user instanceof $this->user) {
-            throw new \Exception("We can't find a user with that e-mail address");
+            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('We can\'t find a user with that e-mail address');
         }
 
         if(! \Hash::check($currentPassword, $user->password)) {
-            throw new \Exception("Current password does not match with provided password");
+            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('Current password does not match with provided password');
         }
 
         if( $newPassword != $verifyPassword) {
-            throw new \Exception("New password does not match with confirm password");
+            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('New password does not match with confirm password');
         }
 
         $user->password            = bcrypt($newPassword);
         $user->password_changed_at = $current_time;
-        dd(2,$user);
+//        dd(2,$user);
         $user->save();
 
-            $data['status_code']    = $this->getStatusCode();
-            $data['status']         = 'success';
-            $data['message']        = 'Password successfully updated';
-
-
-        } catch(\Exception $e) {
-            $this->setStatusCode(400);
-            $data['status_code']    = $this->getStatusCode();
-            $data['status']         = 'error';
-            $data['error']          = $e->getMessage();
-
-        } finally {
-
-            return response()->json($data);
-            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('Batch created successfully');
-        }
+            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('Password update successfully');
     }
 
     /**
