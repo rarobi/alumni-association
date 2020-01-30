@@ -24,7 +24,7 @@
             <div class="row mt-4 mb-4">
                 <div class="col">
                     <div class="form-group row">
-                        {{ html()->label('Name')->class('col-md-2 form-control-label required')->for('name') }}
+                        {{ html()->label('Name')->class('col-md-2 form-control-label')->for('name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('name', $user->first_name)
@@ -36,7 +36,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Mobile')->class('col-md-2 form-control-label required')->for('mobile') }}
+                        {{ html()->label('Mobile')->class('col-md-2 form-control-label')->for('mobile') }}
 
                         <div class="col-md-10">
                             {{ html()->text('mobile', $user->mobile)
@@ -48,7 +48,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Educational qualification')->class('col-md-2 form-control-label required')->for('educational_qualification') }}
+                        {{ html()->label('Educational qualification')->class('col-md-2 form-control-label')->for('educational_qualification') }}
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
                                 {{ html()->Select('educational_qualification', $user->profile->education_qualification)
@@ -67,7 +67,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Roll')->class('col-md-2 form-control-label required')->for('roll') }}
+                        {{ html()->label('Roll')->class('col-md-2 form-control-label')->for('roll') }}
 
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
@@ -104,7 +104,7 @@
                         </div><!--col-->
                     </div><!--form-group-->
                     <div class="form-group row">
-                        {{ html()->label('Session')->class('col-md-2 form-control-label required')->for('session') }}
+                        {{ html()->label('Session')->class('col-md-2 form-control-label')->for('session') }}
 
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
@@ -125,7 +125,7 @@
                         </div><!--col-->
                     </div><!--form-group-->
                     <div class="form-group row">
-                        {{ html()->label('Passing Year')->class('col-md-2 form-control-label required')->for('passing_year') }}
+                        {{ html()->label('Passing Year')->class('col-md-2 form-control-label')->for('passing_year') }}
 
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
@@ -198,7 +198,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Present Address')->class('col-md-2 form-control-label required')->for('present_address') }}
+                        {{ html()->label('Present Address')->class('col-md-2 form-control-label')->for('present_address') }}
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
                                 {{ html()->text('present_address', $user->profile->present_address)
@@ -217,7 +217,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Permanent Address')->class('col-md-2 form-control-label required')->for('permanent_address') }}
+                        {{ html()->label('Permanent Address')->class('col-md-2 form-control-label')->for('permanent_address') }}
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
                                 {{ html()->text('permanent_address', $user->profile->parmanent_address)
@@ -236,7 +236,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Blood Group')->class('col-md-2 form-control-label required')->for('blood_group') }}
+                        {{ html()->label('Blood Group')->class('col-md-2 form-control-label')->for('blood_group') }}
                         <div class="col-md-10">
                             {{ html()->select('blood_group', $user->blood_group)
                                 ->options(['' => "Select Blood Group", 'A+' => 'A+', 'A-' => 'A-', 'B+' => 'B+' , 'B-' => 'B-', 'AB+' => 'AB+', 'AB-' => 'AB-', 'O+' => 'O+', 'O-' => 'O-'])
@@ -248,7 +248,7 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label('Date of Birth')->class('col-md-2 form-control-label required dob')->for('nid') }}
+                        {{ html()->label('Date of Birth')->class('col-md-2 form-control-label dob')->for('nid') }}
                         <div class="col-md-10">
                             {{ html()->date('dob', $user->dob)
                                 ->class('form-control')
