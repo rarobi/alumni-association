@@ -67,10 +67,11 @@ class SettingsController extends Controller
 
         $user->password            = bcrypt($newPassword);
         $user->password_changed_at = $current_time;
-//        dd(2,$user);
         $user->save();
 
-            return redirect()->route('settings.alumni.change-password')->withFlashSuccess('Password update successfully');
+        Auth::login($user);
+
+        return redirect()->route('settings.alumni.change-password')->withFlashSuccess('Password update successfully');
     }
 
     /**
