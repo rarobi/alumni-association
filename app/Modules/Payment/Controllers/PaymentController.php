@@ -120,7 +120,8 @@ class PaymentController extends Controller
         $store_payment = StorePaymentInfo::find($id);
         $store_payment->delete();
 
-        return redirect()->route('payment.index')->withFlashSuccess('Payment deleted successfully');
+        return;
+//        return redirect()->route('payment.index')->withFlashSuccess('Payment deleted successfully');
 
     }
 }

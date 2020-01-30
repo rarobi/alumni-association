@@ -41,6 +41,7 @@
         @include('backend.includes.sidebar')
 
         <main class="main">
+            @include('sweetalert::alert')
             @include('includes.partials.demo')
             @include('includes.partials.logged-in-as')
             <br/>
