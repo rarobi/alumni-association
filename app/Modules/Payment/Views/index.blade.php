@@ -18,9 +18,9 @@
 
                 <div class="col-sm-7">
                     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
-{{--                        @if ($logged_in_user->hasRole('payment-receiver-admin'))--}}
+                        @if ($logged_in_user->hasRole('payment-receiver-admin'))
                         <a href="{{ url('payment/create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
-                        {{--@endif--}}
+                        @endif
                     </div><!--btn-toolbar-->
                 </div><!--col-->
             </div><!--row-->
@@ -62,10 +62,10 @@
 {{--                                            {!! csrf_field() !!}--}}
                                             <a href="{{ route('payment.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
 {{--                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
-{{--                                            @if ($logged_in_user->hasRole('payment-receiver-admin'))--}}
+                                            @if ($logged_in_user->hasRole('payment-receiver-admin'))
                                         <a href="{{ route('payment.destroy',$payment->id) }}" class="btn btn-sm btn-danger discard-team"title="View"><i class="fa fa-trash"></i></a>
                                         {{--<button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>--}}
-                                            {{--@endif--}}
+                                            @endif
                                         {{--</form>--}}
                                     </td>
                                 </tr>
