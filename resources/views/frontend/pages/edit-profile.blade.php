@@ -15,7 +15,7 @@
     </div>
     <!-- ***** Banner Area End ***** -->
 
-    <section class="bg-gray p-t-70">
+    <section class="bg-gray p-t-70 m-b-50">
         <div class="container">
             {{ html()->form('POST', url('/profile/update', $user->id))->class('form-horizontal')->open() }}
             <div class="row mt-4 mb-4">
