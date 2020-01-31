@@ -62,9 +62,16 @@
                                 <!--/nav-tabs -->
                                 <div class="tab-content">
                                     <div class="tab-pane fade" id="book" role="tabpanel" aria-labelledby="book-tab">
-                                        <div class="indent_title_in">
+                                        <div class="indent_title_in1">
                                             <i class="pe-7s-news-paper"></i>
-                                            <h3>Educational Statement</h3>
+                                            <div class="row">
+                                                <div class="col-sm-11">
+                                                    <h3>Educational Statement</h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#educationForm" data-toggle="tooltip" title="Add Degree"><i class="fa fa-plus-circle"> </i></a>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="wrapper_indent">
                                             <p><b>Institute:</b> Noakhali Science & Technology University</p>
@@ -102,9 +109,16 @@
                                     </div>
                                     <!-- /tab_2 -->
                                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                                        <div class="indent_title_in">
+                                        <div class="indent_title_in1">
                                             <i class="pe-7s-news-paper"></i>
-                                            <h3>Professional Statement</h3>
+                                            <div class="row">
+                                                <div class="col-sm-11">
+                                                    <h3>Professional Statement</h3>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#professionForm" data-toggle="tooltip" title="Add Profession"><i class="fa fa-plus-circle"> </i></a>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="wrapper_indent">
                                             <p><b>Occupation:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
@@ -119,6 +133,111 @@
                                 <!-- /tab-content -->
                             </div>
                             <!-- /tabs_styled -->
+                        </div>
+                        <div class="modal fade" id="educationForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title w-100 font-weight-bold">Add Degree</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {{ html()->form('POST', route('notice.store'))->class('form-horizontal')->open() }}
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            {{ html()->label('Degree Name')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->select('degree_name')
+                                                ->class('form-control col-md-6')
+                                                ->options(['' => 'Select Degree', 'S.S.C' => 'S.S.C', 'H.S.C' => 'H.S.C', 'Bachelor' => 'Bachelor', 'Masters' => 'Masters', 'Other' => 'Other'])
+                                                ->placeholder('Enter Degree Name')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Institute')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->text('institute')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter institute')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Passing Year')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->text('completed_at')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter title ( Max 40 character) ')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Order')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->number('order')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter degree completed order ')
+                                                ->required() }}
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+{{--                                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" aria-label="Close">Close</button>--}}
+                                        {{ form_submit(__('buttons.general.crud.create'))->class('btn btn-success pull-right') }}
+                                    </div>
+                                    {{ html()->form()->close() }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="professionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title w-100 font-weight-bold">Add Profession</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {{ html()->form('POST', route('notice.store'))->class('form-horizontal')->open() }}
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            {{ html()->label('Company Name')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->text('company_name')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter Company Name')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Designation')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->text('designation')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter designation')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Location')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->text('location')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter location ')
+                                                ->required() }}
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            {{ html()->label('Order')->class('col-md-4 form-control-label required') }}
+                                            {{ html()->number('order')
+                                                ->class('form-control col-md-6')
+                                                ->placeholder('Enter order ')
+                                                ->required() }}
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        {{--                                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" aria-label="Close">Close</button>--}}
+                                        {{ form_submit(__('buttons.general.crud.create'))->class('btn btn-success pull-right') }}
+                                    </div>
+                                    {{ html()->form()->close() }}
+                                </div>
+                            </div>
                         </div>
                         <!-- /col -->
                     </div>
