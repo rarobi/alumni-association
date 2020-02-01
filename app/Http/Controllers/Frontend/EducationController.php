@@ -21,4 +21,11 @@ class EducationController extends Controller
 //        return redirect()->back()->with('message', 'Education Added succesfully.');
         return redirect()->to(url()->previous(). "#education")->with('message', 'Education Added succesfully.');
     }
+
+    public function deleteEducation($id){
+
+        $education = Education::find($id);
+        $education->delete();
+        return redirect()->to(url()->previous(). "#education")->with('message', 'Education deleted succesfully.');
+    }
 }

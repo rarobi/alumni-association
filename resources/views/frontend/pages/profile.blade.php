@@ -61,7 +61,7 @@
                                         <a class="nav-link" id="book-tab" data-toggle="tab" href="#education" role="tab" aria-controls="book">Educational Info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">Job Info</a>
+                                        <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#profession" role="tab" aria-controls="profession">Job Info</a>
                                     </li>
                                 </ul>
                                 <!--/nav-tabs -->
@@ -84,14 +84,18 @@
                                         <hr>
                                         <div class="wrapper_indent">
                                             <div class="row">
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-11">
                                                     <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
                                                     <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
+                                                    @if(!is_null($user_education->degree_name) && $user_education->degree_name == 'Bachelor')
+                                                        <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
+                                                        <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
+                                                    @endif
                                                     <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <a href="#" class="btn btn-warning" title="Edit Degree"><i class="fa fa-edit"> </i></a>
-                                                    <a href="#" class="btn btn-danger" title="Delete Degree"><i class="fa fa-trash"> </i></a>
+                                                <div class="col-sm-1">
+{{--                                                    <a href="#" class="btn btn-warning" title="Edit Degree"><i class="fa fa-edit"> </i></a>--}}
+                                                    <a href="{!! url('alumni/education', $user_education->id) !!}" class="btn btn-danger discard_education" title="Delete Degree"><i class="fa fa-trash"> </i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,10 +131,9 @@
                                             <!-- /row-->
                                         </div>
                                         <!--  End wrapper_indent -->
-
                                     </div>
                                     <!-- /tab_2 -->
-                                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="tab-pane fade" id="profession" role="tabpanel" aria-labelledby="reviews-tab">
                                         <div class="indent_title_in1">
                                             <i class="pe-7s-news-paper"></i>
                                             <div class="row">
@@ -142,12 +145,27 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(count($user_professions) > 0)
+                                        @foreach($user_professions as $user_profession)
+                                        <hr>
                                         <div class="wrapper_indent">
-                                            <p><b>Occupation:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
-                                            <p><b>Job Place:</b> {!! isset($user->profile->job_place) ? $user->profile->job_place : 'Not Provided' !!}</p>
-                                            <p><b>Job Position:</b> {!! isset($user->profile->job_position) ? $user->profile->job_position : 'Not Provided' !!}</p>
-
+                                            <div class="row">
+                                                <div class="col-sm-11">
+                                                    <p><b>Company:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
+                                                    <p><b>Designation:</b> {!! isset($user_profession->designation) ? $user_profession->designation : 'Not Provided' !!}</p>
+                                                    <p><b>Address:</b> {!! isset($user_profession->location) ? $user_profession->location : 'Not Provided' !!}</p>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a href="{!! url('alumni/profession', $user_profession->id) !!}" class="btn btn-danger discard_education" title="Delete Profession"><i class="fa fa-trash"> </i></a>
+                                                </div>
+                                            </div>
                                         </div>
+                                        @endforeach
+                                        @else
+                                            <div class="wrapper_indent">
+                                                <p> No Profession Provieded Yet</p>
+                                            </div>
+                                    @endif
                                         <!-- End review-container -->
                                     </div>
                                     <!-- /tab_3 -->
@@ -218,7 +236,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    {{ html()->form('POST', route('notice.store'))->class('form-horizontal')->open() }}
+                                    {{ html()->form('POST', url('alumni/profession'))->class('form-horizontal')->open() }}
                                     <div class="modal-body">
                                         <div class="row">
                                             {{ html()->label('Company Name')->class('col-md-4 form-control-label required') }}
@@ -248,7 +266,7 @@
                                             {{ html()->label('Order')->class('col-md-4 form-control-label required') }}
                                             {{ html()->number('order')
                                                 ->class('form-control col-md-6')
-                                                ->placeholder('Enter order ')
+                                                ->placeholder('Start from latest (Ex. 1)')
                                                 ->required() }}
                                         </div>
                                     </div>
@@ -278,6 +296,7 @@
             minViewMode: "years"
         });
 
+        //Change Profile
         $('.thumbnail-file').change(function () {
             readURL(this);
             $('#submit-button').show();
@@ -323,6 +342,46 @@
                 }
             });
         }));
+
+
+        //Delete education
+{{--        $('.discard_education').on("click", function(ev) {--}}
+
+{{--            ev.preventDefault();--}}
+{{--            var URL = $(this).attr('href');--}}
+{{--            var redirectURL = "{{ url('profile') }}";--}}
+
+{{--            Swal.fire({--}}
+{{--                title: 'Are you sure?',--}}
+{{--                text: "You won't be able to revert this!",--}}
+{{--                icon: 'warning',--}}
+{{--                showCancelButton: true,--}}
+{{--                confirmButtonColor: '#3085d6',--}}
+{{--                cancelButtonColor: '#d33',--}}
+{{--                confirmButtonText: 'Yes, delete it!',--}}
+{{--                closeOnConfirm: false,--}}
+{{--                closeOnCancel: false,--}}
+{{--//                showLoaderOnConfirm: true--}}
+{{--            }).then((isConfirm) => {--}}
+{{--                if (isConfirm.value) {--}}
+{{--                    $.ajax({--}}
+{{--                        type: "DELETE",--}}
+{{--                        url: URL,--}}
+{{--                        data: {--}}
+{{--                            "_token": "{{ csrf_token() }}"--}}
+{{--                        },--}}
+{{--                        success: function(value){--}}
+{{--                            Swal.fire(--}}
+{{--                                'Deleted!',--}}
+{{--                                'This transaction has been deleted successfully.',--}}
+{{--                                'success'--}}
+{{--                            )--}}
+{{--                            location.reload(true);--}}
+{{--                        }--}}
+{{--                    })--}}
+{{--                }--}}
+{{--            })--}}
+{{--        });--}}
 
     </script>
 @endsection

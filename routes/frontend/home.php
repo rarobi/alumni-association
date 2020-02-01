@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\AlumniLoginController;
 use App\Http\Controllers\Frontend\EducationController;
+use App\Http\Controllers\Frontend\ProfessionController;
 
 /*
  * Frontend Controllers
@@ -23,7 +24,10 @@ Route::post('/profile/update/{id}', [ProfileController::class, 'updateProfile'])
 Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name('profile.upload');
 
 Route::post('alumni/education', [EducationController::class, 'addEducation'])->name('education.store');
+Route::get('alumni/education/{id}', [EducationController::class, 'deleteEducation'])->name('education.delete');
 
+Route::post('alumni/profession', [ProfessionController::class, 'addProfession'])->name('profession.store');
+Route::get('alumni/profession/{id}', [ProfessionController::class, 'deleteProfession'])->name('profession.delete');
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/alumni', [HomeController::class, 'members']);

@@ -62,10 +62,10 @@
 {{--                                            {!! csrf_field() !!}--}}
                                             <a href="{{ route('payment.show',$payment->id) }}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
 {{--                                            <a href="{{ route('payment.edit',$payment->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
-                                            @if ($logged_in_user->hasRole('payment-receiver-admin'))
-                                        <a href="{{ route('payment.destroy',$payment->id) }}" class="btn btn-sm btn-danger discard-team"title="View"><i class="fa fa-trash"></i></a>
+{{--                                            @if ($logged_in_user->hasRole('payment-receiver-admin'))--}}
+                                        <a href="{{ route('payment.destroy',$payment->id) }}" class="btn btn-sm btn-danger discard-team" title="View"><i class="fa fa-trash"></i></a>
                                         {{--<button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>--}}
-                                            @endif
+{{--                                            @endif--}}
                                         {{--</form>--}}
                                     </td>
                                 </tr>
