@@ -47,13 +47,18 @@
                         </aside>
                         <!-- /asdide -->
                         <div class="col-xl-9 col-lg-8">
+                            @if(session()->has('message'))
+                                <div class="alert alert-success text-center">
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
                             <div class="tabs_styled_2">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-expanded="true">General info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book">Educational Info</a>
+                                        <a class="nav-link" id="book-tab" data-toggle="tab" href="#education" role="tab" aria-controls="book">Educational Info</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">Job Info</a>
@@ -61,7 +66,7 @@
                                 </ul>
                                 <!--/nav-tabs -->
                                 <div class="tab-content">
-                                    <div class="tab-pane fade" id="book" role="tabpanel" aria-labelledby="book-tab">
+                                    <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="book-tab">
                                         <div class="indent_title_in1">
                                             <i class="pe-7s-news-paper"></i>
                                             <div class="row">
@@ -73,13 +78,30 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(count($user_educations) > 0)
+                                        @foreach($user_educations as $user_education)
+{{--                                            {!! dd($user_education) !!}--}}
+                                        <hr>
                                         <div class="wrapper_indent">
-                                            <p><b>Institute:</b> Noakhali Science & Technology University</p>
-                                            <p><b>Department:</b> CSTE</p>
-                                            <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
-                                            <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
-
-                                        </div> </div>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
+                                                    <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
+                                                    <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="#" class="btn btn-warning" title="Edit Degree"><i class="fa fa-edit"> </i></a>
+                                                    <a href="#" class="btn btn-danger" title="Delete Degree"><i class="fa fa-trash"> </i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        @else
+                                        <div class="wrapper_indent">
+                                            <p> No Education Provieded Yet</p>
+                                        </div>
+                                        @endif
+                                    </div>
                                     <!-- /tab_1 -->
                                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
                                         <div class="indent_title_in1">
@@ -144,14 +166,13 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    {{ html()->form('POST', route('notice.store'))->class('form-horizontal')->open() }}
+                                    {{ html()->form('POST', url('alumni/education'))->class('form-horizontal')->open() }}
                                     <div class="modal-body">
                                         <div class="row">
                                             {{ html()->label('Degree Name')->class('col-md-4 form-control-label required') }}
                                             {{ html()->select('degree_name')
                                                 ->class('form-control col-md-6')
                                                 ->options(['' => 'Select Degree', 'S.S.C' => 'S.S.C', 'H.S.C' => 'H.S.C', 'Bachelor' => 'Bachelor', 'Masters' => 'Masters', 'Other' => 'Other'])
-                                                ->placeholder('Enter Degree Name')
                                                 ->required() }}
                                         </div>
                                         <br>
@@ -166,8 +187,8 @@
                                         <div class="row">
                                             {{ html()->label('Passing Year')->class('col-md-4 form-control-label required') }}
                                             {{ html()->text('completed_at')
-                                                ->class('form-control col-md-6')
-                                                ->placeholder('Enter title ( Max 40 character) ')
+                                                ->class('form-control col-md-6 passing_year')
+                                                ->placeholder('Enter passing year ')
                                                 ->required() }}
                                         </div>
                                         <br>
@@ -250,6 +271,12 @@
 
 @section('after-scripts')
     <script type="text/javascript" >
+
+        $('.passing_year').datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
 
         $('.thumbnail-file').change(function () {
             readURL(this);

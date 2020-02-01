@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\User\ProfileController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\AlumniLoginController;
+use App\Http\Controllers\Frontend\EducationController;
 
 /*
  * Frontend Controllers
@@ -20,6 +21,9 @@ Route::get('/vision', [HomeController::class, 'vision']);
 Route::get('/profile/edit/{id}', [ProfileController::class, 'editProfile'])->name('profile.edit');
 Route::post('/profile/update/{id}', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::post('profile-upload', [ProfileController::class, 'profileUpload'])->name('profile.upload');
+
+Route::post('alumni/education', [EducationController::class, 'addEducation'])->name('education.store');
+
 
 Route::get('/elected-members', [HomeController::class, 'electedMembers']);
 Route::get('/alumni', [HomeController::class, 'members']);

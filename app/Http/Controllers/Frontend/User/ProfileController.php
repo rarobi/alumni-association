@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
+use App\Models\Education;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
 use App\Modules\Settings\Models\Session;
@@ -37,6 +38,7 @@ class ProfileController extends Controller
     {
         $user_id = Auth::id();
         $data['user'] = User::findOrFail($user_id);
+        $data['user_educations'] = Education::where('user_id', $user_id)->orderBy('order', 'DESC')->get();
 
         return view('frontend.pages.profile', $data);
     }
