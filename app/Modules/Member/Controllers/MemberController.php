@@ -295,16 +295,23 @@ class MemberController extends Controller
                 $member->member_status  = 'approved';
                 $member->save();
                  //send approved confirmation email to alumni
-                $this->sendConfirmationEmail($member);
+                $this->sendConfirmationEmail($member, 'approved');
             } catch (\Exception $exception){
-//                dd('exception');
                 $message =  "Member not approved for: ". $exception->getMessage();
                 Log::error($message);
             }
 
         } else{
-            $member->member_status  = 'reviewed';
-            $member->save();
+            try{
+                $member->member_status  = 'reviewed';
+                $member->save();
+
+                //send accept confirmation email to Super Admin
+                $this->sendConfirmationEmail($member, 'reviewed');
+            } catch (\Exception $exception){
+                $message =  "Member not accepted for: ". $exception->getMessage();
+                Log::error($message);
+            }
         }
 
         return redirect()->route('member.index')->withFlashSuccess('Member approved successfully');
@@ -324,7 +331,7 @@ class MemberController extends Controller
     /**
      * @param $member
      */
-    public function sendConfirmationEmail($member) {
+    public function sendConfirmationEmail($member, $accept) {
 
         $mail = new PHPMailer(true);
 
@@ -340,7 +347,13 @@ class MemberController extends Controller
             $mail->SMTPSecure = env('MAIL_ENCRYPTION');            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port       = env('MAIL_PORT');                  // TCP port to connect to
 
-            $emailTo = str_replace("'", "", $member->email);
+            $emailTo = '';
+            if($accept == 'approved'){
+                $emailTo = str_replace("'", "", $member->email);
+            } elseif ($accept == 'reviewed'){
+                $admin_email = 'cstealumni@gmail.com';
+                $emailTo = str_replace("'", "", $admin_email);
+            }
             $mail->setFrom('no-reply@mail.com', env('APP_NAME','CSTE Alumni Association'));
             //$mail->addAddress($emailTo, '');     // Add a recipient email, Recipient Name is optional
             $mail->addReplyTo('info@example.com', 'Information');
@@ -360,8 +373,13 @@ class MemberController extends Controller
 
             // Content
             $mail->isHTML(true); // Set email format to HTML
-            $mail->Subject = 'Approval Confirmation';
-            $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. Thank You.';
+            if($accept == 'approved'){
+                $mail->Subject = 'Approval Confirmation';
+                $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. Thank You.';
+            } elseif ($accept == 'reviewed'){
+                $mail->Subject = 'Checking Confirmation';
+                $mail->Body = 'Dear Admin, A request of approved a user to join our alumni asoociation comes from batch admin to approve . Please check it. Thank You.';
+            }
             $mail->AltBody = '';
 
             // disable verify_peer, its only for local server
