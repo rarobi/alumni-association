@@ -43,10 +43,10 @@
                                     <td>{!! $batchAdminEmail->batch !!}</td>
                                     <td>{{ $batchAdminEmail->email }}</td>
                                     <td>
-                                        <form  action="{{ route('settings.alumni.batch.destroy',$batchAdminEmail->id) }}" method="post">
-                                            @method('DELETE')
+                                        <form  action="{{ route('settings.alumni.delete-email', $batchAdminEmail->id) }}" method="post">
+{{--                                            @method('DELETE')--}}
                                             {!! csrf_field() !!}
-                                            <a href="{{ route('settings.alumni.batch.edit',$batchAdminEmail->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+{{--                                            <a href="{{ route('settings.alumni.batch.edit',$batchAdminEmail->id) }}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
                                             <button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
@@ -102,4 +102,5 @@
 
     </div><!--card-->
 @endsection
+
 

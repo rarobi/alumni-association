@@ -29,6 +29,7 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
 
     Route::get('settings/alumni/batch-admin-email', 'SettingsController@batchAdminEmail')->name('settings.alumni.batch-admin-email');
     Route::post('settings/alumni/batch-admin-email', 'SettingsController@addBatchAdminEmail')->name('settings.alumni.add-email');
+    Route::post('settings/alumni/batch-admin-email/{id}', 'SettingsController@deleteBatchAdminEmail')->name('settings.alumni.delete-email');
 
 
 });

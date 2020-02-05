@@ -140,5 +140,14 @@ class SettingsController extends Controller
         return redirect()->route('settings.alumni.batch-admin-email')->withFlashSuccess('Email added successfully');
     }
 
+    public function deleteBatchAdminEmail($id){
+
+        $batch_admin_email = BatchAdminEmail::find($id);
+        $batch_admin_email->delete();
+
+        return redirect()->route('settings.alumni.batch-admin-email')->withFlashSuccess('Email deleted successfully.');
+
+    }
+
 
 }

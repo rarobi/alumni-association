@@ -23,14 +23,14 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4>Registration Process:</h4>
-                                <p> Firstly, an alumni pay Tk. 200 to the <strong>BKash number</strong> <span class="text-danger"> 017220348*9 </span> and must write down the TranX ID and Sending Bkash Mobile Number during payment for further process.
+                                <p> Firstly, an alumni pay Tk. 200 to the <strong>BKash/Rocket/Nogod number</strong> <span class="text-danger"> 017220348*9 </span> and must write down or save the Transaction ID, Transaction Date, Sending Bkash Mobile Number and
+                                    Documnet (Screenshot of customer receipt message for Mobile Banking Transaction.) during payment for further process.
                                     He/She will use it for registration.
                                 </p>
                             </div>
                         </div>
-                        <p>In absence of BKash money transfer system one can send the money to the <strong>Alumni Bank A/C</strong> <span class="text-danger">1234567891234 </span> and must scan the payment receipt and have to send it to the E-mail <span class="text-info">ak_a**d@nstu.edu.bd</span>
-                            with the writing of Alumni Name, Batch, Roll and Sending Bank Branch Name in the body of E-mail.
-                            In this case Alumni fill the TranX ID field of Registration with the Alumni Bank A/C number 1234567891234.</p>
+                        <p>In absence of mobile money transfer system one can send the money to the <strong>Alumni Bank A/C</strong> <span class="text-danger">1234567891234 </span> and must write down or save the Originating Branch Name (Exmp: Sonali Bank, Mirpur Branch),
+                            Transaction Date and scan copy of customer receipt for Banking Transaction for further registration process.</p>
                         <p>
                             Then alumni fill the necessary field mentioned below for Registration.
                             <ol>
@@ -41,8 +41,9 @@
                                 <li>5. Passing Year </li>
                                 <li>6. Mobile Number</li>
                                 <li>7. Roll(B.Sc. Class Roll)</li>
-                                <li>8. Tranx ID(like BKash, Rocket etc)</li>
+                                <li>8. Tranx ID(like BKash, Rocket, Nogod etc)</li>
                                 <li>9. Password</li>
+                                <li>10. Payment other information</li>
 
                             </ol>
                         </p>
