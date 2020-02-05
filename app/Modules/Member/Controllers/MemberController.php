@@ -378,7 +378,7 @@ class MemberController extends Controller
                 $mail->Body = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. Thank You.';
             } elseif ($accept == 'reviewed'){
                 $mail->Subject = 'Checking Confirmation';
-                $mail->Body = 'Dear Admin, A request of approved a user to join our alumni asoociation comes from batch admin to approve . Please check it. Thank You.';
+                $mail->Body = 'Dear Admin, A request of approval of a user to join our alumni asoociation comes from batch admin to approve . Please check it. Thank You.';
             }
             $mail->AltBody = '';
 

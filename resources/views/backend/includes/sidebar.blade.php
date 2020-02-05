@@ -103,6 +103,14 @@
 
                         <li class="nav-item">
                             <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/batch-admin-email*'))
+                            }}" href="{{ route('settings.alumni.batch-admin-email') }}">
+                                <i class="fa fa-envelope"></i> Batch Admin Email
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
                                 active_class(Active::checkUriPattern('settings/alumni/session*'))
                             }}" href="{{ route('settings.alumni.session.index') }}">
                                 <i class="fa fa-book"></i> Session

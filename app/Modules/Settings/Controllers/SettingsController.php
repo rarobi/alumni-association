@@ -3,6 +3,8 @@
 namespace App\Modules\Settings\Controllers;
 
 use App\Models\Auth\User;
+use App\Modules\Settings\Models\Batch;
+use App\Modules\Settings\Models\BatchAdminEmail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -117,6 +119,25 @@ class SettingsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function batchAdminEmail() {
+        $data['batches'] = Batch::pluck('name', 'id');
+        $data['batchAdminEmails'] = BatchAdminEmail::orderBy('id', 'DESC')->get();
+        return view("Settings::batch-admin-emails.index", $data);
+    }
+
+    public function addBatchAdminEmail(Request $request){
+
+        $batch_admin_email = new BatchAdminEmail();
+        $batch_admin_email->batch = $request->input('batch_id');
+        $batch_admin_email->email = $request->input('email');
+        $batch_admin_email->save();
+
+        return redirect()->route('settings.alumni.batch-admin-email')->withFlashSuccess('Email added successfully');
     }
 
 

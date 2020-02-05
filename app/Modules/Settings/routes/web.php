@@ -27,4 +27,8 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
     Route::get('settings/alumni/change-password', 'SettingsController@index')->name('settings.alumni.change-password');
     Route::post('settings/alumni/change-password', 'SettingsController@store')->name('settings.alumni.change-password.store');
 
+    Route::get('settings/alumni/batch-admin-email', 'SettingsController@batchAdminEmail')->name('settings.alumni.batch-admin-email');
+    Route::post('settings/alumni/batch-admin-email', 'SettingsController@addBatchAdminEmail')->name('settings.alumni.add-email');
+
+
 });
