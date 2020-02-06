@@ -8,6 +8,7 @@ use App\Models\EmailQueue;
 use App\Models\Payment;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
+use App\Modules\Settings\Models\BatchAdminEmail;
 use App\Modules\Settings\Models\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -113,11 +114,17 @@ class AlumniLoginController extends Controller
 
         if($user_profile->id) {
 
+            $batch_admin_email = BatchAdminEmail::where('batch', $request->input('batch_id'))->first();
+
             $emailContent = 'A registration request comes from '.$user->first_name.' ('.$user->email.'). Please check the information and take necessary steps.';
 
             $emailQueue = new EmailQueue();
             $emailQueue->content = $emailContent;
-            $emailQueue->to = env('MAIL_USERNAME');
+            if(!is_null($batch_admin_email)){
+                $emailQueue->to = $batch_admin_email->email;
+            } else {
+                $emailQueue->to = env('MAIL_USERNAME');
+            }
             $emailQueue->cc = null;
             $emailQueue->subject = 'An Alumni Registration Request';
             $emailQueue->status = 1;
