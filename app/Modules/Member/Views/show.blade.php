@@ -38,8 +38,10 @@
                         <div class="row">
                             <div class="offset-sm-5 col-sm-7">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')" style="margin: 0px 15px 3px 0px" >
+                                    @if($logged_in_user->isAdmin())
                                     <a href="{!! route('member.edit',$user->id) !!}" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>
 {{--                                    <a href="" class="btn btn-primary ml-1" data-toggle="tooltip" title="Edit Member"><i class="fas fa-edit"></i></a>--}}
+                                    @endif
                                 </div><!--btn-toolbar-->
                             </div><!--col-->
                         </div><!--row-->

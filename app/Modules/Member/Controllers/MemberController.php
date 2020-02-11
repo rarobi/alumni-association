@@ -329,7 +329,7 @@ class MemberController extends Controller
 
         } elseif (Auth::user()->hasRole('batch-admin')){
 
-            if(!is_null(Auth::user()->profile->batch_id)){
+            if(!is_null(Auth::user()->profile) && !is_null(Auth::user()->profile->batch_id)){
                 $data['pending_users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')
                     ->where('users.member_status', 'pending')
                     ->where('user_profile.batch_id', Auth::user()->profile->batch_id)
