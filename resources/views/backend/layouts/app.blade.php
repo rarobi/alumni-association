@@ -22,7 +22,8 @@
 
     <!-- Check if the language is set to RTL, so apply the RTL layouts -->
     <!-- Otherwise apply the normal LTR layouts -->
-    {{ style(mix('css/backend.css')) }}
+{{--    {{ style(mix('css/backend.css')) }}--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/backend.css') }}">
     <style>
         .required:after {
             content:" *";
@@ -65,9 +66,14 @@
 
     <!-- Scripts -->
     @stack('before-scripts')
-    {!! script(mix('js/manifest.js')) !!}
-    {!! script(mix('js/vendor.js')) !!}
-    {!! script(mix('js/backend.js')) !!}
+    {{--{!! script(mix('js/manifest.js')) !!}--}}
+    {{--{!! script(mix('js/vendor.js')) !!}--}}
+    {{--{!! script(mix('js/backend.js')) !!}--}}
+    <script src="{!! asset('js/manifest.js') !!}"></script>
+    <script src="{!! asset('js/vendor.js') !!}"></script>
+    <script src="{!! asset('js/backend.js') !!}"></script>
+
+
     @stack('after-scripts')
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
