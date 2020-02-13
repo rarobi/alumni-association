@@ -4,8 +4,11 @@ use App\Http\Controllers\Backend\Auth\User\UserConfirmationController;
 use App\Http\Controllers\Backend\Auth\User\UserPasswordController;
 use App\Http\Controllers\Backend\Auth\User\UserStatusController;
 use App\Modules\Member\Controllers\MemberPasswordController;
+use App\Http\Controllers\Backend\Auth\Role\RoleController;
 
 Route::group(['module' => 'Member', 'middleware' => ['web','auth'], 'namespace' => 'App\Modules\Member\Controllers'], function() {
+
+    Route::get('member/auto-suggest', [RoleController::class, 'memberAutoSuggest'])->name('member.auto-suggest');
 
     Route::get('member/pending_list', 'MemberController@pendingList')->name('member.pending-list');
 

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Backend\Auth\Role;
 use App\Models\Auth\Role;
 use App\Http\Controllers\Controller;
 use App\Events\Backend\Auth\Role\RoleDeleted;
+use App\Models\Auth\User;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Auth\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
+use Illuminate\Http\Request;
 
 /**
  * Class RoleController.
@@ -124,5 +126,14 @@ class RoleController extends Controller
         event(new RoleDeleted($role));
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('alerts.backend.roles.deleted'));
+    }
+
+    public function memberAutoSuggest(Request $request) {
+
+        $get_request = $request->input('term');
+        $user_name = User::where('first_name', 'like', '%'.$get_request.'%')->pluck('first_name');
+
+        return $user_name;
+
     }
 }
