@@ -27,6 +27,8 @@ Route::group([
         Route::get('user/create', [UserController::class, 'create'])->name('user.create');
         Route::post('user', [UserController::class, 'store'])->name('user.store');
 
+        Route::post('user', [UserController::class, 'assignRolePermission'])->name('user.assign');
+
         // Specific User
         Route::group(['prefix' => 'user/{user}'], function () {
             // User

@@ -131,7 +131,7 @@ class RoleController extends Controller
     public function memberAutoSuggest(Request $request) {
 
         $get_request = $request->input('term');
-        $user_name = User::where('first_name', 'like', '%'.$get_request.'%')->pluck('first_name');
+        $user_name = User::where('email', 'like', '%'.$get_request.'%')->pluck('email');
 
         return $user_name;
 

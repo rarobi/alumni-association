@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
+use App\Events\Backend\Auth\User\UserCreated;
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Events\Backend\Auth\User\UserDeleted;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
 use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use Illuminate\Http\Request;
 
 /**
  * Class UserController.
@@ -52,7 +56,8 @@ class UserController extends Controller
      */
     public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
-        return view('backend.auth.user.create')
+//        return view('backend.auth.user.create')
+        return view('backend.auth.user.assign-role-pemission')
             ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
             ->withPermissions($permissionRepository->get(['id', 'name']));
     }
@@ -146,5 +151,30 @@ class UserController extends Controller
         event(new UserDeleted($user));
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted'));
+    }
+
+    public function assignRolePermission(Request $request){
+
+        $eamil = $request->input('email');
+        $roles = $request->input('roles');
+        $permissions = $request->input('permissions');
+
+        $user = User::where('email', $eamil)->first();
+//        $user_id = $user->id;
+//        dd($user_id);
+        if ($user) {
+            // User must have at least one role
+            if (! count($roles)) {
+                throw new GeneralException(__('exceptions.backend.access.users.role_needed_create'));
+            }
+
+            // Add selected roles/permissions
+            $user->syncRoles($roles);
+            $user->syncPermissions($permissions);
+            $user->save();
+
+            return redirect()->route('admin.auth.user.index')->withFlashSuccess('Use Role-Permission assign successfully ');
+
+        }
     }
 }

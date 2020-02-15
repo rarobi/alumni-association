@@ -27,7 +27,7 @@
                         <div class="col-md-10">
                             {{ html()->text('name')
                                 ->class('form-control search_member')
-                                ->placeholder(__('validation.attributes.backend.access.roles.name'))
+                                ->placeholder('Enter role name')
                                 ->attribute('maxlength', 191)
                                 ->required()
                                 ->autofocus() }}
@@ -75,33 +75,4 @@
 {{ html()->form()->close() }}
 @endsection
 
-@section('footer-script')
-    <script type="text/javascript">
-
-        $(".search_member").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    dataType: "json",
-                    type: 'GET',
-                    url: '{{url('member/auto-suggest')}}',
-                    data: request,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    success: function (data) {
-                        response($.map(data, function (value) {
-                            return {
-                                label: value
-                            };
-                        }));
-                    },
-                    error: function (data) {
-                        console.log("error");
-                    }
-                });
-            }
-        });
-
-    </script>
-@endsection
 
