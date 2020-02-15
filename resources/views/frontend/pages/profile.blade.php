@@ -14,7 +14,7 @@
         </div>
     </div>
     <!-- ***** Banner Area End ***** -->
-{{--    {!! dd($user) !!}--}}
+    {{--    {!! dd($user) !!}--}}
     <section class="single_blog_area p-t-70">
         <div class="container">
             <div class="row justify-content-center">
@@ -23,25 +23,25 @@
                         <aside class="col-xl-3 col-lg-4" id="sidebar">
                             <div class="box_profile">
                                 <form id="uploadimage" method="post"  enctype="multipart/form-data">
-                                <figure>
-                                    @if(!is_null($user->profile) && !is_null($user->profile->image))
-                                    <img class="thumbnail-image" src="/uploads/member_profile/{{ $user->profile->image }}" alt="" style="height:190px">
-                                    @else
-                                        <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">
-                                    @endif
+                                    <figure>
+                                        @if(!is_null($user->profile) && !is_null($user->profile->image))
+                                            <img class="thumbnail-image" src="/uploads/member_profile/{{ $user->profile->image }}" alt="" style="height:190px">
+                                        @else
+                                            <img class="thumbnail-image" src="frontend/img/bg-img/dummy-profile.jpg" alt="" style="height:190px">
+                                        @endif
                                         <div class="edit">
-                                        <label for="user-profile-image">
-                                            <input type="file" name="image_path" multiple class="file thumbnail-file" id="user-profile-image" accept="image/*" style="display: none;">
-                                            <i class="fa fa-camera fa-2x"></i>
-                                        </label>
-                                    </div>
-                                    <input type="submit" value="Submit" id="submit-button" style="display: none;">
+                                            <label for="user-profile-image">
+                                                <input type="file" name="image_path" multiple class="file thumbnail-file" id="user-profile-image" accept="image/*" style="display: none;">
+                                                <i class="fa fa-camera fa-2x"></i>
+                                            </label>
+                                        </div>
+                                        <input type="submit" value="Submit" id="submit-button" style="display: none;">
 
-                                    <div id="progress" class="progress" style="display: none;">
-                                        <div class="progress-bar progress-bar-primary"></div>
-                                    </div>
-{{--                                    <h1>{!! $user->first_name !!}</h1>--}}
-                                </figure>
+                                        <div id="progress" class="progress" style="display: none;">
+                                            <div class="progress-bar progress-bar-primary"></div>
+                                        </div>
+                                        {{--                                    <h1>{!! $user->first_name !!}</h1>--}}
+                                    </figure>
                                 </form>
                             </div>
                         </aside>
@@ -79,31 +79,31 @@
                                             </div>
                                         </div>
                                         @if(count($user_educations) > 0)
-                                        @foreach($user_educations as $user_education)
-{{--                                            {!! dd($user_education) !!}--}}
-                                        <hr>
-                                        <div class="wrapper_indent">
-                                            <div class="row">
-                                                <div class="col-sm-11">
-                                                    <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
-                                                    <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
-                                                    @if(!is_null($user_education->degree_name) && $user_education->degree_name == 'Bachelor')
-                                                        <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
-                                                        <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
-                                                    @endif
-                                                    <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
+                                            @foreach($user_educations as $user_education)
+                                                {{--                                            {!! dd($user_education) !!}--}}
+                                                <hr>
+                                                <div class="wrapper_indent">
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
+                                                            <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
+                                                            @if(!is_null($user_education->degree_name) && $user_education->degree_name == 'Bachelor')
+                                                                <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
+                                                                <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
+                                                            @endif
+                                                            <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
+                                                        </div>
+                                                        <div class="col-sm-1">
+                                                            {{--                                                    <a href="#" class="btn btn-warning" title="Edit Degree"><i class="fa fa-edit"> </i></a>--}}
+                                                            <a href="{!! url('alumni/education', $user_education->id) !!}" class="btn btn-danger discard_education" title="Delete Degree"><i class="fa fa-trash"> </i></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-1">
-{{--                                                    <a href="#" class="btn btn-warning" title="Edit Degree"><i class="fa fa-edit"> </i></a>--}}
-                                                    <a href="{!! url('alumni/education', $user_education->id) !!}" class="btn btn-danger discard_education" title="Delete Degree"><i class="fa fa-trash"> </i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
                                         @else
-                                        <div class="wrapper_indent">
-                                            <p> No Education Provieded Yet</p>
-                                        </div>
+                                            <div class="wrapper_indent">
+                                                <p> No Education Provieded Yet</p>
+                                            </div>
                                         @endif
                                     </div>
                                     <!-- /tab_1 -->
@@ -146,27 +146,27 @@
                                             </div>
                                         </div>
                                         @if(count($user_professions) > 0)
-                                        @foreach($user_professions as $user_profession)
-                                        <hr>
-                                        <div class="wrapper_indent">
-                                            <div class="row">
-                                                <div class="col-sm-11">
-                                                    <p><b>Company:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
-                                                    <p><b>Designation:</b> {!! isset($user_profession->designation) ? $user_profession->designation : 'Not Provided' !!}</p>
-                                                    <p><b>Address:</b> {!! isset($user_profession->location) ? $user_profession->location : 'Not Provided' !!}</p>
+                                            @foreach($user_professions as $user_profession)
+                                                <hr>
+                                                <div class="wrapper_indent">
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <p><b>Company:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
+                                                            <p><b>Designation:</b> {!! isset($user_profession->designation) ? $user_profession->designation : 'Not Provided' !!}</p>
+                                                            <p><b>Address:</b> {!! isset($user_profession->location) ? $user_profession->location : 'Not Provided' !!}</p>
+                                                        </div>
+                                                        <div class="col-sm-1">
+                                                            <a href="{!! url('alumni/profession', $user_profession->id) !!}" class="btn btn-danger discard_education" title="Delete Profession"><i class="fa fa-trash"> </i></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-1">
-                                                    <a href="{!! url('alumni/profession', $user_profession->id) !!}" class="btn btn-danger discard_education" title="Delete Profession"><i class="fa fa-trash"> </i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
                                         @else
                                             <div class="wrapper_indent">
                                                 <p> No Profession Provieded Yet</p>
                                             </div>
                                     @endif
-                                        <!-- End review-container -->
+                                    <!-- End review-container -->
                                     </div>
                                     <!-- /tab_3 -->
                                 </div>
@@ -219,7 +219,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-{{--                                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" aria-label="Close">Close</button>--}}
+                                        {{--                                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" aria-label="Close">Close</button>--}}
                                         {{ form_submit(__('buttons.general.crud.create'))->class('btn btn-success pull-right') }}
                                     </div>
                                     {{ html()->form()->close() }}
@@ -345,43 +345,43 @@
 
 
         //Delete education
-{{--        $('.discard_education').on("click", function(ev) {--}}
+        {{--        $('.discard_education').on("click", function(ev) {--}}
 
-{{--            ev.preventDefault();--}}
-{{--            var URL = $(this).attr('href');--}}
-{{--            var redirectURL = "{{ url('profile') }}";--}}
+        {{--            ev.preventDefault();--}}
+        {{--            var URL = $(this).attr('href');--}}
+        {{--            var redirectURL = "{{ url('profile') }}";--}}
 
-{{--            Swal.fire({--}}
-{{--                title: 'Are you sure?',--}}
-{{--                text: "You won't be able to revert this!",--}}
-{{--                icon: 'warning',--}}
-{{--                showCancelButton: true,--}}
-{{--                confirmButtonColor: '#3085d6',--}}
-{{--                cancelButtonColor: '#d33',--}}
-{{--                confirmButtonText: 'Yes, delete it!',--}}
-{{--                closeOnConfirm: false,--}}
-{{--                closeOnCancel: false,--}}
-{{--//                showLoaderOnConfirm: true--}}
-{{--            }).then((isConfirm) => {--}}
-{{--                if (isConfirm.value) {--}}
-{{--                    $.ajax({--}}
-{{--                        type: "DELETE",--}}
-{{--                        url: URL,--}}
-{{--                        data: {--}}
-{{--                            "_token": "{{ csrf_token() }}"--}}
-{{--                        },--}}
-{{--                        success: function(value){--}}
-{{--                            Swal.fire(--}}
-{{--                                'Deleted!',--}}
-{{--                                'This transaction has been deleted successfully.',--}}
-{{--                                'success'--}}
-{{--                            )--}}
-{{--                            location.reload(true);--}}
-{{--                        }--}}
-{{--                    })--}}
-{{--                }--}}
-{{--            })--}}
-{{--        });--}}
+        {{--            Swal.fire({--}}
+        {{--                title: 'Are you sure?',--}}
+        {{--                text: "You won't be able to revert this!",--}}
+        {{--                icon: 'warning',--}}
+        {{--                showCancelButton: true,--}}
+        {{--                confirmButtonColor: '#3085d6',--}}
+        {{--                cancelButtonColor: '#d33',--}}
+        {{--                confirmButtonText: 'Yes, delete it!',--}}
+        {{--                closeOnConfirm: false,--}}
+        {{--                closeOnCancel: false,--}}
+        {{--//                showLoaderOnConfirm: true--}}
+        {{--            }).then((isConfirm) => {--}}
+        {{--                if (isConfirm.value) {--}}
+        {{--                    $.ajax({--}}
+        {{--                        type: "DELETE",--}}
+        {{--                        url: URL,--}}
+        {{--                        data: {--}}
+        {{--                            "_token": "{{ csrf_token() }}"--}}
+        {{--                        },--}}
+        {{--                        success: function(value){--}}
+        {{--                            Swal.fire(--}}
+        {{--                                'Deleted!',--}}
+        {{--                                'This transaction has been deleted successfully.',--}}
+        {{--                                'success'--}}
+        {{--                            )--}}
+        {{--                            location.reload(true);--}}
+        {{--                        }--}}
+        {{--                    })--}}
+        {{--                }--}}
+        {{--            })--}}
+        {{--        });--}}
 
     </script>
 @endsection

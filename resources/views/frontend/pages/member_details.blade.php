@@ -58,24 +58,30 @@
                                             <i class="pe-7s-news-paper"></i>
                                             <h3>Educational Statement</h3>
                                         </div>
-                                        <div class="wrapper_indent">
-                                            <p><b>Institute: </b> Noakhali Science & Technology University</p>
-                                            <p><b>Department: </b> CSTE</p>
-{{--                                            <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>--}}
-                                            <p><b>Batch: </b>@if(!is_null($member->profile))
-                                                {{ isset($member->profile->batch_id) ? $member->profile->batch_id : 'Not Provided'}}
-                                                  @else
-                                                    Not Provided
-                                                @endif
-                                            </p>
-                                            <p><b>Session: </b>@if(!is_null($member->profile))
-                                                {!! isset($member->profile->session) ? $member->profile->session : 'Not Provided' !!}
-                                                @else
-                                                    Not Provided
-                                                @endif
-                                            </p>
-
-                                        </div> </div>
+                                        @if(count($user_educations) > 0)
+                                            @foreach($user_educations as $user_education)
+                                                {{--                                            {!! dd($user_education) !!}--}}
+                                                <hr>
+                                                <div class="wrapper_indent">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
+                                                            <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
+                                                            @if(!is_null($user_education->degree_name) && $user_education->degree_name == 'Bachelor')
+                                                                <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
+                                                                <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
+                                                            @endif
+                                                            <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="wrapper_indent">
+                                                <p> No Education Provieded Yet</p>
+                                            </div>
+                                        @endif
+                                    </div>
                                     <!-- /tab_1 -->
                                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
                                         <div class="indent_title_in1">
@@ -116,28 +122,24 @@
                                             <i class="pe-7s-news-paper"></i>
                                             <h3>Professional Statement</h3>
                                         </div>
-                                        <div class="wrapper_indent">
-{{--                                            <p><b>Occupation:</b> {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>--}}
-                                            <p><b>Occupation: </b>@if(!is_null($member->profile))
-                                                {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}
-                                                @else
-                                                    Not Provided
-                                                @endif
-                                            </p>
-                                            <p><b>Job Place: </b> @if(!is_null($member->profile))
-                                                {!! isset($member->profile->job_place) ? $member->profile->job_place : 'Not Provided' !!}
-                                                @else
-                                                    Not Provided
-                                                @endif
-                                            </p>
-                                            <p><b>Job Position: </b> @if(!is_null($member->profile))
-                                                {!! isset($member->profile->job_position) ? $member->profile->job_position : 'Not Provided' !!}
-                                                @else
-                                                    Not Provided
-                                                @endif
-                                            </p>
-
-                                        </div>
+                                        @if(count($user_professions) > 0)
+                                            @foreach($user_professions as $user_profession)
+                                                <hr>
+                                                <div class="wrapper_indent">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p><b>Company:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
+                                                            <p><b>Designation:</b> {!! isset($user_profession->designation) ? $user_profession->designation : 'Not Provided' !!}</p>
+                                                            <p><b>Address:</b> {!! isset($user_profession->location) ? $user_profession->location : 'Not Provided' !!}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="wrapper_indent">
+                                                <p> No Profession Provieded Yet</p>
+                                            </div>
+                                    @endif
                                         <!-- End review-container -->
                                     </div>
                                     <!-- /tab_3 -->

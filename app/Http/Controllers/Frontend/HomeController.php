@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Education;
+use App\Models\Profession;
 use App\Modules\Gallery\Models\Gallery;
 use App\Modules\Notice\Models\Notice;
 use App\Modules\Settings\Models\Batch;
@@ -50,6 +52,8 @@ class HomeController extends Controller
 
 //        $data['today'] = Carbon::now()->format('Y-m-d');
         $data['member'] = User::find($id);
+        $data['user_educations'] = Education::where('user_id', $data['member']->id)->orderBy('order', 'DESC')->get();
+        $data['user_professions'] = Profession::where('user_id', $data['member']->id)->orderBy('order', 'DESC')->get();
         return view('frontend.pages.member_details', $data);
     }
 
