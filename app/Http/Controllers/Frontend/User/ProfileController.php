@@ -130,6 +130,8 @@ class ProfileController extends Controller
         $file_path = '/uploads/member_profile/';
 
         $destinationPath = public_path().$file_path;
+//        $destinationPath = base_path() . $file_path; // For outside of public path
+
 
         /* TODO: Need to trim the image original name & refactor the code */
         $fileName = $prefix.basename($input_image->getClientOriginalName());
