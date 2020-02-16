@@ -190,7 +190,7 @@
                                             {{ html()->label('Degree Name')->class('col-md-4 form-control-label required') }}
                                             {{ html()->select('degree_name')
                                                 ->class('form-control col-md-6')
-                                                ->options(['' => 'Select Degree', 'S.S.C' => 'S.S.C', 'H.S.C' => 'H.S.C', 'Bachelor' => 'Bachelor', 'Masters' => 'Masters', 'Other' => 'Other'])
+                                                ->options(['' => 'Select Degree', 'S.S.C' => 'S.S.C', 'H.S.C' => 'H.S.C', 'Bachelor' => 'Bachelor', 'Masters' => 'Masters', 'MBA' => 'MBA', 'PhD' => 'PhD', 'Other' => 'Other'])
                                                 ->required() }}
                                         </div>
                                         <br>
