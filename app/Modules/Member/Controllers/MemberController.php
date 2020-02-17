@@ -2,7 +2,6 @@
 
 namespace App\Modules\Member\Controllers;
 
-
 use App\Models\EmailQueue;
 use App\Models\UserProfile;
 use App\Modules\Settings\Models\Batch;
@@ -26,7 +25,6 @@ use PHPMailer\PHPMailer\SMTP;
 
 class MemberController extends Controller
 {
-
     protected $memberRepository;
 
     /**
@@ -319,6 +317,11 @@ class MemberController extends Controller
 
     public function pendingList() {
 
+        $data['pending_users'] = User::where('member_status', 'pending')->orderBy('id', 'desc')->paginate(10);
+        return view('Member::pending_list', $data);
+    }
+
+    public function reviewList(){
         if(Auth::user()->hasRole('administrator')){
 //            $data['pending_users'] = User::where('member_status', 'reviewed')->orderBy('id', 'desc')->paginate(10);
             $data['pending_users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')
@@ -340,7 +343,7 @@ class MemberController extends Controller
                 $data['pending_users'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.member_status', 'pending')->orderBy('user_profile.batch_id', 'ASC')->orderBy('user_profile.roll', 'ASC')->paginate(10);
             }
         }
-        return view('Member::pending_list', $data);
+        return view('Member::review_list', $data);
     }
 
     /**

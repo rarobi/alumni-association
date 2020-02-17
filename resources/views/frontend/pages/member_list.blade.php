@@ -23,8 +23,8 @@
                 @foreach($members as $member)
                 <div class="item col-sm-2 m-b-10">
                     <article class="clearfix mb-sm-30 faculty-member-image-box">
-                        @if($member->profile && $member->profile->image)
-                        <img src="/uploads/member_profile/{{ $member->profile->image }}"
+                        @if($member && $member->image)
+                        <img src="/uploads/member_profile/{{ $member->image }}"
                              alt="image"
                              class="img-responsive img-fullwidth">
                         @else
@@ -44,7 +44,7 @@
                 @endforeach
             </div>
             <div class="row m-b-20">
-               {!! $members->render() !!}
+{{--               {!! $members->render() !!}--}}
             </div>
             @else
             <div class="row">

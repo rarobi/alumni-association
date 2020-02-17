@@ -11,6 +11,7 @@ Route::group(['module' => 'Member', 'middleware' => ['web','auth'], 'namespace' 
     Route::get('member/auto-suggest', [RoleController::class, 'memberAutoSuggest'])->name('member.auto-suggest');
 
     Route::get('member/pending_list', 'MemberController@pendingList')->name('member.pending-list');
+    Route::get('member/review_list', 'MemberController@reviewList')->name('member.review-list');
 
 //    Route::resource('member', 'MemberController');
     Route::resource('member', 'MemberController', ['names' => [

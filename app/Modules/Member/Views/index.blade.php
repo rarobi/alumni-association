@@ -18,9 +18,10 @@
 
             <div class="col-sm-7">
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
-                    <a href="{{ url('member/pending_list') }}" class="btn btn-danger ml-1" data-toggle="tooltip" title="Pending List"><i class="fas fa-list"></i></a>
+                    <a href="{{ url('member/review_list') }}" class="btn btn-info ml-1" data-toggle="tooltip" title="Review List"><i class="fas fa-users"></i></a>
                     @if($logged_in_user->isAdmin())
                     <a href="{{ url('member/create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+                    <a href="{{ url('member/pending_list') }}" class="btn btn-danger ml-1" data-toggle="tooltip" title="Pending List"><i class="fas fa-list"></i></a>
                     @endif
                 </div><!--btn-toolbar-->
             </div><!--col-->
