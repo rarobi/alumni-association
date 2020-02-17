@@ -68,8 +68,8 @@
                                                             <p><b>Degree:</b> {!! isset($user_education->degree_name) ? $user_education->degree_name : 'Not Provided'  !!}</p>
                                                             <p><b>Institute:</b> {!! isset($user_education->institute) ? $user_education->institute : 'Not Provided'  !!}</p>
                                                             @if(!is_null($user_education->degree_name) && $user_education->degree_name == 'Bachelor')
-                                                                <p><b>Batch:</b> {!! isset($user->profile->batch_id) ? $user->profile->batch_id : 'Not Provided'  !!}</p>
-                                                                <p><b>Session:</b> {!! isset($user->profile->session) ? $user->profile->session : 'Not Provided' !!}</p>
+                                                                <p><b>Batch:</b> {!! isset($member->profile->batch_id) ? $member->profile->batch_id : 'Not Provided'  !!}</p>
+                                                                <p><b>Session:</b> {!! isset($member->profile->session) ? $member->profile->session : 'Not Provided' !!}</p>
                                                             @endif
                                                             <p><b>Passing Year:</b> {!! isset($user_education->completed_at) ? $user_education->completed_at : 'Not Provided' !!}</p>
                                                         </div>
