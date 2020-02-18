@@ -36,6 +36,8 @@ class CreateUsersTable extends Migration
             $table->string('last_login_ip')->nullable();
             $table->boolean('to_be_logged_out')->default(false);
             $table->rememberToken();
+            $table->integer('reviewed_by')->nullable();
+            $table->integer('approved_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

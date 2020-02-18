@@ -53,12 +53,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                {{ html()->label('Email')->class('col-md-2 form-control-label required')->for('email') }}
+                                                {{ html()->label('Roll')->class('col-md-2 form-control-label required')->for('roll') }}
                                                 <div class="col-md-12">
-                                                    {{ html()->email('email')
+                                                    {{ html()->text('roll')
                                                         ->class('form-control')
-                                                        ->placeholder('Your email address')
-                                                        ->attribute('maxlength', 191)
+                                                        ->placeholder('Enter Your B.Sc roll')
+                                                        ->attribute('maxlength', 14)
                                                         ->required()
                                                         ->autofocus() }}
                                                 </div>
@@ -112,12 +112,12 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-sm-6">
-                                                {{ html()->label('Roll')->class('col-md-2 form-control-label required')->for('roll') }}
+                                                {{ html()->label('Email')->class('col-md-2 form-control-label required')->for('email') }}
                                                 <div class="col-md-12">
-                                                    {{ html()->text('roll')
+                                                    {{ html()->email('email')
                                                         ->class('form-control')
-                                                        ->placeholder('Enter Your B.Sc roll')
-                                                        ->attribute('maxlength', 14)
+                                                        ->placeholder('Your email address')
+                                                        ->attribute('maxlength', 191)
                                                         ->required()
                                                         ->autofocus() }}
                                                 </div>

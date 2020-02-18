@@ -18,7 +18,9 @@
 
                 <div class="col-sm-7">
                     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
+                        @if($logged_in_user->isAdmin())
                         <a href="#" class="btn btn-success ml-1" data-toggle="modal" data-target="#categoryForm" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+                        @endif
                     </div><!--btn-toolbar-->
                 </div><!--col-->
             </div><!--row-->
@@ -33,7 +35,9 @@
                                 <th>SL</th>
                                 <th>Batch</th>
                                 <th>Created Date</th>
+                                @if($logged_in_user->isAdmin())
                                 <th>Actions</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -42,6 +46,7 @@
                                     <td>{{ $batch->id }}</td>
                                     <td>{{ $batch->name }}</td>
                                     <td>{!! $batch->created_at !!}</td>
+                                    @if($logged_in_user->isAdmin())
                                     <td>
                                         <form  action="{{ route('settings.alumni.batch.destroy',$batch->id) }}" method="post">
                                             @method('DELETE')
@@ -50,6 +55,7 @@
                                             <button type="submit" class="btn btn-sm btn-danger discard-team" title="Discard"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

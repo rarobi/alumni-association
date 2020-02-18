@@ -164,8 +164,12 @@ class UserController extends Controller
 //        dd($user_id);
         if ($user) {
             // User must have at least one role
-            if (! count($roles)) {
+            if (is_null($roles)) {
                 throw new GeneralException(__('exceptions.backend.access.users.role_needed_create'));
+            }
+
+            if (is_null($permissions)) {
+                throw new GeneralException('You must choose at least one permission.');
             }
 
             // Add selected roles/permissions

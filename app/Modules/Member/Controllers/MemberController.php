@@ -286,14 +286,26 @@ class MemberController extends Controller
 
     public function acceptMember($member_id) {
 
-        $member = User::findOrFail($member_id);
+        $member  = User::findOrFail($member_id);
+        $emailTo = str_replace("'", "", $member->email);
+
         if(Auth::user()->hasRole('administrator')){
 
             try{
                 $member->member_status  = 'approved';
+                $member->approved_by  = Auth::id();
                 $member->save();
+
                  //send approved confirmation email to alumni
-                $this->sendConfirmationEmail($member, 'approved');
+                $emailQueue = new EmailQueue();
+                $emailQueue->content = 'Dear '.$member->first_name. ', Your request to join CSTE Alumni Association was succcessfully accepted. Now you are an honurable member of alumni association. Thank You.';
+                $emailQueue->to = $emailTo;
+                $emailQueue->cc = null;
+                $emailQueue->subject = 'CSTE Alumni Approval Confirmation';
+                $emailQueue->status = 1;
+                $emailQueue->save();
+
+//                $this->sendConfirmationEmail($member, 'approved');
             } catch (\Exception $exception){
                 $message =  "Member not approved for: ". $exception->getMessage();
                 Log::error($message);
@@ -302,10 +314,20 @@ class MemberController extends Controller
         } else{
             try{
                 $member->member_status  = 'reviewed';
+                $member->reviewed_by  = Auth::id();
                 $member->save();
 
                 //send accept confirmation email to Super Admin
-                $this->sendConfirmationEmail($member, 'reviewed');
+
+                $emailQueue = new EmailQueue();
+                $emailQueue->content = 'Dear Admin, A request of approval of a user to join our alumni association comes from batch admin. Please check it. Thank You.';
+                $emailQueue->to = 'cstealumni@gmail.com'; //TODO:: This email might be changed
+                $emailQueue->cc = null;
+                $emailQueue->subject = 'CSTE Alumni Approval Checking Confirmation';
+                $emailQueue->status = 1;
+                $emailQueue->save();
+
+//                $this->sendConfirmationEmail($member, 'reviewed');
             } catch (\Exception $exception){
                 $message =  "Member not accepted for: ". $exception->getMessage();
                 Log::error($message);

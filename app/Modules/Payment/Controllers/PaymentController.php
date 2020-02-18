@@ -6,6 +6,7 @@ use App\Modules\Payment\Models\StorePaymentInfo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -56,6 +57,7 @@ class PaymentController extends Controller
         $store_payment_info->transaction_number = $request->input('transaction_number');
         $store_payment_info->branch_name    = $request->input('branch_name');
         $store_payment_info->payment_date   = Carbon::parse($request->input('payment_date'))->format('Y-m-d');
+        $store_payment_info->created_by     = Auth::id();
 
         $prefix = date('Ymd_');
         $photo = $request->file('document');

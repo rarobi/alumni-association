@@ -24,6 +24,7 @@ class CreatePaymentsTable extends Migration
             $table->string('branch_name')->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->string('document')->nullable();
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
     }
