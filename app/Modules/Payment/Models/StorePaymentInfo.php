@@ -9,9 +9,14 @@
 namespace App\Modules\Payment\Models;
 
 
+use App\Models\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 
 class StorePaymentInfo extends Model
 {
     protected $table = "store_payment_info";
+
+    public function user(){
+        return $this->belongsTo(User::class,'created_by','id');
+    }
 }

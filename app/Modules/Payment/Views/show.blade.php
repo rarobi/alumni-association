@@ -48,6 +48,10 @@
                                 <td>{!! isset($payment->payment_date) ? $payment->payment_date : 'N/A' !!}</td>
                             </tr>
                             <tr>
+                                <th>Created By</th>
+                                <td>{!! isset($payment->user->first_name) ? $payment->user->first_name : 'N/A' !!}</td>
+                            </tr>
+                            <tr>
                                 <th>Document</th>
                                 @if(!is_null($payment->document))
                                 <td>

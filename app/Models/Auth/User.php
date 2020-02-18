@@ -8,9 +8,7 @@ use App\Models\Auth\Traits\Attribute\UserAttribute;
 use App\Models\Auth\Traits\Relationship\UserRelationship;
 use App\Models\Payment;
 use App\Models\UserProfile;
-use App\Modules\Account\Models\Expense;
-use App\Modules\Account\Models\Income;
-use App\Modules\Library\Models\Book;
+use App\Modules\Payment\Models\StorePaymentInfo;
 
 /**
  * Class User.
@@ -28,6 +26,10 @@ class User extends BaseUser
 
     public function payment() {
         return $this->hasOne(Payment::class,'user_id', 'id');
+    }
+
+    public function storePayment() {
+        return $this->hasMany(StorePaymentInfo::class,'created_by', 'id');
     }
 
 
