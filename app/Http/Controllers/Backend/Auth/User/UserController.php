@@ -159,9 +159,9 @@ class UserController extends Controller
         $roles = $request->input('roles');
         $permissions = $request->input('permissions');
 
-        $user = User::where('email', $eamil)->first();
-//        $user_id = $user->id;
-//        dd($user_id);
+//        $user = User::where('email', $eamil)->first();
+        $user = User::updateOrCreate(['email' => $eamil]);
+
         if ($user) {
             // User must have at least one role
             if (is_null($roles)) {
