@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Auth\User;
+use App\Models\RenewalRegistrationEmail;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -48,6 +49,7 @@ class RenewalAlertEmail extends Command
 
     public function SendingRegistrationRenewalAlert()
     {
+
         $today_date = Carbon::now()->format('Y-m-d H:i:s');
         $alert_date = Carbon::parse($today_date)->addMonth(-11)->format('Y-m-d H:i:s');
 
@@ -126,7 +128,13 @@ class RenewalAlertEmail extends Command
             $mail->ClearAddresses();
             $mail->ClearCCs();
 
-//            $email->save();
+            $renewal_email = new RenewalRegistrationEmail();
+            $renewal_email->email       = $email;
+            $renewal_email->is_sent     = true;
+            $renewal_email->sent_time   = Carbon::now()->format('H:i');
+            $renewal_email->month       = Carbon::now()->format('F');
+            $renewal_email->year        = Carbon::now()->format('Y');
+            $renewal_email->save();
 
         } catch (Exception $e) {
             $message =  "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
