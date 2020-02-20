@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\RenewalAlertEmail;
 use App\Console\Commands\SendAlumniRegistrationEmail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -17,7 +18,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SendAlumniRegistrationEmail::class
+        SendAlumniRegistrationEmail::class,
+        RenewalAlertEmail::class
     ];
 
     /**
@@ -28,8 +30,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        //Send email every 5 minutes
         $schedule->command('cste:send-alumni-registration-email')
             ->everyFiveMinutes()
+            ->withoutOverlapping(5);
+
+        //Send email for renewal alert
+        $schedule->command('cste:alumni-registration-renewal-alert')
+            ->dailyAt('12:00')
             ->withoutOverlapping(5);
 
     }
