@@ -51,12 +51,14 @@ class RenewalAlertEmail extends Command
     {
 
         $today_date = Carbon::now()->format('Y-m-d H:i:s');
-        $alert_date = Carbon::parse($today_date)->addMonth(-11)->format('Y-m-d H:i:s');
+//        $today_date = '2021-01-20 00:00:00';
 
-        $users_email = User::where('created_at', '<=',  $alert_date)->pluck('email')->toArray();
+        $alert_date_start_time = Carbon::parse($today_date)->addMonth(-11)->startOfDay()->format('Y-m-d H:i:s');
+        $alert_date_end_time   = Carbon::parse($today_date)->addMonth(-11)->endOfDay()->format('Y-m-d H:i:s');
+
+        $users_email = User::whereBetween('created_at', [$alert_date_start_time, $alert_date_end_time])->pluck('email')->toArray();
 
         foreach ($users_email as $user_email){
-
             $this->emailFormatForRegistartionAlert($user_email);
         }
     }
