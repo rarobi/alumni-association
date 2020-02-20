@@ -58,8 +58,11 @@ class RenewalAlertEmail extends Command
 
         $users_email = User::whereBetween('created_at', [$alert_date_start_time, $alert_date_end_time])->pluck('email')->toArray();
 
-        foreach ($users_email as $user_email){
-            $this->emailFormatForRegistartionAlert($user_email);
+        if(count($users_email) > 0){
+            foreach ($users_email as $user_email){
+                dd($user_email);
+                $this->emailFormatForRegistartionAlert($user_email);
+            }
         }
     }
 
