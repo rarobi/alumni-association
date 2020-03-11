@@ -24,6 +24,17 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
         'destroy'   => 'settings.alumni.session.destroy'
     ]]);
 
+
+    Route::resource('settings/alumni/archive', 'archiveController', ['names' => [
+        'index'     => 'settings.alumni.archive.index',
+        'create'    => 'settings.alumni.archive.create',
+        'store'     => 'settings.alumni.archive.store',
+        'show'      => 'settings.alumni.archive.show',
+        'edit'      => 'settings.alumni.archive.edit',
+        'update'    => 'settings.alumni.archive.update',
+        'destroy'   => 'settings.alumni.archive.destroy'
+    ]]);
+
     Route::get('settings/alumni/change-password', 'SettingsController@index')->name('settings.alumni.change-password');
     Route::post('settings/alumni/change-password', 'SettingsController@store')->name('settings.alumni.change-password.store');
 

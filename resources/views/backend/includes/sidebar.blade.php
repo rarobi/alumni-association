@@ -329,6 +329,14 @@
 
                         <li class="nav-item">
                             <a class="nav-link {{
+                                active_class(Active::checkUriPattern('settings/alumni/archive*'))
+                            }}" href="{{ route('settings.alumni.archive.index') }}">
+                                <i class="fa fa-book"></i> Archive Member
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
                                 active_class(Active::checkUriPattern('settings/alumni/change-password*'))
                             }}" href="{{ route('settings.alumni.change-password') }}">
                                 <i class="fa fa-book"></i> Change Password
