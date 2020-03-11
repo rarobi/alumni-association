@@ -25,7 +25,7 @@ Route::group(['module' => 'Settings', 'middleware' => ['web'], 'namespace' => 'A
     ]]);
 
 
-    Route::resource('settings/alumni/archive', 'archiveController', ['names' => [
+    Route::resource('settings/alumni/archive', 'ArchiveController', ['names' => [
         'index'     => 'settings.alumni.archive.index',
         'create'    => 'settings.alumni.archive.create',
         'store'     => 'settings.alumni.archive.store',
