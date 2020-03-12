@@ -25,7 +25,7 @@ class ArchiveController extends Controller
 
     public function create()
     {
-        $data['batches'] = Batch::pluck('name','id');
+        $data['batches'] = Batch::pluck('name','name');
         $data['sessions'] = Session::pluck('session', 'session');
 
         return view("Settings::archive-members.create",$data);
@@ -33,6 +33,36 @@ class ArchiveController extends Controller
 
     public function store(Request $request){
 
+        $name          = $request->input('name');
+        $designation   = $request->input('designation');
+        $batch         = $request->input('batch');
+        $session       = $request->input('session');
+        $elected_years = $request->input('elected_years');
+        $is_published  = $request->input('is_published');
+
+        $archive = new ArchiveMember();
+        $archive->name          = $name;
+        $archive->designation   = $designation;
+        $archive->batch         = $batch;
+        $archive->session       = $session;
+        $archive->elected_years = $elected_years;
+        $archive->is_published  = isset($is_published) ? $is_published : 0;
+
+        $prefix = date('Ymd_');
+        $photo = $request->file('image');
+
+        if ($request->file('image')) {
+            $mime_type = $photo->getClientMimeType();
+            if(!in_array($mime_type,['image/jpeg','image/jpg','image/png'])){
+                return redirect('/settings/alumni/archive')->with('flash_danger','Document image must be png or jpg or jpeg format!');
+            }
+            $photoFile = trim(sprintf("%s", uniqid($prefix, true))) .'.'.$photo->getClientOriginalExtension();
+            $photo->move('uploads/archive_elected_members/', $photoFile);
+            $archive->image = $photoFile;
+        }
+        $archive->save();
+
+        return redirect()->route('settings.alumni.archive.index')->withFlashSuccess('Archived created successfully');
     }
 
     public function show($id)

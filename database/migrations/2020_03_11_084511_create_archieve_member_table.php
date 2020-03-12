@@ -18,10 +18,11 @@ class CreateArchieveMemberTable extends Migration
 
             $table->string('name')->nullable();
             $table->string('designation')->nullable();
-            $table->integer('batch_id')->nullable();
+            $table->string('batch')->nullable();
             $table->string('session')->nullable();
             $table->string('elected_years')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('is_published')->default(0);
             $table->timestamps();
         });
     }

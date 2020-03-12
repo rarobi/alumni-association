@@ -7,12 +7,12 @@
 @endsection
 
 @section('content')
-    {{ html()->form('POST', route('payment.store'))->attribute('enctype','multipart/form-data')->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('settings.alumni.archive.store'))->attribute('enctype','multipart/form-data')->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
-                    <h4 class="card-title mb-0">Payment List <small class="text-muted">Create Payment</small>
+                    <h4 class="card-title mb-0">Archive List <small class="text-muted">Create Archive</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->
@@ -21,59 +21,66 @@
 
             <div class="row mt-4 mb-4">
                 <div class="col">
-                    <div class="form-group row">
-                        {{ html()->label('Payment Type')->class('col-md-2 form-control-label required')->for('payment') }}
+                    <div class="form-group row tranx_id">
+                        {{ html()->label('Name')->class('col-md-2 form-control-label required')->for('name') }}
                         <div class="col-md-10">
-                            {{ html()->select('paymemt_type')
+                            {{ html()->text('name')
+                                ->class('form-control')
+                                ->placeholder('Enter Name')
+                                ->attribute('maxlength', 200)
+                                ->required()
+                                ->autofocus() }}
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group row">
+                        {{ html()->label('Designation')->class('col-md-2 form-control-label required')->for('designation') }}
+                        <div class="col-md-10">
+                            {{ html()->select('designation')
                                 ->class('form-control payment')
-                                ->options(['' => 'select an option', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'nogod' => 'Nogod', 'bank' => 'Bank Transfer'])
+                                ->options(['' => 'select an option', 'president' => 'PRESIDENT', 'vice-president' => 'VICE - PRESIDENT', 'general secretary' => 'GENERAL SECRETARY', 'treasurer' => 'TREASURER', 'assistant general secretary' => 'ASSISTANT GENERAL SECRETARY'])
                                 ->required()
                                 }}
                         </div>
                     </div><!--form-group-->
-                    <div class="form-group row tranx_id">
-                        {{ html()->label('Tranx ID')->class('col-md-2 form-control-label')->for('tranx_id') }}
-                        <div class="col-md-10">
-                            {{ html()->text('transaction_id')
-                                ->class('form-control')
-                                ->placeholder('Enter transaction numbr')
-                                ->attribute('maxlength', 20)
-                                ->autofocus() }}
-                        </div>
-                    </div><!--form-group-->
-                    <div class="form-group row sender">
-                        {{ html()->label('Transaction Number')->class('col-md-2 form-control-label')->for('transaction_number') }}
-                        <div class="col-md-10">
-                            {{ html()->text('transaction_number')
-                                ->class('form-control')
-                                ->id('sender')
-                                ->placeholder("Enter Transaction Mobile Number")
-                                ->attribute('maxlength', 191)
-                                 }}
-                        </div>
-                    </div>
-                    <div class="form-group row branch-box">
-                        {{ html()->label('Branch Name')->class('col-md-2 form-control-label')->for('branch_name') }}
-                        <div class="col-md-10">
-                            {{ html()->text('branch_name')
-                                ->class('form-control ')
-                                ->placeholder('Enter branch name') }}
-                        </div>
-                    </div><!--form-group-->
-
                     <div class="form-group row">
-                        {{ html()->label('Payment Date')->class('col-md-2 form-control-label required')->for('payment_date') }}
+                        {{ html()->label('Batch')->class('col-md-2 form-control-label required')->for('batch') }}
                         <div class="col-md-10">
-                            {{ html()->text('payment_date')
-                                ->class('form-control')
-                                ->id('date')
-                                ->placeholder("Enter Payment date")
-                                ->attribute('maxlength', 191)
-                                 ->required()}}
+                            {{ html()->select('batch', $batches)
+                                ->placeholder("Select a batch")
+                                ->class('form-control payment')
+                                ->required()
+                                }}
                         </div>
-                    </div>
+                    </div><!--form-group-->
+                    <div class="form-group row branch-box">
+                        {{ html()->label('Session')->class('col-md-2 form-control-label required')->for('session') }}
+                        <div class="col-md-10">
+                            {{ html()->select('session', $sessions)
+                                ->placeholder("Select a session")
+                                ->class('form-control')
+                                ->attribute('maxlength', 20)
+                                ->required() }}
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group row branch-box">
+                        {{ html()->label('Elected Years')->class('col-md-2 form-control-label required')->for('elected-years') }}
+                        <div class="col-md-10">
+                            {{ html()->text('elected_years')
+                               ->class('form-control')
+                               ->placeholder('Enter Elected Years [Ex. 2020-2021]')
+                               ->attribute('maxlength', 20)
+                               ->required()
+                               ->autofocus() }}
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group row branch-box">
+                        {{ html()->label('Is Published')->class('col-md-2 form-control-label required')->for('is_published') }}
+                        <div class="col-md-10">
+                            {{ html()->checkbox('is_published') }}
+                        </div>
+                    </div><!--form-group-->
                     <div class="form-group row document">
-                        {{ html()->label('Document')->class('col-md-2 form-control-label')->for('document') }}
+                        {{ html()->label('Image')->class('col-md-2 form-control-label required')->for('image') }}
                         <div class="col-md-10">
                             <span id="photo_err" class="text-danger" style="font-size: 15px;"></span>
                             <div>
@@ -81,8 +88,8 @@
                             </div>
                             <br>
                             <label class="btn btn-primary btn-sm">
-                                <input onchange="changePhoto(this)" type="file" name="document" style="display: none">
-                                <i class="fa fa-image"></i> Upload document
+                                <input onchange="changePhoto(this)" type="file" name="image" style="display: none">
+                                <i class="fa fa-image"></i> Upload Image
                             </label>
                         </div><!--col-->
                     </div><!--form-group-->
