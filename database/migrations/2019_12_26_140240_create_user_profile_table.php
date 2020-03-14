@@ -29,6 +29,7 @@ class CreateUserProfileTable extends Migration
             $table->string('occupation')->nullable();
             $table->string('job_place')->nullable();
             $table->string('job_position')->nullable();
+            $table->string('skills')->nullable();
             $table->string('emergency_contact')->nullable();
             $table->string('present_address')->nullable();
             $table->string('parmanent_address')->nullable();

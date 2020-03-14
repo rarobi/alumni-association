@@ -47,6 +47,12 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 119px!important;">
                                 <li><a class="dropdown-item" href="{{ url('/elected-members') }}">Elected Members</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/alumni') }}">General Members</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Archive Members</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a href="{!! url('/archive-member/2018-2018') !!}">2018-2019</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item {{ active_class(Active::checkUriPattern('notice')) }}"><a href="{{ url('/latest-notice') }}">Notice</a></li>

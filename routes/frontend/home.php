@@ -54,6 +54,9 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/registration-rules', [HomeController::class, 'registrationRules']);
 
+Route::get('/archive-member/2018-2018', [HomeController::class, 'archive_2018']);
+Route::get('/member/search', [HomeController::class, 'memberSearch']);
+
 
 Route::get('/alumni-login', [AlumniLoginController::class, 'loginForm'])->name('alumni.login');
 Route::post('/alumni-login', [AlumniLoginController::class, 'login']);

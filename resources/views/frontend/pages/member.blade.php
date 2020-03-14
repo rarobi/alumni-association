@@ -16,6 +16,21 @@
     <!-- ***** Banner Area End ***** -->
 
     <section class="single_blog_area p-t-70">
+        <div class="row">
+            <div class="col-sm-4 offset-8">
+                <!-- Search form -->
+                {!! Form::open(['url'=>'/member/search','method'=>'GET']) !!}
+                <div class="row">
+                    <div class="col-sm-8">
+                        <input class="form-control my-0 py-1 red-border" name="skill" type="text" placeholder="Search by skill [Ex. php]" aria-label="Search">
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="icon-search"></i>Search</button>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div><br>
         <div class="container">
             <div class="row">
                 @foreach($batches as $batch)

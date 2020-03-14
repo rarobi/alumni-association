@@ -155,6 +155,22 @@
                         </div><!--col-->
                     </div><!--form-group-->
                     <div class="form-group row">
+                        {{ html()->label('Skill')->class('col-md-2 form-control-label')->for('skill') }}
+                        <div class="col-md-10">
+                            @if(!is_null($user->profile))
+                                {{ html()->text('skills', $user->profile->skills)
+                                    ->class('form-control')
+                                    ->placeholder('Enter Skill [Ex. php]')
+                                    ->attribute('maxlength', 191) }}
+                            @else
+                                {{ html()->text('skills')
+                                    ->class('form-control')
+                                    ->placeholder('Enter Skill [Ex. php]')
+                                    ->attribute('maxlength', 191) }}
+                            @endif
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    <div class="form-group row">
                         {{ html()->label('Present Address')->class('col-md-2 form-control-label')->for('present_address') }}
                         <div class="col-md-10">
                             @if(!is_null($user->profile))
