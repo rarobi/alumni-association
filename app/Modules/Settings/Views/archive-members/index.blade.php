@@ -54,10 +54,9 @@
                                 <td>{{ $archive_member->elected_years }}</td>
 {{--                                <td>{{ $archive_member->image }}</td>--}}
                                 @if($logged_in_user->isAdmin())
-{{--                                <td>{!! $archive_member->action_buttons !!}</td>--}}
                                     <td>
-                                        <a href="{!! url('member', $archive_member->id) !!}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
-                                        <a href="{!! url('member/'.$archive_member->id.'/edit') !!}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>
+                                        <a href="{!! url('settings/alumni/archive', $archive_member->id) !!}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+{{--                                        <a href="{!! url('member/'.$archive_member->id.'/edit') !!}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
                                     </td>
                                 @endif
                             </tr>
