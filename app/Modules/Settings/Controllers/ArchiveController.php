@@ -67,7 +67,9 @@ class ArchiveController extends Controller
 
     public function show($id)
     {
-        //
+        $data['archive'] = ArchiveMember::findOrFail($id);
+        return view("Settings::archive-members.show",$data);
+
     }
     /**
      * Show the form for editing the specified resource.

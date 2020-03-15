@@ -24,7 +24,23 @@
                     </div><!--btn-toolbar-->
                 </div><!--col-->
             </div><!--row-->
-
+            <br><br>
+            <div class="row">
+                <div class="col-sm-4 offset-8">
+                    <!-- Search form -->
+                    {!! Form::open(['url'=>'payment/search','method'=>'GET']) !!}
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input class="form-control my-0 py-1 red-border" name="tranxId" type="text" placeholder="Search by Tranx ID" aria-label="Search">
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="icon-search"></i>Search</button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            @if(count($payments) > 0)
             <div class="row mt-4">
                 <div class="col">
                     <div class="table-responsive">
@@ -79,6 +95,13 @@
                 </div><!--col-->
 
             </div><!--row-->
+            @else
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <h5 class="text-center">No Data Found</h5>
+                </div>
+            </div>
+            @endif
         </div><!--card-body-->
     </div><!--card-->
 @endsection

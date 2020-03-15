@@ -37,34 +37,30 @@
                             <th>Session</th>
                             <th>Designation</th>
                             <th>Elected Years</th>
-                            <th>Image</th>
+{{--                            <th>Image</th>--}}
                             @if($logged_in_user->isAdmin())
                             <th>@lang('labels.general.actions')</th>
                             @endif
                         </tr>
                         </thead>
                         <tbody>
-                        {{--@foreach($users as $key => $user)--}}
-{{--                         {!! dd($user) !!}--}}
-                            {{--<tr>--}}
-                                {{--<td>{{ $key + $users->firstItem() }}</td>--}}
-                                {{--<td>{{ isset($user->batch_id) ? $user->batch_id : 'Not Provided' }}</td>--}}
-                                {{--<td>{{ isset($user->roll) ? $user->roll : 'Not Provided' }}</td>--}}
-                                {{--<td>{{ $user->first_name }}</td>--}}
-                                {{--<td>{{ $user->email }}</td>--}}
-                                {{--<td>{{ $user->member_status }}</td>--}}
-{{--                                <td>{{ !empty($user->blood_group)?$user->blood_group:'N/A' }}</td>--}}
-                                {{--<td>{!! $user->roles_label !!}</td>--}}
-                                {{--<td>{{ $user->updated_at }}</td>--}}
-                                {{--@if($logged_in_user->isAdmin())--}}
-{{--                                <td>{!! $user->action_buttons !!}</td>--}}
-                                    {{--<td>--}}
-                                        {{--<a href="{!! url('member', $user->user_id) !!}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>--}}
-                                        {{--<a href="{!! url('member/'.$user->user_id.'/edit') !!}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
-                                    {{--</td>--}}
-                                {{--@endif--}}
-                            {{--</tr>--}}
-                        {{--@endforeach--}}
+                        @foreach($archive_members as $key => $archive_member)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ isset($archive_member->name) ? $archive_member->name : 'Not Provided' }}</td>
+                                <td>{{ isset($archive_member->batch) ? $archive_member->batch : 'Not Provided' }}</td>
+                                <td>{{ $archive_member->session }}</td>
+                                <td>{{ $archive_member->designation }}</td>
+                                <td>{{ $archive_member->elected_years }}</td>
+{{--                                <td>{{ $archive_member->image }}</td>--}}
+                                @if($logged_in_user->isAdmin())
+                                    <td>
+                                        <a href="{!! url('settings/alumni/archive', $archive_member->id) !!}" class="btn btn-sm btn-info"title="View"><i class="fa fa-eye"></i></a>
+{{--                                        <a href="{!! url('member/'.$archive_member->id.'/edit') !!}" class="btn btn-sm btn-info"title="Edit"><i class="fa fa-edit"></i></a>--}}
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

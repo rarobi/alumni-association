@@ -126,4 +126,14 @@ class PaymentController extends Controller
 //        return redirect()->route('payment.index')->withFlashSuccess('Payment deleted successfully');
 
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search(Request $request){
+        $tranxId = $request->input('tranxId');
+        $data['payments'] = StorePaymentInfo::where('transaction_id', 'LIKE','%'.$tranxId.'%')->paginate(10);
+        return view("Payment::index", $data);
+    }
 }
