@@ -115,6 +115,10 @@ class LoginController extends Controller
     {
 
 
+        if($user->hasRole('member')){
+            return redirect()->back()->with('flash_danger', 'Your are not allowed to access it. ');
+        }
+
         if($user->member_status != 'approved'){
             auth()->logout();
             return redirect('/alumni-login')->with('flash_danger', 'Your request is not accepted yet. Please wait for confirmation. ');

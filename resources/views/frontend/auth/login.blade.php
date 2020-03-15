@@ -33,7 +33,7 @@
     <div class="container-login100">
         <div class="wrap-login100">
             @if(Session::has('flash_danger'))
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('flash_danger') }}</p>
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }} text-center">{{ Session::get('flash_danger') }}</p>
             @endif
             {{ html()->form('POST', route('frontend.auth.login.post'))->class('form-horizontal login100-form validate-form')->open() }}
             <span class="login100-form-title p-b-26">
@@ -90,15 +90,15 @@
                     Sign Up
                 </a>
             </div>
-                <div class="text-center p-t-15">
+            <div class="text-center p-t-15">
 						<span class="txt1">
 							Go to
 						</span>
 
-                    <a class="txt2 text-info" href="{{ url('/') }}">
-                        Home
-                    </a>
-                </div>
+                <a class="txt2 text-info" href="{{ url('/') }}">
+                    Home
+                </a>
+            </div>
             {{ html()->form()->close() }}
         </div>
     </div>
