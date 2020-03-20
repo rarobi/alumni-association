@@ -151,7 +151,7 @@
                                                 <div class="wrapper_indent">
                                                     <div class="row">
                                                         <div class="col-sm-11">
-                                                            <p><b>Company:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
+                                                            <p><b>Organization:</b> {!! isset($user_profession->company_name) ? $user_profession->company_name : 'Not Provided' !!}</p>
                                                             <p><b>Designation:</b> {!! isset($user_profession->designation) ? $user_profession->designation : 'Not Provided' !!}</p>
                                                             <p><b>Address:</b> {!! isset($user_profession->location) ? $user_profession->location : 'Not Provided' !!}</p>
                                                         </div>

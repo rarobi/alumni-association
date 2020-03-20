@@ -87,6 +87,7 @@ class ProfileController extends Controller
             $user_profile->occupation  = $request->input('occupation');
             $user_profile->job_place  = $request->input('job_place');
             $user_profile->job_position  = $request->input('job_position');
+            $user_profile->skills  = $request->input('skills');
             $user_profile->present_address  = $request->input('present_address');
             $user_profile->parmanent_address  = $request->input('permanent_address');
             $user_profile->nid  = $request->input('nid');
