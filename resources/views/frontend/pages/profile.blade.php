@@ -126,6 +126,8 @@
                                             <p><b>Mobile:</b> {!! isset($user->mobile) ?$user->mobile : 'Not Provided'  !!}</p>
                                             <p><b>Date of Birth:</b> {!! isset($user->dob) ? $user->dob : 'Not Provided' !!}</p>
                                             <p><b>Email:</b> {!! $user->email !!}</p>
+                                            <p><b>Blood Group:</b> {!! isset($user->blood_group) ? $user->blood_group : 'Not Provided'  !!}</p>
+                                            <p><b>Skills:</b> {!! isset($user->profile->skills) ? $user->profile->skills : 'Not Provided' !!}</p>
                                             <p><b>Present Address:</b> {!! isset($user->profile->present_address) ? $user->profile->present_address : 'Not Provided' !!}</p>
                                             <p><b>Parmanent Address:</b> {!! isset($user->profile->parmanent_address) ? $user->profile->parmanent_address : 'Not Provided' !!}</p>
                                             <!-- /row-->
