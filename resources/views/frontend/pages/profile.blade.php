@@ -71,7 +71,7 @@
                                             <i class="pe-7s-news-paper"></i>
                                             <div class="row">
                                                 <div class="col-sm-11">
-                                                    <h3>Educational Statement</h3>
+                                                    <h3>Educational Statement</h3><small>(Please start from latest one)</small>
                                                 </div>
                                                 <div class="col-sm-1">
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#educationForm" data-toggle="tooltip" title="Add Degree"><i class="fa fa-plus-circle"> </i></a>
@@ -127,6 +127,7 @@
                                             <p><b>Date of Birth:</b> {!! isset($user->dob) ? $user->dob : 'Not Provided' !!}</p>
                                             <p><b>Email:</b> {!! $user->email !!}</p>
                                             <p><b>Blood Group:</b> {!! isset($user->blood_group) ? $user->blood_group : 'Not Provided'  !!}</p>
+                                            <p><b>Occupation:</b> {!! isset($user->profile->occupation) ? $user->profile->occupation : 'Not Provided' !!}</p>
                                             <p><b>Skills:</b> {!! isset($user->profile->skills) ? $user->profile->skills : 'Not Provided' !!}</p>
                                             <p><b>Present Address:</b> {!! isset($user->profile->present_address) ? $user->profile->present_address : 'Not Provided' !!}</p>
                                             <p><b>Parmanent Address:</b> {!! isset($user->profile->parmanent_address) ? $user->profile->parmanent_address : 'Not Provided' !!}</p>
@@ -140,7 +141,7 @@
                                             <i class="pe-7s-news-paper"></i>
                                             <div class="row">
                                                 <div class="col-sm-11">
-                                                    <h3>Professional Statement</h3>
+                                                    <h3>Professional Statement</h3><small>(Please start from latest one)</small>
                                                 </div>
                                                 <div class="col-sm-1">
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#professionForm" data-toggle="tooltip" title="Add Profession"><i class="fa fa-plus-circle"> </i></a>
@@ -211,14 +212,14 @@
                                                 ->placeholder('Enter passing year ')
                                                 ->required() }}
                                         </div>
-                                        <br>
-                                        <div class="row">
-                                            {{ html()->label('Order')->class('col-md-4 form-control-label required') }}
-                                            {{ html()->number('order')
-                                                ->class('form-control col-md-6')
-                                                ->placeholder('Enter degree completed order ')
-                                                ->required() }}
-                                        </div>
+                                        {{--<br>--}}
+                                        {{--<div class="row">--}}
+                                            {{--{{ html()->label('Order')->class('col-md-4 form-control-label required') }}--}}
+                                            {{--{{ html()->number('order')--}}
+                                                {{--->class('form-control col-md-6')--}}
+                                                {{--->placeholder('Enter degree completed order ')--}}
+                                                {{--->required() }}--}}
+                                        {{--</div>--}}
                                     </div>
                                     <div class="modal-footer">
                                         {{--                                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" aria-label="Close">Close</button>--}}

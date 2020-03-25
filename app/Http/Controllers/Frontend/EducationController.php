@@ -16,7 +16,7 @@ class EducationController extends Controller
         $education->degree_name = $request->input('degree_name');
         $education->institute   = $request->input('institute');
         $education->completed_at = $request->input('completed_at');
-        $education->order       = $request->input('order');
+//        $education->order       = $request->input('order');
         $education->save();
 //        return redirect()->back()->with('message', 'Education Added succesfully.');
         return redirect()->to(url()->previous(). "#education")->with('message', 'Education Added succesfully.');

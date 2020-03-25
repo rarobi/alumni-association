@@ -39,8 +39,8 @@ class ProfileController extends Controller
     {
         $user_id = Auth::id();
         $data['user'] = User::findOrFail($user_id);
-        $data['user_educations'] = Education::where('user_id', $user_id)->orderBy('order', 'DESC')->get();
-        $data['user_professions'] = Profession::where('user_id', $user_id)->orderBy('order', 'DESC')->get();
+        $data['user_educations'] = Education::where('user_id', $user_id)->orderBy('id', 'ASC')->get();
+        $data['user_professions'] = Profession::where('user_id', $user_id)->orderBy('id', 'ASC')->get();
 
         return view('frontend.pages.profile', $data);
     }
