@@ -99,6 +99,9 @@
                                             <p><b>Mobile: </b>{!! isset($member->mobile) ? $member->mobile : 'Not Provided' !!}</p>
                                             <p><b>Date of Birth: </b>{!! isset($member->dob) ? $member->dob : 'Not Provided' !!}</p>
                                             <p><b>Email: </b>{!! isset($member->email) ? $member->email : 'Not Provided' !!}</p>
+                                            <p><b>Blood Group:</b> {!! isset($member->blood_group) ? $member->blood_group : 'Not Provided'  !!}</p>
+                                            <p><b>Occupation:</b> {!! isset($member->profile->occupation) ? $member->profile->occupation : 'Not Provided' !!}</p>
+                                            <p><b>Skills:</b> {!! isset($member->profile->skills) ? $member->profile->skills : 'Not Provided' !!}</p>
                                             <p><b>Present Address: </b>@if(!is_null($member->profile))
                                                 {!! isset($member->profile->present_address) ? $member->profile->present_address : 'Not Provided' !!}
                                                 @else
