@@ -93,7 +93,9 @@ class HomeController extends Controller
         $skill = $request->input('skill');
 
         $data['members'] = User::leftJoin('user_profile', 'users.id', '=', 'user_profile.user_id')
-            ->where('user_profile.skills', 'like', '%' . $skill . '%')->where('member_status', '=', 'approved')
+            ->where('user_profile.skills', 'like', '%' . $skill . '%')
+            ->orWhere('users.first_name', 'like', '%' . $skill . '%')
+            ->where('member_status', '=', 'approved')
             ->paginate(12);
 
         return view('frontend.pages.member_list',  $data);

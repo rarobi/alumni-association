@@ -11,7 +11,7 @@
 
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="fas fa-home"></i></a>
+            {{--<a class="nav-link" href="{{ route('frontend.index') }}"><i class="fas fa-home"></i></a>--}}
         </li>
 
 {{--        <li class="nav-item px-3">--}}
