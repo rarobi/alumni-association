@@ -44,7 +44,8 @@
 
                                             <div class="checkbox-holder text-left">
                                                 <div class="checkbox_2">
-                                                    <p class="text-center text-dark">Do not have an account yet? <a href="{{ url('/alumni-register') }}"><strong class="text-white">Register now!</strong></a></p>
+                                                    <p class="text-dark" style="line-height:1;"><a style="color: #343a40" href="{{ url('/password/reset') }}">Forgot your password?</a></p>
+                                                    <p class="text-dark" style="line-height:1;">Do not have an account yet? <a href="{{ url('/alumni-register') }}"><strong class="text-white">Register now!</strong></a></p>
                                                 </div>
                                             </div>
                                         </div>

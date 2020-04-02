@@ -51,7 +51,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         Route::get('account/confirm/{token}', [ConfirmAccountController::class, 'confirm'])->name('account.confirm');
         Route::get('account/confirm/resend/{uuid}', [ConfirmAccountController::class, 'sendConfirmationEmail'])->name('account.confirm.resend');
 
-        // Password Reset Routes
+        // Password Reset/Forgot Routes
         Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.email');
         Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email.post');
 
